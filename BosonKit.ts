@@ -395,7 +395,7 @@ namespace BosonKit {
             neopixel_buf[i * 3 + 1] = Math.round(r)
             neopixel_buf[i * 3 + 2] = Math.round(b)
         }
-        //ws2812b.sendBuffer(neopixel_buf, rgb_pin);
+        ws2812b.sendBuffer(neopixel_buf, rgb_pin);
 
     }
 
@@ -415,7 +415,7 @@ namespace BosonKit {
             if ((i % 3) == 2)
                 neopixel_buf[i] = Math.round(b)
         }
-        //ws2812b.sendBuffer(neopixel_buf, rgb_pin)
+        ws2812b.sendBuffer(neopixel_buf, rgb_pin)
     }
 
     //% block="Set the slake of the RGB LED strip"

@@ -10,7 +10,7 @@
     "BosonKit.bos0007|block": "读取引脚%pin火焰传感器的值",
     "BosonKit.bos0008|block": "读取引脚%pin触摸传感器的值",
     "BosonKit.bos0009|block": "读取引脚%pin声音传感器的值",
-    "BosonKit.bos00010|block": "读取引脚%pin智能灰度传感器的值",
+    "BosonKit.bos0010|block": "读取引脚%pin智能灰度传感器的值",
     "BosonKit.bos0011|block": "读取引脚%pin温度",
     "BosonKit.bos0012|block": "读取引脚%pin电导开关的值",
     "BosonKit.bos0013|block": "读取引脚%pin运动传感器的值",
