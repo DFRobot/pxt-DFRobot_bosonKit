@@ -11,7 +11,9 @@
         "main.ts",
         "README.md",
         "BosonKit.ts",
-        "_locales/zh-cn/BosonKit-strings.json"
+        "_locales/zh-cn/BosonKit-strings.json",
+        "sendBuffer.asm",
+        "ws2812b.ts"
     ],
     "testFiles": [
         "test.ts"
