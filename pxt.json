@@ -1,6 +1,6 @@
 {
     "name": "BosonKit",
-    "description": "0.0.3",
+    "description": "0.0.4",
     "dependencies": {
         "core": "*",
         "radio": "*",
