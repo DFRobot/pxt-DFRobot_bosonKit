@@ -2,7 +2,7 @@
 
 
 //% weight=100 color=#0fbc11 icon="\uf0b2"
-//% groups="['Analog', 'Digital', 'Heartbeat', 'RGB', 'Servo']"
+//% groups="['Analog', 'Digital', 'Heartbeat', 'RGB strip', 'Servo']"
 namespace BosonKit {
 
     let beattime1 = 0;
@@ -93,7 +93,7 @@ namespace BosonKit {
     export function bos0041(pin: AnalogPin): number {
 
         let value: number = pins.analogReadPin(pin);
-        return value;
+        return Math.round(value / 10);
     }
 
     //% block="read pin %pin waterproof temperature (i19)"
@@ -130,7 +130,7 @@ namespace BosonKit {
     export function bos0056(pin: AnalogPin): number {
 
         let value: number = pins.analogReadPin(pin);
-        return value / 10;
+        return Math.round(value / 10);
     }
 
     //% block="read pin %pin pH Sensor V2 value (i28)"
@@ -344,7 +344,7 @@ namespace BosonKit {
     }
 
     //% block="init RGB LED strip pin %pin Number of lights %num"
-    //% group="RGB"
+    //% group="RGB strip"
     //% num.min=1 num.max=50 num.defl=8
     //% weight=100
     export function M011_00184_init(pin: DigitalPin, num: number): void {
@@ -357,7 +357,7 @@ namespace BosonKit {
     }
 
     //% block="Set the brightness of the RGB LED strip  %brightness"
-    //% group="RGB"
+    //% group="RGB strip"
     //% brightness.min=0 brightness.max=255 brightness.defl=255
     //% weight=90
     export function M011_00184_brightness(brightness: number): void {
@@ -366,7 +366,7 @@ namespace BosonKit {
     }
 
     //% block="RGB LED strip from %from to %to"
-    //% group="RGB"
+    //% group="RGB strip"
     //% from.min=1 from.max=50 from.defl=1
     //% to.min=1 to.max=50 to.defl=2
     //% weight=80
@@ -375,7 +375,7 @@ namespace BosonKit {
     }
 
     //% block="RGB LED strip %index show color %color"
-    //% group="RGB"
+    //% group="RGB strip"
     //% index.min=1 index.max=50 index.defl=1
     //% color.shadow="colorNumberPicker"
     //% weight=70
@@ -405,7 +405,7 @@ namespace BosonKit {
     }
 
     //% block="show color %rgb"
-    //% group="RGB"
+    //% group="RGB strip"
     //% weight=60
     //% rgb.shadow="colorNumberPicker"
     export function M011_00184_showColor(rgb: number) {
@@ -424,7 +424,7 @@ namespace BosonKit {
     }
 
     //% block="Set the slake of the RGB LED strip"
-    //% group="RGB"
+    //% group="RGB strip"
     //% weight=50
     export function M011_00184_off(): void {
 
@@ -432,7 +432,7 @@ namespace BosonKit {
     }
 
     //% block="red %red green %green blue %blue"
-    //% group="RGB"
+    //% group="RGB strip"
     //% red.min=0 red.max=255 red.defl=0
     //% green.min=0 green.max=255 green.defl=0
     //% blue.min=0 blue.max=255 blue.defl=0
@@ -443,12 +443,12 @@ namespace BosonKit {
     }
 
     //% weight=50
-    //% group="RGB"
+    //% group="RGB strip"
     //% startHue.defl=1
     //% endHue.defl=360
     //% startHue.min=0 startHue.max=360
     //% endHue.min=0 endHue.max=360
-    //% blockId=led_rainbow block="show rainbow color from%startHue to%endHue"
+    //% block="show rainbow color from%startHue to%endHue"
     export function  M011_00184_ledRainbow(startHue: number, endHue: number) {
         startHue = startHue >> 0;
         endHue = endHue >> 0;
@@ -506,11 +506,10 @@ namespace BosonKit {
 
     //% block="9g Metal Gear Micro Servo pin %pin angle %angle" 
     //% group="Servo"
+    //% angle.min=0 angle.max=180
     //% weight=36
     export function ser0045(pin: AnalogPin, angle: number): void {
-
-        // let value: number = pins.analogReadPin(pin);
-        // return value;
+        pins.servoWritePin(pin, angle)
     }
 
     function pinCallback(): void {
