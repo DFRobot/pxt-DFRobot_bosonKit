@@ -2,7 +2,7 @@
 
 
 //% weight=100 color=#0fbc11 icon="\uf0b2"
-//% groups="['Analog', 'Digital', 'Heartbeat', 'RGB strip', 'Servo']"
+//% groups="['Analog', 'Digital', 'Heartbeat', 'RGB LED Strip lights', 'Servo']"
 namespace BosonKit {
 
     let beattime1 = 0;
@@ -15,54 +15,54 @@ namespace BosonKit {
     let neopixel_buf: Buffer;
     let ledsum = -1;
 
-    //% block="read pin %pin Rotation Sensor value (i1)" 
+    //% block="read pin %pin rotation sensor (i1)" 
     //% group="Analog"
-    //% weight=50
+    //% weight=100
     export function bos0001(pin: AnalogPin): number {
 
         let value: number = pins.analogReadPin(pin);
         return value;
     }
 
-    //% block="read pin %pin light (i4)"
+    //% block="read pin %pin light intensity (i4)"
     //% group="Analog" 
-    //% weight=100
+    //% weight=98
     export function bos0004(pin: AnalogPin): number {
 
         let value: number = pins.analogReadPin(pin);
         return value;
     }
 
-    //% block="read pin %pin Steam Sensor value (i6)"
+    //% block="read pin %pin steam sensor (i6)"
     //% group="Analog" 
-    //% weight=46
+    //% weight=96
     export function bos0006(pin: AnalogPin): number {
 
         let value: number = pins.analogReadPin(pin);
         return value;
     }
 
-    //% block="read pin %pin Flame Sensor value (i7)"
+    //% block="read pin %pin flame sensor (i7)"
     //% group="Analog" 
-    //% weight=44
+    //% weight=94
     export function bos0007(pin: AnalogPin): number {
 
         let value: number = pins.analogReadPin(pin);
         return value;
     }
 
-    //% block="read pin %pin Sound Sensor value (i9)" 
+    //% block="read pin %pin sound sensor (i9)" 
     //% group="Analog"
-    //% weight=42
+    //% weight=92
     export function bos0009(pin: AnalogPin): number {
 
         let value: number = pins.analogReadPin(pin);
         return value;
     }
 
-    //% block="read pin %pin Infrared Proximity Sensor value (i10)"
+    //% block="read pin %pin grayscale sensor (i10)"
     //% group="Analog" 
-    //% weight=40
+    //% weight=90
     export function bos0010(pin: AnalogPin): number {
 
         let value: number = pins.analogReadPin(pin);
@@ -71,7 +71,7 @@ namespace BosonKit {
 
     //% block="read pin %pin temperature (i11)"
     //% group="Analog" 
-    //% weight=95
+    //% weight=88
     export function bos0011(pin: AnalogPin): number {
 
         let value: number = pins.analogReadPin(pin);
@@ -80,16 +80,16 @@ namespace BosonKit {
 
     //% block="read pin %pin soil moisture (i16)" 
     //% group="Analog"
-    //% weight=90
+    //% weight=86
     export function bos0038(pin: AnalogPin): number {
 
         let value: number = pins.analogReadPin(pin);
         return value;
     }
 
-    //% block="read pin %pin Humidity Sensor Sensor value (i18)"
+    //% block="read pin %pin humidity sensor (i18)"
     //% group="Analog" 
-    //% weight=34
+    //% weight=84
     export function bos0041(pin: AnalogPin): number {
 
         let value: number = pins.analogReadPin(pin);
@@ -98,7 +98,7 @@ namespace BosonKit {
 
     //% block="read pin %pin waterproof temperature (i19)"
     //% group="Analog" 
-    //% weight=85
+    //% weight=82
     export function bos0042(pin: AnalogPin): number {
 
         let value: number = pins.analogReadPin(pin);
@@ -114,9 +114,9 @@ namespace BosonKit {
 
     }
 
-    //% block="read pin %pin Ultrasonic Distance Sensor (i22)"
+    //% block="read pin %pin ultrasonic distance sensor (i22)"
     //% group="Analog" 
-    //% weight=30
+    //% weight=80
     export function bos0045(pin: AnalogPin): number {
 
         let value: number = Math.round(10 * pins.analogReadPin(pin) * (100 / 1023));
@@ -124,18 +124,18 @@ namespace BosonKit {
     }
 
 
-    //% block="read pin %pin air humidity SHT30 (i27)"
+    //% block="read pin %pin SHT30 humidity (i27)"
     //% group="Analog" 
-    //% weight=80
+    //% weight=78
     export function bos0056(pin: AnalogPin): number {
 
         let value: number = pins.analogReadPin(pin);
         return Math.round(value / 10);
     }
 
-    //% block="read pin %pin pH Sensor V2 value (i28)"
+    //% block="read pin %pin pH sensor V2 (i28)"
     //% group="Analog" 
-    //% weight=26
+    //% weight=76
     export function bos0061(pin: AnalogPin): number {
 
         let map: number = 1024;
@@ -149,117 +149,162 @@ namespace BosonKit {
         return _phValue;
     }
 
-    //% block="LED String Light pin %pin analog write %value (o4)"
+    //% block="analog write pin %pin to %value RGB LED strip lights(o4)"
     //% group="Analog" 
     //% value.min=0 value.max=1023
-    //% weight=24
+    //% weight=74
     export function bos0019_a(pin: AnalogPin, value: number): void {
 
         pins.analogWritePin(pin, value);
     }
 
-    //% block="Buzzer Module pin %pin analog write %value (o5)" 
+    //% block="analog write pin %pin to %value buzzer module(o5)" 
     //% group="Analog"
     //% value.min=0 value.max=1023
-    //% weight=22
+    //% weight=72
     export function bos0020_a(pin: AnalogPin, value: number): void {
 
         pins.analogWritePin(pin, value);
     }
 
-    //% block="Fan Module pin %pin analog write %value  (o6)"
+    //% block="analog write pin %pin to %value fan module (o6)"
     //% group="Analog" 
     //% value.min=0 value.max=1023
-    //% weight=20
+    //% weight=70
     export function bos0021_a(pin: AnalogPin, value: number): void {
 
         pins.analogWritePin(pin, value);
     }
 
-    //% block="Motor Controller Module pin %pin analog write %value (o9)" 
+    //% block="analog write pin %pin to %value motor control module (o9)" 
     //% group="Analog"
     //% value.min=0 value.max=1000
-    //% weight=18
+    //% weight=68
     export function bos0024(pin: AnalogPin, value: number): void {
 
         pins.analogWritePin(pin, value);
     }
 
-    //% block="read pin %pin Blue Push Button value (i2b)" 
+    //% block="read pin %pin blue push button (i2b)" 
     //% group="Digital"
-    //% weight=98
+    //% weight=100
     export function bos0002_B(pin: DigitalPin): number {
 
         let value: number = pins.digitalReadPin(pin);
         return value;
     }
 
-    //% block="read pin %pin Red Push Button value (i2r)" 
+    //% block="read pin %pin red push button (i2r)" 
     //% group="Digital"
-    //% weight=96
+    //% weight=98
     export function bos0002_R(pin: DigitalPin): number {
 
         let value: number = pins.digitalReadPin(pin);
         return value;
     }
 
-    //% block="read pin %pin Yellow Push Button value (i2y)" 
+    //% block="read pin %pin yellow push button (i2y)" 
     //% group="Digital"
-    //% weight=94
+    //% weight=96
     export function bos0002_Y(pin: DigitalPin): number {
 
         let value: number = pins.digitalReadPin(pin);
         return value;
     }
 
-    //% block="read pin %pin Self Locking Switch value  (i3)" 
+    //% block="read pin %pin self locking switch (i3)" 
     //% group="Digital"
-    //% weight=92
+    //% weight=94
     export function bos0003(pin: DigitalPin): number {
 
         let value: number = pins.digitalReadPin(pin);
         return value;
     }
 
-    //% block="read pin %pin Tilt Switch value (i5)" 
+    //% block="read pin %pin tilt sensor (i5)" 
     //% group="Digital"
-    //% weight=88
+    //% weight=92
     export function bos0005(pin: DigitalPin): number {
 
         let value: number = pins.digitalReadPin(pin);
         return value;
     }
 
-    //% block="read pin %pin Touch Sensor value (i8)"
+    //% block="read pin %pin touch sensor (i8)"
     //% group="Digital" 
-    //% weight=82
+    //% weight=90
     export function bos0008(pin: DigitalPin): number {
 
         let value: number = pins.digitalReadPin(pin);
         return value;
     }
 
-    //% block="read pin %pin Conductivity Switch value (i12)" 
+    //% block="read pin %pin conductivity sensor (i12)" 
     //% group="Digital"
-    //% weight=74
+    //% weight=88
     export function bos0012(pin: DigitalPin): number {
 
         let value: number = pins.digitalReadPin(pin);
         return value;
     }
 
-    //% block="read pin %pin Motion Sensor value (i13)" 
+    //% block="read pin %pin motion sensor (i13)" 
     //% group="Digital"
-    //% weight=72
+    //% weight=86
     export function bos0013(pin: DigitalPin): number {
 
         let value: number = pins.digitalReadPin(pin);
         return value;
     }
 
-    //% block="init pin %pin Heart Rate sensor (i20)" 
+    //% block="digital write pin %pin to %value RGB LED strip lights (o4)" 
+    //% group="Digital"
+    //% value.min=0 value.max=1
+    //% weight=84
+    export function bos0019_d(pin: DigitalPin, value: number): void {
+
+        pins.digitalWritePin(pin, value);
+    }
+
+    //% block="digital write pin %pin to %value buzzer module (o5)" 
+    //% group="Digital"
+    //% value.min=0 value.max=1
+    //% weight=82
+    export function bos0020_d(pin: DigitalPin, value: number): void {
+
+        pins.digitalWritePin(pin, value);
+    }
+
+    //% block="digital write pin %pin to %value fan module (o6)" 
+    //% group="Digital"
+    //% value.min=0 value.max=1
+    //% weight=80
+    export function bos0021_d(pin: DigitalPin, value: number): void {
+
+        pins.digitalWritePin(pin, value);
+    }
+
+    //% block="digital write pin %pin to %value voice recorder (o7)" 
+    //% group="Digital"
+    //% value.min=0 value.max=1
+    //% weight=78
+    export function bos0022(pin: DigitalPin, value: number): void {
+
+        pins.digitalWritePin(pin, value);
+    }
+
+    //% block="digital write pin %pin to %value servo control module (o10)" 
+    //% group="Digital"
+    //% value.min=0 value.max=1
+    //% weight=76
+    export function bos0025(pin: DigitalPin, value: number): void {
+
+        pins.digitalWritePin(pin, value);
+    }
+
+    //% block="init pin %pin heart rate sensor (i20)" 
     //% group="Heartbeat"
-    //% weight=65
+    //% weight=100
     export function init_bos0043(pin: DigitalPin): void {
 
         pins.setEvents(pin, PinEventType.Touch);
@@ -287,9 +332,9 @@ namespace BosonKit {
         beattime2 = 0;
     }
 
-    //% block="read Heart Rate (times per minute) (i20)" 
+    //% block="read heart rate (bpm) (i20)" 
     //% group="Heartbeat"
-    //% weight=64
+    //% weight=50
     export function bos0043(): number {
         if (averagetime == 0) {
             return 0;
@@ -298,53 +343,8 @@ namespace BosonKit {
         return value;
     }
 
-    //% block="LED String Light pin %pin digital write %value (o4)" 
-    //% group="Digital"
-    //% value.min=0 value.max=1
-    //% weight=54
-    export function bos0019_d(pin: DigitalPin, value: number): void {
-
-        pins.digitalWritePin(pin, value);
-    }
-
-    //% block="Buzzer Module pin %pin digital write %value (o5)" 
-    //% group="Digital"
-    //% value.min=0 value.max=1
-    //% weight=50
-    export function bos0020_d(pin: DigitalPin, value: number): void {
-
-        pins.digitalWritePin(pin, value);
-    }
-
-    //% block="Fan Module pin %pin digital write %value (o6)" 
-    //% group="Digital"
-    //% value.min=0 value.max=1
-    //% weight=46
-    export function bos0021_d(pin: DigitalPin, value: number): void {
-
-        pins.digitalWritePin(pin, value);
-    }
-
-    //% block="Voice Recorder Module pin %pin digital write %value (o7)" 
-    //% group="Digital"
-    //% value.min=0 value.max=1
-    //% weight=42
-    export function bos0022(pin: DigitalPin, value: number): void {
-
-        pins.digitalWritePin(pin, value);
-    }
-
-    //% block="Servo Controller Module pin %pin digital write %value (o10)" 
-    //% group="Digital"
-    //% value.min=0 value.max=1
-    //% weight=38
-    export function bos0025(pin: DigitalPin, value: number): void {
-
-        pins.digitalWritePin(pin, value);
-    }
-
-    //% block="init RGB LED strip pin %pin Number of lights %num"
-    //% group="RGB strip"
+    //% block="initialize RGB strip at pin %pin with %num leds"
+    //% group="RGB LED Strip lights"
     //% num.min=1 num.max=50 num.defl=8
     //% weight=100
     export function M011_00184_init(pin: DigitalPin, num: number): void {
@@ -356,8 +356,8 @@ namespace BosonKit {
         ledsum = num;
     }
 
-    //% block="Set the brightness of the RGB LED strip  %brightness"
-    //% group="RGB strip"
+    //% block="set brightness %brightness"
+    //% group="RGB LED Strip lights"
     //% brightness.min=0 brightness.max=255 brightness.defl=255
     //% weight=90
     export function M011_00184_brightness(brightness: number): void {
@@ -365,8 +365,8 @@ namespace BosonKit {
         _brightness = brightness;
     }
 
-    //% block="RGB LED strip from %from to %to"
-    //% group="RGB strip"
+    //% block="leds from %from to %to"
+    //% group="RGB LED Strip lights"
     //% from.min=1 from.max=50 from.defl=1
     //% to.min=1 to.max=50 to.defl=2
     //% weight=80
@@ -374,8 +374,8 @@ namespace BosonKit {
         return ((from - 1) << 16) + (2 << 8) + (to);
     }
 
-    //% block="RGB LED strip %index show color %color"
-    //% group="RGB strip"
+    //% block="led %index show color %color"
+    //% group="RGB LED Strip lights"
     //% index.min=1 index.max=50 index.defl=1
     //% color.shadow="colorNumberPicker"
     //% weight=70
@@ -405,7 +405,7 @@ namespace BosonKit {
     }
 
     //% block="show color %rgb"
-    //% group="RGB strip"
+    //% group="RGB LED Strip lights"
     //% weight=60
     //% rgb.shadow="colorNumberPicker"
     export function M011_00184_showColor(rgb: number) {
@@ -423,8 +423,8 @@ namespace BosonKit {
         ws2812b.sendBuffer(neopixel_buf, rgb_pin)
     }
 
-    //% block="Set the slake of the RGB LED strip"
-    //% group="RGB strip"
+    //% block="clear all"
+    //% group="RGB LED Strip lights"
     //% weight=50
     export function M011_00184_off(): void {
 
@@ -432,7 +432,7 @@ namespace BosonKit {
     }
 
     //% block="red %red green %green blue %blue"
-    //% group="RGB strip"
+    //% group="RGB LED Strip lights"
     //% red.min=0 red.max=255 red.defl=0
     //% green.min=0 green.max=255 green.defl=0
     //% blue.min=0 blue.max=255 blue.defl=0
@@ -443,7 +443,7 @@ namespace BosonKit {
     }
 
     //% weight=50
-    //% group="RGB strip"
+    //% group="RGB LED Strip lights"
     //% startHue.defl=1
     //% endHue.defl=360
     //% startHue.min=0 startHue.max=360
@@ -504,7 +504,7 @@ namespace BosonKit {
         ws2812b.sendBuffer(neopixel_buf, rgb_pin)
     }
 
-    //% block="9g Metal Gear Micro Servo pin %pin angle %angle" 
+    //% block="9g servo module pin %pin angle %angle" 
     //% group="Servo"
     //% angle.min=0 angle.max=180
     //% weight=36
