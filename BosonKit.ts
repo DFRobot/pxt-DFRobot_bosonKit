@@ -149,10 +149,46 @@ namespace BosonKit {
         return _phValue;
     }
 
-    //% block="analog write pin %pin to %value RGB LED strip lights(o4)"
+    //% block="analog write pin %pin to %value Ultra bright LED (o1)"
     //% group="Analog" 
     //% value.min=0 value.max=1023
     //% weight=74
+    export function bos0016_a(pin: AnalogPin, value: number): void {
+
+        pins.analogWritePin(pin, value);
+    }
+
+    //% block="analog write pin %pin to %value Red LED Module (o2r)"
+    //% group="Analog" 
+    //% value.min=0 value.max=1023
+    //% weight=72
+    export function bos0017_R_a(pin: AnalogPin, value: number): void {
+
+        pins.analogWritePin(pin, value);
+    }
+
+    //% block="analog write pin %pin to %value Green LED Module (o2g)"
+    //% group="Analog" 
+    //% value.min=0 value.max=1023
+    //% weight=70
+    export function bos0017_G_a(pin: AnalogPin, value: number): void {
+
+        pins.analogWritePin(pin, value);
+    }
+
+    //% block="analog write pin %pin to %value Blue LED Module (o2b)"
+    //% group="Analog" 
+    //% value.min=0 value.max=1023
+    //% weight=68
+    export function bos0017_B_a(pin: AnalogPin, value: number): void {
+
+        pins.analogWritePin(pin, value);
+    }
+
+    //% block="analog write pin %pin to %value RGB LED strip lights(o4)"
+    //% group="Analog" 
+    //% value.min=0 value.max=1023
+    //% weight=66
     export function bos0019_a(pin: AnalogPin, value: number): void {
 
         pins.analogWritePin(pin, value);
@@ -161,7 +197,7 @@ namespace BosonKit {
     //% block="analog write pin %pin to %value buzzer module(o5)" 
     //% group="Analog"
     //% value.min=0 value.max=1023
-    //% weight=72
+    //% weight=64
     export function bos0020_a(pin: AnalogPin, value: number): void {
 
         pins.analogWritePin(pin, value);
@@ -170,7 +206,7 @@ namespace BosonKit {
     //% block="analog write pin %pin to %value fan module (o6)"
     //% group="Analog" 
     //% value.min=0 value.max=1023
-    //% weight=70
+    //% weight=62
     export function bos0021_a(pin: AnalogPin, value: number): void {
 
         pins.analogWritePin(pin, value);
@@ -179,11 +215,21 @@ namespace BosonKit {
     //% block="analog write pin %pin to %value motor control module (o9)" 
     //% group="Analog"
     //% value.min=0 value.max=1000
-    //% weight=68
+    //% weight=60
     export function bos0024(pin: AnalogPin, value: number): void {
 
         pins.analogWritePin(pin, value);
     }
+
+    //% block="analog write pin %pin to %value servo control module (o10)" 
+    //% group="Analog"
+    //% value.min=0 value.max=1023
+    //% weight=58
+    export function bos0025_a(pin: AnalogPin, value: number): void {
+
+        pins.analogWritePin(pin, value);
+    }
+
 
     //% block="read pin %pin blue push button (i2b)" 
     //% group="Digital"
@@ -257,10 +303,46 @@ namespace BosonKit {
         return value;
     }
 
-    //% block="digital write pin %pin to %value RGB LED strip lights (o4)" 
+    //% block="digital write pin %pin to %value Ultra bright LED (o1)" 
     //% group="Digital"
     //% value.min=0 value.max=1
     //% weight=84
+    export function bos0016_d(pin: DigitalPin, value: number): void {
+
+        pins.digitalWritePin(pin, value);
+    }
+
+    //% block="digital write pin %pin to %value Red LED Module (o2r)" 
+    //% group="Digital"
+    //% value.min=0 value.max=1
+    //% weight=82
+    export function bos0017_R_d(pin: DigitalPin, value: number): void {
+
+        pins.digitalWritePin(pin, value);
+    }
+
+    //% block="digital write pin %pin to %value Green LED Module (o2g)" 
+    //% group="Digital"
+    //% value.min=0 value.max=1
+    //% weight=80
+    export function bos0017_G_d(pin: DigitalPin, value: number): void {
+
+        pins.digitalWritePin(pin, value);
+    }
+
+    //% block="digital write pin %pin to %value Blue LED Module (o2b)" 
+    //% group="Digital"
+    //% value.min=0 value.max=1
+    //% weight=78
+    export function bos0017_B_d(pin: DigitalPin, value: number): void {
+
+        pins.digitalWritePin(pin, value);
+    }
+
+    //% block="digital write pin %pin to %value RGB LED strip lights (o4)" 
+    //% group="Digital"
+    //% value.min=0 value.max=1
+    //% weight=76
     export function bos0019_d(pin: DigitalPin, value: number): void {
 
         pins.digitalWritePin(pin, value);
@@ -269,7 +351,7 @@ namespace BosonKit {
     //% block="digital write pin %pin to %value buzzer module (o5)" 
     //% group="Digital"
     //% value.min=0 value.max=1
-    //% weight=82
+    //% weight=74
     export function bos0020_d(pin: DigitalPin, value: number): void {
 
         pins.digitalWritePin(pin, value);
@@ -278,7 +360,7 @@ namespace BosonKit {
     //% block="digital write pin %pin to %value fan module (o6)" 
     //% group="Digital"
     //% value.min=0 value.max=1
-    //% weight=80
+    //% weight=72
     export function bos0021_d(pin: DigitalPin, value: number): void {
 
         pins.digitalWritePin(pin, value);
@@ -287,7 +369,7 @@ namespace BosonKit {
     //% block="digital write pin %pin to %value voice recorder (o7)" 
     //% group="Digital"
     //% value.min=0 value.max=1
-    //% weight=78
+    //% weight=70
     export function bos0022(pin: DigitalPin, value: number): void {
 
         pins.digitalWritePin(pin, value);
@@ -296,8 +378,8 @@ namespace BosonKit {
     //% block="digital write pin %pin to %value servo control module (o10)" 
     //% group="Digital"
     //% value.min=0 value.max=1
-    //% weight=76
-    export function bos0025(pin: DigitalPin, value: number): void {
+    //% weight=68
+    export function bos0025_d(pin: DigitalPin, value: number): void {
 
         pins.digitalWritePin(pin, value);
     }
@@ -349,8 +431,8 @@ namespace BosonKit {
     //% weight=100
     export function M011_00184_init(pin: DigitalPin, num: number): void {
         rgb_pin = pin;
-        neopixel_buf = pins.createBuffer(16 * num);
-        for (let i = 0; i < 16 * num; i++) {
+        neopixel_buf = pins.createBuffer(3 * num);
+        for (let i = 0; i < 3 * num; i++) {
             neopixel_buf[i] = 0;
         }
         ledsum = num;
@@ -421,6 +503,109 @@ namespace BosonKit {
                 neopixel_buf[i] = Math.round(b)
         }
         ws2812b.sendBuffer(neopixel_buf, rgb_pin)
+    }
+
+    //% block="shift %offset"
+    //% group="RGB LED Strip lights"
+    //% weight=52
+    export function M011_00184_shift(offset: number): void {
+        let steps = ledsum
+        if(offset > steps){
+            for (let i = 0; i < 16 * steps; i++) {
+                neopixel_buf[i] = 0;
+            }
+        }
+        if (ledsum > 1 && offset != 0){
+            if (offset > 0)
+            {
+                for (let i = steps - 1; i >= offset; i--)
+                {
+                    neopixel_buf[i*3] = neopixel_buf[(i - offset)*3]
+                    neopixel_buf[i*3+1] = neopixel_buf[(i - offset)*3+1]
+                    neopixel_buf[i*3+2] = neopixel_buf[(i - offset)*3+2]
+                }
+                for (let i = 0; i < offset; i++)
+                {
+                    neopixel_buf[i*3] = 0
+                    neopixel_buf[i*3+1] = 0
+                    neopixel_buf[i*3+2] = 0
+                }
+            }
+            else
+            {
+                for (let i = 0; i <= steps - Math.abs(offset); i++)
+                {
+                    neopixel_buf[i*3] = neopixel_buf[(i + Math.abs(offset))*3]
+                    neopixel_buf[i*3+1] = neopixel_buf[(i + Math.abs(offset))*3+1]
+                    neopixel_buf[i*3+2] = neopixel_buf[(i + Math.abs(offset))*3+2]
+                }
+                for (let i = steps - Math.abs(offset); i < steps; i++)
+                {
+                    neopixel_buf[i*3] = 0
+                    neopixel_buf[i*3+1] = 0
+                    neopixel_buf[i*3+2] = 0
+                }
+            }
+            ws2812b.sendBuffer(neopixel_buf, rgb_pin)
+        }
+    }
+
+    //% block="rotate %offset"
+    //% group="RGB LED Strip lights"
+    //% weight=51
+    export function M011_00184_rotate(offset: number): void {
+        let steps = ledsum
+        if(offset > 0){
+            offset = offset % steps;
+        }else{
+            offset = Math.abs(offset) % steps;
+            offset = -offset;
+        }
+        if (ledsum > 1 && offset != 0){
+            if (offset > 0){
+                let offdata = pins.createBuffer(3 * offset);
+                for (let i = 0; i < offset; i++){
+                    offdata[i*3] = neopixel_buf[(steps - offset + i)*3]
+                    offdata[i*3+1] = neopixel_buf[(steps - offset + i)*3+1]
+                    offdata[i*3+2] = neopixel_buf[(steps - offset + i)*3+2]
+                }
+                for (let i = steps - 1; i >= offset; i--)
+                {
+                    neopixel_buf[i*3] = neopixel_buf[(i - offset)*3]
+                    neopixel_buf[i*3+1] = neopixel_buf[(i - offset)*3+1]
+                    neopixel_buf[i*3+2] = neopixel_buf[(i - offset)*3+2]
+                }
+                for (let i = 0; i < offset; i++)
+                {
+                    neopixel_buf[i*3] = offdata[i*3]
+                    neopixel_buf[i*3+1] = offdata[i*3+1]
+                    neopixel_buf[i*3+2] = offdata[i*3+2]
+                }
+                ws2812b.sendBuffer(neopixel_buf, rgb_pin)
+            }
+            else{
+                let offdata = pins.createBuffer(3 * Math.abs(offset));
+                for (let i = 0; i < Math.abs(offset); i++){
+                    offdata[i*3] = neopixel_buf[i*3]
+                    offdata[i*3+1] = neopixel_buf[i*3+1]
+                    offdata[i*3+2] = neopixel_buf[i*3+2]
+                }
+                for (let i = 0; i <= steps - Math.abs(offset); i++)
+                {
+
+                    neopixel_buf[i*3] = neopixel_buf[(i + Math.abs(offset))*3]
+                    neopixel_buf[i*3+1] = neopixel_buf[(i + Math.abs(offset))*3+1]
+                    neopixel_buf[i*3+2] = neopixel_buf[(i + Math.abs(offset))*3+2]
+                }
+                for (let i = steps - Math.abs(offset); i < steps; i++)
+                {
+                    neopixel_buf[i*3] = offdata[(i - steps + Math.abs(offset))*3]
+                    neopixel_buf[i*3+1] = offdata[(i - steps + Math.abs(offset))*3+1]
+                    neopixel_buf[i*3+2] = offdata[(i - steps + Math.abs(offset))*3+2]
+                }
+                ws2812b.sendBuffer(neopixel_buf, rgb_pin)
+            }
+        }
     }
 
     //% block="clear all"
