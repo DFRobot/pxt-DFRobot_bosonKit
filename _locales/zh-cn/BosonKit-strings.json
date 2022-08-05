@@ -50,6 +50,6 @@
     "BosonKit.bos0022|block": "录音模块 引脚%pin数字写%value (o7)",
     "BosonKit.bos0024|block": "电机控制模块 引脚%pin模拟写%value (o9)",
     "BosonKit.bos0025_d|block": "舵机控制模块 引脚%pin数字写%value (o10)",
-    "BosonKit.bos0025_a|block": "舵机控制模块 引脚%pin角度%angle (o10)",
+    "BosonKit.bos0025_a|block": "舵机控制模块 引脚%pin模拟写%value (o10)",
     "BosonKit.ser0045|block": "9g金属舵机模块 引脚%pin角度%angle"
 }
