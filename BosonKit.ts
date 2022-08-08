@@ -158,32 +158,32 @@ namespace BosonKit {
         pins.analogWritePin(pin, value);
     }
 
-    //% block="analog write pin %pin to %value Red LED Module (o2r)"
+    //% block="analog write pin %pin to %value LED Module (o2r o2g o2b)"
     //% group="Analog" 
     //% value.min=0 value.max=1023
     //% weight=72
-    export function bos0017_R_a(pin: AnalogPin, value: number): void {
+    export function bos0017_a(pin: AnalogPin, value: number): void {
 
         pins.analogWritePin(pin, value);
     }
 
-    //% block="analog write pin %pin to %value Green LED Module (o2g)"
-    //% group="Analog" 
-    //% value.min=0 value.max=1023
-    //% weight=70
-    export function bos0017_G_a(pin: AnalogPin, value: number): void {
+    // //% block="analog write pin %pin to %value Green LED Module (o2g)"
+    // //% group="Analog" 
+    // //% value.min=0 value.max=1023
+    // //% weight=70
+    // export function bos0017_G_a(pin: AnalogPin, value: number): void {
 
-        pins.analogWritePin(pin, value);
-    }
+    //     pins.analogWritePin(pin, value);
+    // }
 
-    //% block="analog write pin %pin to %value Blue LED Module (o2b)"
-    //% group="Analog" 
-    //% value.min=0 value.max=1023
-    //% weight=68
-    export function bos0017_B_a(pin: AnalogPin, value: number): void {
+    // //% block="analog write pin %pin to %value Blue LED Module (o2b)"
+    // //% group="Analog" 
+    // //% value.min=0 value.max=1023
+    // //% weight=68
+    // export function bos0017_B_a(pin: AnalogPin, value: number): void {
 
-        pins.analogWritePin(pin, value);
-    }
+    //     pins.analogWritePin(pin, value);
+    // }
 
     //% block="analog write pin %pin to %value RGB LED strip lights(o4)"
     //% group="Analog" 
@@ -231,32 +231,32 @@ namespace BosonKit {
     }
 
 
-    //% block="read pin %pin blue push button (i2b)" 
+    //% block="read pin %pin push button (i2b i2r i2y)" 
     //% group="Digital"
     //% weight=100
-    export function bos0002_B(pin: DigitalPin): number {
+    export function bos0002(pin: DigitalPin): number {
 
         let value: number = pins.digitalReadPin(pin);
         return value;
     }
 
-    //% block="read pin %pin red push button (i2r)" 
-    //% group="Digital"
-    //% weight=98
-    export function bos0002_R(pin: DigitalPin): number {
+    // //% block="read pin %pin red push button (i2r)" 
+    // //% group="Digital"
+    // //% weight=98
+    // export function bos0002_R(pin: DigitalPin): number {
 
-        let value: number = pins.digitalReadPin(pin);
-        return value;
-    }
+    //     let value: number = pins.digitalReadPin(pin);
+    //     return value;
+    // }
 
-    //% block="read pin %pin yellow push button (i2y)" 
-    //% group="Digital"
-    //% weight=96
-    export function bos0002_Y(pin: DigitalPin): number {
+    // //% block="read pin %pin yellow push button (i2y)" 
+    // //% group="Digital"
+    // //% weight=96
+    // export function bos0002_Y(pin: DigitalPin): number {
 
-        let value: number = pins.digitalReadPin(pin);
-        return value;
-    }
+    //     let value: number = pins.digitalReadPin(pin);
+    //     return value;
+    // }
 
     //% block="read pin %pin self locking switch (i3)" 
     //% group="Digital"
@@ -312,32 +312,32 @@ namespace BosonKit {
         pins.digitalWritePin(pin, value);
     }
 
-    //% block="digital write pin %pin to %value Red LED Module (o2r)" 
+    //% block="digital write pin %pin to %value LED Module (o2r o2g o2b)" 
     //% group="Digital"
     //% value.min=0 value.max=1
     //% weight=82
-    export function bos0017_R_d(pin: DigitalPin, value: number): void {
+    export function bos0017_d(pin: DigitalPin, value: number): void {
 
         pins.digitalWritePin(pin, value);
     }
 
-    //% block="digital write pin %pin to %value Green LED Module (o2g)" 
-    //% group="Digital"
-    //% value.min=0 value.max=1
-    //% weight=80
-    export function bos0017_G_d(pin: DigitalPin, value: number): void {
+    // //% block="digital write pin %pin to %value Green LED Module (o2g)" 
+    // //% group="Digital"
+    // //% value.min=0 value.max=1
+    // //% weight=80
+    // export function bos0017_G_d(pin: DigitalPin, value: number): void {
 
-        pins.digitalWritePin(pin, value);
-    }
+    //     pins.digitalWritePin(pin, value);
+    // }
 
-    //% block="digital write pin %pin to %value Blue LED Module (o2b)" 
-    //% group="Digital"
-    //% value.min=0 value.max=1
-    //% weight=78
-    export function bos0017_B_d(pin: DigitalPin, value: number): void {
+    // //% block="digital write pin %pin to %value Blue LED Module (o2b)" 
+    // //% group="Digital"
+    // //% value.min=0 value.max=1
+    // //% weight=78
+    // export function bos0017_B_d(pin: DigitalPin, value: number): void {
 
-        pins.digitalWritePin(pin, value);
-    }
+    //     pins.digitalWritePin(pin, value);
+    // }
 
     //% block="digital write pin %pin to %value RGB LED strip lights (o4)" 
     //% group="Digital"
