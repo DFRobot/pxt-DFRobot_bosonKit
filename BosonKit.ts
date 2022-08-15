@@ -149,7 +149,7 @@ namespace BosonKit {
         return _phValue;
     }
 
-    //% block="analog write pin %pin to %value Ultra bright LED (o1)"
+    //% block="analog write pin %pin to %value bright light LED (o1)"
     //% group="Analog" 
     //% value.min=0 value.max=1023
     //% weight=74
@@ -158,7 +158,7 @@ namespace BosonKit {
         pins.analogWritePin(pin, value);
     }
 
-    //% block="analog write pin %pin to %value LED Module (o2r o2g o2b)"
+    //% block="analog write pin %pin to %value LED module (o2r o2g o2b)"
     //% group="Analog" 
     //% value.min=0 value.max=1023
     //% weight=72
@@ -303,7 +303,7 @@ namespace BosonKit {
         return value;
     }
 
-    //% block="digital write pin %pin to %value Ultra bright LED (o1)" 
+    //% block="digital write pin %pin to %value bright light LED (o1)" 
     //% group="Digital"
     //% value.min=0 value.max=1
     //% weight=84
@@ -312,7 +312,7 @@ namespace BosonKit {
         pins.digitalWritePin(pin, value);
     }
 
-    //% block="digital write pin %pin to %value LED Module (o2r o2g o2b)" 
+    //% block="digital write pin %pin to %value LED module (o2r o2g o2b)" 
     //% group="Digital"
     //% value.min=0 value.max=1
     //% weight=82
@@ -505,7 +505,7 @@ namespace BosonKit {
         ws2812b.sendBuffer(neopixel_buf, rgb_pin)
     }
 
-    //% block="shift %offset"
+    //% block="shift pixels by %offset"
     //% group="RGB LED Strip lights"
     //% weight=52
     export function M011_00184_shift(offset: number): void {
@@ -550,7 +550,7 @@ namespace BosonKit {
         }
     }
 
-    //% block="rotate %offset"
+    //% block="rotate pixels by %offset"
     //% group="RGB LED Strip lights"
     //% weight=51
     export function M011_00184_rotate(offset: number): void {
