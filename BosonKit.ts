@@ -635,10 +635,10 @@ namespace BosonKit {
     //% endHue.min=0 endHue.max=360
     //% start.min=0 start.max=6 start.defl=0
     //% end.min=0 end.max=6 end.defl=4
-    //% block="%start to %end RGBs show gradient color from %startHue to %endHue"
+    //% block="RGB led %start to %end show gradient color from %startHue to %endHue"
     //% inlineInputMode=inline
     export function  M011_00184_ledRainbow(start: number, end: number, startHue: number, endHue: number) {
-        
+   
         if ((end < start)){
             let num = end;
             end = start;
