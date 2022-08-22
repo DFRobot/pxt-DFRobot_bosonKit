@@ -30,7 +30,7 @@
     "BosonKit.M011_00184_rgb|block": "红%red 绿%green 蓝%blue",
     "BosonKit.M011_00184_shift|block": "移动%offset单位",
     "BosonKit.M011_00184_rotate|block": "循环移动%offset单位",
-    "BosonKit.M011_00184_ledRainbow|block": "设置RGB显示彩虹色从%startHue到%endHue",
+    "BosonKit.M011_00184_ledRainbow|block": "RGB灯号%start到%end显示渐变颜色 色调从%startHue到%endHue",
     "BosonKit.bos0016_d|block": "高亮LED模块 引脚%pin数字写%value (o1)",
     "BosonKit.bos0016_a|block": "高亮LED模块 引脚%pin模拟写%value (o1)",
     "BosonKit.bos0017_d|block": "LED模块 引脚%pin数字写%value (o2r o2g o2b)",

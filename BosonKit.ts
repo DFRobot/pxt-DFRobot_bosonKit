@@ -119,7 +119,7 @@ namespace BosonKit {
     //% weight=80
     export function bos0045(pin: AnalogPin): number {
 
-        let value: number = Math.round(10 * pins.analogReadPin(pin) * (100 / 1023));
+        let value: number = Math.round(10 * pins.analogReadPin(pin) * (100 / 1023)) / 10;
         return value;
     }
 
@@ -427,7 +427,7 @@ namespace BosonKit {
 
     //% block="initialize RGB strip at pin %pin with %num leds"
     //% group="RGB LED Strip lights"
-    //% num.min=1 num.max=50 num.defl=8
+    //% num.min=1 num.max=7 num.defl=3
     //% weight=100
     export function M011_00184_init(pin: DigitalPin, num: number): void {
         rgb_pin = pin;
@@ -449,8 +449,8 @@ namespace BosonKit {
 
     //% block="leds from %from to %to"
     //% group="RGB LED Strip lights"
-    //% from.min=1 from.max=50 from.defl=1
-    //% to.min=1 to.max=50 to.defl=2
+    //% from.min=1 from.max=7 from.defl=1
+    //% to.min=1 to.max=7 to.defl=2
     //% weight=80
     export function M011_00184_ledRange(from: number, to: number): number {
         return ((from - 1) << 16) + (2 << 8) + (to);
@@ -458,7 +458,7 @@ namespace BosonKit {
 
     //% block="led %index show color %color"
     //% group="RGB LED Strip lights"
-    //% index.min=1 index.max=50 index.defl=1
+    //% index.min=1 index.max=7 index.defl=1
     //% color.shadow="colorNumberPicker"
     //% weight=70
     export function M011_00184_setIndexColor(index: number, color: number): void {
@@ -633,30 +633,45 @@ namespace BosonKit {
     //% endHue.defl=360
     //% startHue.min=0 startHue.max=360
     //% endHue.min=0 endHue.max=360
-    //% block="show rainbow color from%startHue to%endHue"
-    export function  M011_00184_ledRainbow(startHue: number, endHue: number) {
-        startHue = startHue >> 0;
-        endHue = endHue >> 0;
+    //% start.min=0 start.max=6 start.defl=0
+    //% end.min=0 end.max=6 end.defl=4
+    //% block="start%start to end%end RGBs show gradient color from %startHue to %endHue"
+    export function  M011_00184_ledRainbow(start: number, end: number, startHue: number, endHue: number) {
+        
+        if ((end < start)){
+            let num = end;
+            end = start;
+            start = num;
+        }
+
+        start = Math.max(start, 0);
+        start = Math.min(start, ledsum);
+        end = Math.max(end, 0);
+        end = Math.min(end, ledsum);
+        let steps = end - start + 1;
+        
+        // startHue = startHue >> 0;
+        // endHue = endHue >> 0;
         const saturation = 100;
         const luminance = 50;
-        let steps = ledsum + 1;
-        const direction = HueInterpolationDirection.Clockwise;
+        // let steps = ledsum + 1;
+        // const direction = HueInterpolationDirection.Clockwise;
 
         //hue
         const h1 = startHue;
         const h2 = endHue;
         const hDistCW = ((h2 + 360) - h1) % 360;
         const hStepCW = Math.idiv((hDistCW * 100), steps);
-        const hDistCCW = ((h1 + 360) - h2) % 360;
-        const hStepCCW = Math.idiv(-(hDistCCW * 100), steps);
-        let hStep: number;
-        if (direction === HueInterpolationDirection.Clockwise) {
-            hStep = hStepCW;
-        } else if (direction === HueInterpolationDirection.CounterClockwise) {
-            hStep = hStepCCW;
-        } else {
-            hStep = hDistCW < hDistCCW ? hStepCW : hStepCCW;
-        }
+        // const hDistCCW = ((h1 + 360) - h2) % 360;
+        // const hStepCCW = Math.idiv(-(hDistCCW * 100), steps);
+        let hStep: number = hStepCW;
+        // if (direction === HueInterpolationDirection.Clockwise) {
+        //     hStep = hStepCW;
+        // } else if (direction === HueInterpolationDirection.CounterClockwise) {
+        //     hStep = hStepCCW;
+        // } else {
+        //     hStep = hDistCW < hDistCCW ? hStepCW : hStepCCW;
+        // }
         const h1_100 = h1 * 100; //we multiply by 100 so we keep more accurate results while doing interpolation
 
         //sat
@@ -675,16 +690,16 @@ namespace BosonKit {
 
         //interpolate
         if (steps === 1) {
-            writeBuff(0, hsl(h1 + hStep, s1 + sStep, l1 + lStep))
+            writeBuff(start, hsl(h1 + hStep, s1 + sStep, l1 + lStep))
         } else {
-            writeBuff(0, hsl(startHue, saturation, luminance));
-            for (let i = 1; i < steps - 1; i++) {
+            writeBuff(start, hsl(startHue, saturation, luminance));
+            for (let i = start + 1; i < start + steps - 1; i++) {
                 const h = Math.idiv((h1_100 + i * hStep), 100) + 360;
                 const s = Math.idiv((s1_100 + i * sStep), 100);
                 const l = Math.idiv((l1_100 + i * lStep), 100);
                 writeBuff(0 + i, hsl(h, s, l));
             }
-            writeBuff(3, hsl(endHue, saturation, luminance));
+            writeBuff(start + steps - 1, hsl(endHue, saturation, luminance));
         }
         ws2812b.sendBuffer(neopixel_buf, rgb_pin)
     }
@@ -711,12 +726,15 @@ namespace BosonKit {
     }
 
     function writeBuff(index: number, rgb: number) {
-        let r = (rgb >> 16) * (_brightness / 255);
-        let g = ((rgb >> 8) & 0xFF) * (_brightness / 255);
-        let b = ((rgb) & 0xFF) * (_brightness / 255);
-        neopixel_buf[index * 3 + 0] = Math.round(g)
-        neopixel_buf[index * 3 + 1] = Math.round(r)
-        neopixel_buf[index * 3 + 2] = Math.round(b)
+
+        if (index < ledsum){
+            let r = ((rgb >> 16) * (_brightness / 255));
+            let g = (((rgb >> 8) & 0xFF) * (_brightness / 255));
+            let b = (((rgb) & 0xFF) * (_brightness / 255));
+            neopixel_buf[index * 3 + 0] = Math.round(g)
+            neopixel_buf[index * 3 + 1] = Math.round(r)
+            neopixel_buf[index * 3 + 2] = Math.round(b)
+        }
     }
 
     function hsl(h: number, s: number, l: number): number {
@@ -753,6 +771,6 @@ namespace BosonKit {
         let g = g$ + m;
         let b = b$ + m;
 
-        return (r << 16) + (g << 8) + b;
+        return ((r & 0xFF) << 16) | ((g & 0xFF) << 8) | (b & 0xFF);
     }
 }
