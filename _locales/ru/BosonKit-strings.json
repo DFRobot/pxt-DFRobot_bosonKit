@@ -47,6 +47,7 @@
     "BosonKit.bos0025_a|block": "записать аналоговый сигнал в контакт%pin значение %value контроллера сервопривода (o10)",
     "BosonKit.ser0045|block": "сервопривод%pin установить угол %angle",
 
+    "{id:category}BosonKit": "Схематик+",
     "{id:group}Analog": "Аналоговый",
     "{id:group}Digital": "Цифровой",
     "{id:group}Heartbeat": "ЧСС",
