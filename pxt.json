@@ -1,6 +1,6 @@
 {
-    "name": "BosonKit",
-    "description": "2.0.2",
+    "name": "Boson",
+    "description": "2.0.3",
     "dependencies": {
         "core": "*",
         "radio": "*",
@@ -10,7 +10,7 @@
         "main.blocks",
         "main.ts",
         "README.md",
-        "BosonKit.ts",
+        "Boson.ts",
         "_locales/zh-cn/BosonKit-strings.json",
         "_locales/ru/BosonKit-strings.json",
         "sendBuffer.asm",
