@@ -1,6 +1,3 @@
-
-
-
 //% weight=100 color=#0fbc11 icon="\uf0b2"
 //% groups="['Analog', 'Digital', 'Heartbeat', 'RGB LED Strip lights', 'Servo']"
 namespace BosonKit {
@@ -661,6 +658,8 @@ namespace BosonKit {
 
     /**
      * Set the display color of lights and lights
+     * @param index to index ,eg: "1~7"
+     * @param color to color ,eg: "color"
      */
 
     //% block="led %index show color %color"
@@ -695,6 +694,7 @@ namespace BosonKit {
 
     /**
      * Set the display color
+     * @param rgb to rgb ,eg: "rgb"
      */
 
     //% block="show color %rgb"
@@ -718,6 +718,7 @@ namespace BosonKit {
 
     /**
      * shift pixels
+     * @param offset to offset ,eg: "offset"
      */
 
     //% block="shift pixels by %offset"
@@ -767,6 +768,7 @@ namespace BosonKit {
 
     /**
      * rotate pixels
+     * @param offset to offset ,eg: "offset"
      */
 
     //% block="rotate pixels by %offset"
@@ -841,6 +843,9 @@ namespace BosonKit {
 
     /**
      * red green blue
+     * @param red to red ,eg: "0~255"
+     * @param green to green ,eg: "0~255"
+     * @param blue to blue ,eg: "0~255"
      */
 
     //% block="red %red green %green blue %blue"
@@ -856,6 +861,10 @@ namespace BosonKit {
 
     /**
      * RGB LED show gradient color
+     * @param start to start ,eg: "1~7"
+     * @param end to end ,eg: "1~7"
+     * @param startHue to startHue ,eg: "0~360"
+     * @param endHue to endHue ,eg: "0~360"
      */
 
     //% weight=50
@@ -938,6 +947,8 @@ namespace BosonKit {
 
     /**
      * set 9g servo module angle
+     * @param pin to pin ,eg: "analog pin"
+     * @param angle to angle ,eg: "0~180"
      */
 
     //% block="9g servo module pin %pin angle %angle" 
