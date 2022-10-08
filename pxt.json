@@ -10,7 +10,6 @@
         "main.blocks",
         "main.ts",
         "README.md",
-        "BosonKit.ts",
         "_locales/zh-cn/BosonKit-strings.json",
         "_locales/ru/BosonKit-strings.json",
         "sendBuffer.asm",
@@ -29,4 +28,3 @@
     ],
     "preferredEditor": "blocksprj"
 }
-
