@@ -10,10 +10,10 @@
 ```blocks
 
     basic.forever(function () {
-        BosonKit.bos0017_d(DigitalPin.P0, 1)
+        Boson.bos0017_d(DigitalPin.P0, 1)
         basic.showIcon(IconNames.Happy)
         basic.pause(500)
-        BosonKit.bos0017_d(DigitalPin.P0, 0)
+        Boson.bos0017_d(DigitalPin.P0, 0)
         basic.showIcon(IconNames.Sad)
         basic.pause(500)
     })
@@ -24,10 +24,10 @@
 ```blocks
 
     basic.forever(function () {
-        if (BosonKit.bos0003(DigitalPin.P1) == 1) {
-            BosonKit.bos0017_d(DigitalPin.P8, 1)
+        if (Boson.bos0003(DigitalPin.P1) == 1) {
+            Boson.bos0017_d(DigitalPin.P8, 1)
         } else {
-            BosonKit.bos0017_d(DigitalPin.P8, 0)
+            Boson.bos0017_d(DigitalPin.P8, 0)
         }
     })
 
@@ -37,7 +37,7 @@
 ```blocks
 
     basic.forever(function () {
-        BosonKit.bos0016_a(AnalogPin.P0, Math.map(input.lightLevel(), 0, 230, 1023, 0))
+        Boson.bos0016_a(AnalogPin.P0, Math.map(input.lightLevel(), 0, 230, 1023, 0))
     })
 
 ```
@@ -45,12 +45,12 @@
 
 ```blocks
 
-    BosonKit.ser0045(AnalogPin.P8, 0)
+    Boson.ser0045(AnalogPin.P8, 0)
     basic.forever(function () {
-        if (BosonKit.bos0002(DigitalPin.P0) == 1) {
-            BosonKit.ser0045(AnalogPin.P8, 90)
+        if (Boson.bos0002(DigitalPin.P0) == 1) {
+            Boson.ser0045(AnalogPin.P8, 90)
             basic.pause(5000)
-            BosonKit.ser0045(AnalogPin.P8, 0)
+            Boson.ser0045(AnalogPin.P8, 0)
         }
     })
 
@@ -60,10 +60,10 @@
 ```blocks
 
     basic.forever(function () {
-        if (BosonKit.bos0003(DigitalPin.P0) == 1) {
-            BosonKit.bos0024(AnalogPin.P8, 1000)
+        if (Boson.bos0003(DigitalPin.P0) == 1) {
+            Boson.bos0024(AnalogPin.P8, 1000)
         } else {
-            BosonKit.bos0024(AnalogPin.P8, 0)
+            Boson.bos0024(AnalogPin.P8, 0)
         }
     })
 

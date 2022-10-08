@@ -11,8 +11,8 @@
         "main.ts",
         "README.md",
         "Boson.ts",
-        "_locales/zh-cn/BosonKit-strings.json",
-        "_locales/ru/BosonKit-strings.json",
+        "_locales/zh-cn/Boson-strings.json",
+        "_locales/ru/Boson-strings.json",
         "sendBuffer.asm",
         "ws2812b.ts",
         "LICENSE"
