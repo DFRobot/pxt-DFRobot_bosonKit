@@ -15,6 +15,11 @@ namespace BosonKit {
     let neopixel_buf: Buffer;
     let ledsum = -1;
 
+    /**
+     * read rotation sensor analog value
+     * @param pin to pin ,eg: "analog pin"
+     */
+
     //% block="read pin %pin rotation sensor (i1)" 
     //% group="Analog"
     //% weight=100
@@ -23,6 +28,11 @@ namespace BosonKit {
         let value: number = pins.analogReadPin(pin);
         return value;
     }
+
+    /**
+     * read light intensity
+     * @param pin to pin ,eg: "analog pin"
+     */
 
     //% block="read pin %pin light intensity (i4)"
     //% group="Analog" 
@@ -33,6 +43,11 @@ namespace BosonKit {
         return value;
     }
 
+    /**
+     * read steam sensor analog value
+     * @param pin to pin ,eg: "analog pin"
+     */
+
     //% block="read pin %pin steam sensor (i6)"
     //% group="Analog" 
     //% weight=96
@@ -41,6 +56,11 @@ namespace BosonKit {
         let value: number = pins.analogReadPin(pin);
         return value;
     }
+
+    /**
+     * read flame sensor analog value
+     * @param pin to pin ,eg: "analog pin"
+     */
 
     //% block="read pin %pin flame sensor (i7)"
     //% group="Analog" 
@@ -51,6 +71,11 @@ namespace BosonKit {
         return value;
     }
 
+    /**
+     * read sound sensor analog value
+     * @param pin to pin ,eg: "analog pin"
+     */
+
     //% block="read pin %pin sound sensor (i9)" 
     //% group="Analog"
     //% weight=92
@@ -59,6 +84,11 @@ namespace BosonKit {
         let value: number = pins.analogReadPin(pin);
         return value;
     }
+
+    /**
+     * read grayscale sensor analog value
+     * @param pin to pin ,eg: "analog pin"
+     */
 
     //% block="read pin %pin grayscale sensor (i10)"
     //% group="Analog" 
@@ -69,6 +99,11 @@ namespace BosonKit {
         return value;
     }
 
+    /**
+     * read temperature
+     * @param pin to pin ,eg: "analog pin"
+     */
+
     //% block="read pin %pin temperature (i11)"
     //% group="Analog" 
     //% weight=88
@@ -77,6 +112,11 @@ namespace BosonKit {
         let value: number = pins.analogReadPin(pin);
         return Math.round((100 * value * (3.3 / 10.24)) * 3.3 / 10.24) / 100;
     }
+
+    /**
+     * read soil moisture
+     * @param pin to pin ,eg: "analog pin"
+     */
 
     //% block="read pin %pin soil moisture (i16)" 
     //% group="Analog"
@@ -87,6 +127,11 @@ namespace BosonKit {
         return value;
     }
 
+    /**
+     * read humidity sensor analog value
+     * @param pin to pin ,eg: "analog pin"
+     */
+
     //% block="read pin %pin humidity sensor (i18)"
     //% group="Analog" 
     //% weight=84
@@ -95,6 +140,11 @@ namespace BosonKit {
         let value: number = pins.analogReadPin(pin);
         return Math.round(value / 10);
     }
+
+    /**
+     * read waterproof temperature
+     * @param pin to pin ,eg: "analog pin"
+     */
 
     //% block="read pin %pin waterproof temperature (i19)"
     //% group="Analog" 
@@ -114,6 +164,11 @@ namespace BosonKit {
 
     }
 
+    /**
+     * read ultrasonic distance
+     * @param pin to pin ,eg: "analog pin"
+     */
+
     //% block="read pin %pin ultrasonic distance sensor (i22)"
     //% group="Analog" 
     //% weight=80
@@ -123,6 +178,10 @@ namespace BosonKit {
         return value;
     }
 
+    /**
+     * read SHT30 humidity
+     * @param pin to pin ,eg: "analog pin"
+     */
 
     //% block="read pin %pin SHT30 humidity (i27)"
     //% group="Analog" 
@@ -132,6 +191,11 @@ namespace BosonKit {
         let value: number = pins.analogReadPin(pin);
         return Math.round(value / 10);
     }
+
+    /**
+     * read pH sensor V2 
+     * @param pin to pin ,eg: "analog pin"
+     */
 
     //% block="read pin %pin pH sensor V2 (i28)"
     //% group="Analog" 
@@ -149,6 +213,12 @@ namespace BosonKit {
         return _phValue;
     }
 
+    /**
+     * write bright light LED analog value
+     * @param pin to pin ,eg: "analog pin"
+     * @param value to value ,eg: "analog value"
+     */
+
     //% block="analog write pin %pin to %value bright light LED (o1)"
     //% group="Analog" 
     //% value.min=0 value.max=1023
@@ -157,6 +227,12 @@ namespace BosonKit {
 
         pins.analogWritePin(pin, value);
     }
+
+    /**
+     * write LED module analog value
+     * @param pin to pin ,eg: "analog pin"
+     * @param value to value ,eg: "analog value"
+     */
 
     //% block="analog write pin %pin to %value LED module (o2r o2g o2b)"
     //% group="Analog" 
@@ -185,6 +261,12 @@ namespace BosonKit {
     //     pins.analogWritePin(pin, value);
     // }
 
+    /**
+     * write RGB LED strip lights analog value
+     * @param pin to pin ,eg: "analog pin"
+     * @param value to value ,eg: "analog value"
+     */
+
     //% block="analog write pin %pin to %value RGB LED strip lights(o4)"
     //% group="Analog" 
     //% value.min=0 value.max=1023
@@ -193,6 +275,12 @@ namespace BosonKit {
 
         pins.analogWritePin(pin, value);
     }
+
+    /**
+     * write buzzer module analog value
+     * @param pin to pin ,eg: "analog pin"
+     * @param value to value ,eg: "analog value"
+     */
 
     //% block="analog write pin %pin to %value buzzer module(o5)" 
     //% group="Analog"
@@ -203,6 +291,12 @@ namespace BosonKit {
         pins.analogWritePin(pin, value);
     }
 
+    /**
+     * write fan module analog value
+     * @param pin to pin ,eg: "analog pin"
+     * @param value to value ,eg: "analog value"
+     */
+
     //% block="analog write pin %pin to %value fan module (o6)"
     //% group="Analog" 
     //% value.min=0 value.max=1023
@@ -211,6 +305,12 @@ namespace BosonKit {
 
         pins.analogWritePin(pin, value);
     }
+
+    /**
+     * write motor control module analog value
+     * @param pin to pin ,eg: "analog pin"
+     * @param value to value ,eg: "analog value"
+     */
 
     //% block="analog write pin %pin to %value motor control module (o9)" 
     //% group="Analog"
@@ -221,6 +321,12 @@ namespace BosonKit {
         pins.analogWritePin(pin, value);
     }
 
+    /**
+     * write servo control module analog value
+     * @param pin to pin ,eg: "analog pin"
+     * @param value to value ,eg: "analog value"
+     */
+
     //% block="analog write pin %pin to %value servo control module (o10)" 
     //% group="Analog"
     //% value.min=0 value.max=1023
@@ -230,6 +336,10 @@ namespace BosonKit {
         pins.analogWritePin(pin, value);
     }
 
+    /**
+     * read push button digital value
+     * @param pin to pin ,eg: "digital pin"
+     */
 
     //% block="read pin %pin push button (i2b i2r i2y)" 
     //% group="Digital"
@@ -258,6 +368,11 @@ namespace BosonKit {
     //     return value;
     // }
 
+    /**
+     * read locking switch digital value
+     * @param pin to pin ,eg: "digital pin"
+     */
+
     //% block="read pin %pin self locking switch (i3)" 
     //% group="Digital"
     //% weight=94
@@ -266,6 +381,11 @@ namespace BosonKit {
         let value: number = pins.digitalReadPin(pin);
         return value;
     }
+
+    /**
+     * read tilt sensor digital value
+     * @param pin to pin ,eg: "digital pin"
+     */
 
     //% block="read pin %pin tilt sensor (i5)" 
     //% group="Digital"
@@ -276,6 +396,11 @@ namespace BosonKit {
         return value;
     }
 
+    /**
+     * read touch sensor digital value
+     * @param pin to pin ,eg: "digital pin"
+     */
+
     //% block="read pin %pin touch sensor (i8)"
     //% group="Digital" 
     //% weight=90
@@ -284,6 +409,11 @@ namespace BosonKit {
         let value: number = pins.digitalReadPin(pin);
         return value;
     }
+
+    /**
+     * read conductivity sensor digital value
+     * @param pin to pin ,eg: "digital pin"
+     */
 
     //% block="read pin %pin conductivity sensor (i12)" 
     //% group="Digital"
@@ -294,6 +424,11 @@ namespace BosonKit {
         return value;
     }
 
+    /**
+     * read motion sensor digital value
+     * @param pin to pin ,eg: "digital pin"
+     */
+
     //% block="read pin %pin motion sensor (i13)" 
     //% group="Digital"
     //% weight=86
@@ -303,6 +438,12 @@ namespace BosonKit {
         return value;
     }
 
+    /**
+     * write bright light LED digital value
+     * @param pin to pin ,eg: "digital pin"
+     * @param value to value ,eg: "digital value"
+     */
+
     //% block="digital write pin %pin to %value bright light LED (o1)" 
     //% group="Digital"
     //% value.min=0 value.max=1
@@ -311,6 +452,12 @@ namespace BosonKit {
 
         pins.digitalWritePin(pin, value);
     }
+
+    /**
+     * write LED module digital value
+     * @param pin to pin ,eg: "digital pin"
+     * @param value to value ,eg: "digital value"
+     */
 
     //% block="digital write pin %pin to %value LED module (o2r o2g o2b)" 
     //% group="Digital"
@@ -339,6 +486,12 @@ namespace BosonKit {
     //     pins.digitalWritePin(pin, value);
     // }
 
+    /**
+     * write RGB LED strip lights digital value
+     * @param pin to pin ,eg: "digital pin"
+     * @param value to value ,eg: "digital value"
+     */
+
     //% block="digital write pin %pin to %value RGB LED strip lights (o4)" 
     //% group="Digital"
     //% value.min=0 value.max=1
@@ -347,6 +500,12 @@ namespace BosonKit {
 
         pins.digitalWritePin(pin, value);
     }
+
+    /**
+     * write buzzer module sensor digital value
+     * @param pin to pin ,eg: "digital pin"
+     * @param value to value ,eg: "digital value"
+     */
 
     //% block="digital write pin %pin to %value buzzer module (o5)" 
     //% group="Digital"
@@ -357,6 +516,12 @@ namespace BosonKit {
         pins.digitalWritePin(pin, value);
     }
 
+    /**
+     * write fan module digital value
+     * @param pin to pin ,eg: "digital pin"
+     * @param value to value ,eg: "digital value"
+     */
+
     //% block="digital write pin %pin to %value fan module (o6)" 
     //% group="Digital"
     //% value.min=0 value.max=1
@@ -365,6 +530,12 @@ namespace BosonKit {
 
         pins.digitalWritePin(pin, value);
     }
+
+    /**
+     * write voice recorder sensor digital value
+     * @param pin to pin ,eg: "digital pin"
+     * @param value to value ,eg: "digital value"
+     */
 
     //% block="digital write pin %pin to %value voice recorder (o7)" 
     //% group="Digital"
@@ -375,6 +546,12 @@ namespace BosonKit {
         pins.digitalWritePin(pin, value);
     }
 
+    /**
+     * write servo control module digital value
+     * @param pin to pin ,eg: "digital pin"
+     * @param value to value ,eg: "digital value"
+     */
+
     //% block="digital write pin %pin to %value servo control module (o10)" 
     //% group="Digital"
     //% value.min=0 value.max=1
@@ -383,6 +560,11 @@ namespace BosonKit {
 
         pins.digitalWritePin(pin, value);
     }
+
+    /**
+     * heart rate sensor init
+     * @param pin to pin ,eg: "digital pin"
+     */
 
     //% block="init pin %pin heart rate sensor (i20)" 
     //% group="Heartbeat"
@@ -414,6 +596,10 @@ namespace BosonKit {
         beattime2 = 0;
     }
 
+    /**
+     * read heart rate (bpm)
+     */
+
     //% block="read heart rate (bpm) (i20)" 
     //% group="Heartbeat"
     //% weight=50
@@ -424,6 +610,12 @@ namespace BosonKit {
         let value: number = Math.round(29000 / averagetime);
         return value;
     }
+
+    /**
+     * initialize RGB strip
+     * @param pin to pin ,eg: "digital pin"
+     * @param num to num ,eg: "0~7"
+     */
 
     //% block="initialize RGB strip at pin %pin with %num leds"
     //% group="RGB LED Strip lights"
@@ -438,6 +630,11 @@ namespace BosonKit {
         ledsum = num;
     }
 
+    /**
+     * set RGB LED brightness
+     * @param brightness to brightness ,eg: "0~255"
+     */
+
     //% block="set brightness %brightness"
     //% group="RGB LED Strip lights"
     //% brightness.min=0 brightness.max=255 brightness.defl=255
@@ -447,6 +644,12 @@ namespace BosonKit {
         _brightness = brightness;
     }
 
+    /**
+     * Set up lights
+     * @param from to start ,eg: "1~7"
+     * @param to to end ,eg: "1~7"
+     */
+
     //% block="leds from %from to %to"
     //% group="RGB LED Strip lights"
     //% from.min=1 from.max=7 from.defl=1
@@ -455,6 +658,10 @@ namespace BosonKit {
     export function M011_00184_ledRange(from: number, to: number): number {
         return ((from - 1) << 16) + (2 << 8) + (to);
     }
+
+    /**
+     * Set the display color of lights and lights
+     */
 
     //% block="led %index show color %color"
     //% group="RGB LED Strip lights"
@@ -486,6 +693,10 @@ namespace BosonKit {
 
     }
 
+    /**
+     * Set the display color
+     */
+
     //% block="show color %rgb"
     //% group="RGB LED Strip lights"
     //% weight=60
@@ -504,6 +715,10 @@ namespace BosonKit {
         }
         ws2812b.sendBuffer(neopixel_buf, rgb_pin)
     }
+
+    /**
+     * shift pixels
+     */
 
     //% block="shift pixels by %offset"
     //% group="RGB LED Strip lights"
@@ -549,6 +764,10 @@ namespace BosonKit {
             ws2812b.sendBuffer(neopixel_buf, rgb_pin)
         }
     }
+
+    /**
+     * rotate pixels
+     */
 
     //% block="rotate pixels by %offset"
     //% group="RGB LED Strip lights"
@@ -608,6 +827,10 @@ namespace BosonKit {
         }
     }
 
+    /**
+     * clear all
+     */
+
     //% block="clear all"
     //% group="RGB LED Strip lights"
     //% weight=50
@@ -615,6 +838,10 @@ namespace BosonKit {
 
         M011_00184_showColor(0);
     }
+
+    /**
+     * red green blue
+     */
 
     //% block="red %red green %green blue %blue"
     //% group="RGB LED Strip lights"
@@ -626,6 +853,10 @@ namespace BosonKit {
 
         return (red << 16) + (green << 8) + (blue);
     }
+
+    /**
+     * RGB LED show gradient color
+     */
 
     //% weight=50
     //% group="RGB LED Strip lights"
@@ -704,6 +935,10 @@ namespace BosonKit {
         }
         ws2812b.sendBuffer(neopixel_buf, rgb_pin)
     }
+
+    /**
+     * set 9g servo module angle
+     */
 
     //% block="9g servo module pin %pin angle %angle" 
     //% group="Servo"

@@ -1,1 +1,8 @@
-// 在此处测试；当此软件包作为插件使用时，将不会编译此软件包。
+
+basic.forever(function() {
+    if(BosonKit.bos0003(DigitalPin.P1) == 1){
+        BosonKit.bos0017_d(DigitalPin.P8, 1)
+    }else{
+    BosonKit.bos0017_d(DigitalPin.P8, 0)
+    }
+})

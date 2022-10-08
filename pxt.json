@@ -13,7 +13,8 @@
         "BosonKit.ts",
         "_locales/zh-cn/BosonKit-strings.json",
         "sendBuffer.asm",
-        "ws2812b.ts"
+        "ws2812b.ts",
+        "LICENSE"
     ],
     "testFiles": [
         "test.ts"
