@@ -1,6 +1,6 @@
 //% weight=100 color=#0fbc11 icon="\uf0b2"
 //% groups="['Analog', 'Digital', 'Heartbeat', 'RGB LED Strip lights', 'Servo']"
-namespace BosonKit {
+namespace Boson {
 
     let beattime1 = 0;
     let beattime2 = 0;
