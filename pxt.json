@@ -1,6 +1,6 @@
 {
-    "name": "Boson",
-    "description": "3.0.0",
+    "name": "BosonKit",
+    "description": "3.0.1",
     "dependencies": {
         "core": "*",
         "radio": "*",
@@ -10,9 +10,9 @@
         "main.blocks",
         "main.ts",
         "README.md",
-        "Boson.ts",
-        "_locales/zh-cn/Boson-strings.json",
-        "_locales/ru/Boson-strings.json",
+        "BosonKit.ts",
+        "_locales/zh-cn/BosonKit-strings.json",
+        "_locales/ru/BosonKit-strings.json",
         "sendBuffer.asm",
         "ws2812b.ts",
         "LICENSE"
