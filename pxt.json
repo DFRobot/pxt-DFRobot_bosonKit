@@ -1,6 +1,8 @@
 {
+
     "name": "BosonKit",
-    "description": "3.0.2",
+    "version": "3.0.3",
+    "description": "",
     "dependencies": {
         "core": "*",
         "radio": "*",
@@ -21,12 +23,11 @@
         "test.ts"
     ],
     "targetVersions": {
-        "target": "4.0.18",
+        "target": "5.0.12",
         "targetId": "microbit"
     },
     "supportedTargets": [
         "microbit"
     ],
-    "preferredEditor": "blocksprj"
+    "preferredEditor": "tsprj"
 }
-
