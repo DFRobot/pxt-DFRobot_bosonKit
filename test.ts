@@ -1,8 +1,8 @@
 
-basic.forever(function() {
-    if(BosonKit.bos0003(DigitalPin.P1) == 1){
-        BosonKit.bos0017_d(DigitalPin.P8, 1)
-    }else{
-    BosonKit.bos0017_d(DigitalPin.P8, 0)
+basic.forever(function () {
+    if (BosonKit.bos0003_rotation(DigitalPin.P0) == 1) {
+        BosonKit.bos0024_rotation(AnalogPin.P8, 1000)
+    } else {
+        BosonKit.bos0024_rotation(AnalogPin.P8, 0)
     }
 })

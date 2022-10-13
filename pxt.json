@@ -1,23 +1,19 @@
 {
 
     "name": "BosonKit",
-    "version": "3.0.3",
+    "version": "3.0.4",
     "description": "",
+    "license": "MIT",
     "dependencies": {
-        "core": "*",
-        "radio": "*",
-        "microphone": "*"
+        "core": "*"
     },
     "files": [
-        "main.blocks",
-        "main.ts",
         "README.md",
         "BosonKit.ts",
         "_locales/zh-cn/BosonKit-strings.json",
         "_locales/ru/BosonKit-strings.json",
         "sendBuffer.asm",
-        "ws2812b.ts",
-        "LICENSE"
+        "ws2812b.ts"
     ],
     "testFiles": [
         "test.ts"

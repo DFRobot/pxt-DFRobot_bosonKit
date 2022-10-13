@@ -20,7 +20,7 @@ namespace BosonKit {
     //% block="read pin %pin rotation sensor (i1)" 
     //% group="Analog"
     //% weight=100
-    export function bos0001(pin: AnalogPin): number {
+    export function bos0001_rotation(pin: AnalogPin): number {
 
         let value: number = pins.analogReadPin(pin);
         return value;
@@ -34,7 +34,7 @@ namespace BosonKit {
     //% block="read pin %pin light intensity (i4)"
     //% group="Analog" 
     //% weight=98
-    export function bos0004(pin: AnalogPin): number {
+    export function bos0004_rotation(pin: AnalogPin): number {
 
         let value: number = pins.analogReadPin(pin);
         return value;
@@ -48,7 +48,7 @@ namespace BosonKit {
     //% block="read pin %pin steam sensor (i6)"
     //% group="Analog" 
     //% weight=96
-    export function bos0006(pin: AnalogPin): number {
+    export function bos0006_rotation(pin: AnalogPin): number {
 
         let value: number = pins.analogReadPin(pin);
         return value;
@@ -62,7 +62,7 @@ namespace BosonKit {
     //% block="read pin %pin flame sensor (i7)"
     //% group="Analog" 
     //% weight=94
-    export function bos0007(pin: AnalogPin): number {
+    export function bos0007_rotation(pin: AnalogPin): number {
 
         let value: number = pins.analogReadPin(pin);
         return value;
@@ -76,7 +76,7 @@ namespace BosonKit {
     //% block="read pin %pin sound sensor (i9)" 
     //% group="Analog"
     //% weight=92
-    export function bos0009(pin: AnalogPin): number {
+    export function bos0009_rotation(pin: AnalogPin): number {
 
         let value: number = pins.analogReadPin(pin);
         return value;
@@ -90,7 +90,7 @@ namespace BosonKit {
     //% block="read pin %pin grayscale sensor (i10)"
     //% group="Analog" 
     //% weight=90
-    export function bos0010(pin: AnalogPin): number {
+    export function bos0010_rotation(pin: AnalogPin): number {
 
         let value: number = pins.analogReadPin(pin);
         return value;
@@ -104,7 +104,7 @@ namespace BosonKit {
     //% block="read pin %pin temperature (i11)"
     //% group="Analog" 
     //% weight=88
-    export function bos0011(pin: AnalogPin): number {
+    export function bos0011_rotation(pin: AnalogPin): number {
 
         let value: number = pins.analogReadPin(pin);
         return Math.round((100 * value * (3.3 / 10.24)) * 3.3 / 10.24) / 100;
@@ -118,7 +118,7 @@ namespace BosonKit {
     //% block="read pin %pin soil moisture (i16)" 
     //% group="Analog"
     //% weight=86
-    export function bos0038(pin: AnalogPin): number {
+    export function bos0038_rotation(pin: AnalogPin): number {
 
         let value: number = pins.analogReadPin(pin);
         return value;
@@ -132,7 +132,7 @@ namespace BosonKit {
     //% block="read pin %pin humidity sensor (i18)"
     //% group="Analog" 
     //% weight=84
-    export function bos0041(pin: AnalogPin): number {
+    export function bos0041_rotation(pin: AnalogPin): number {
 
         let value: number = pins.analogReadPin(pin);
         return Math.round(value / 10);
@@ -146,7 +146,7 @@ namespace BosonKit {
     //% block="read pin %pin waterproof temperature (i19)"
     //% group="Analog" 
     //% weight=82
-    export function bos0042(pin: AnalogPin): number {
+    export function bos0042_rotation(pin: AnalogPin): number {
 
         let value: number = pins.analogReadPin(pin);
         let n_Vref: number = 3.3;
@@ -169,7 +169,7 @@ namespace BosonKit {
     //% block="read pin %pin ultrasonic distance sensor (i22)"
     //% group="Analog" 
     //% weight=80
-    export function bos0045(pin: AnalogPin): number {
+    export function bos0045_rotation(pin: AnalogPin): number {
 
         let value: number = Math.round(10 * pins.analogReadPin(pin) * (100 / 1023)) / 10;
         return value;
@@ -183,7 +183,7 @@ namespace BosonKit {
     //% block="read pin %pin SHT30 humidity (i27)"
     //% group="Analog" 
     //% weight=78
-    export function bos0056(pin: AnalogPin): number {
+    export function bos0056_rotation(pin: AnalogPin): number {
 
         let value: number = pins.analogReadPin(pin);
         return Math.round(value / 10);
@@ -197,7 +197,7 @@ namespace BosonKit {
     //% block="read pin %pin pH sensor V2 (i28)"
     //% group="Analog" 
     //% weight=76
-    export function bos0061(pin: AnalogPin): number {
+    export function bos0061_rotation(pin: AnalogPin): number {
 
         let map: number = 1024;
         let aref: number = 3300;
@@ -220,7 +220,7 @@ namespace BosonKit {
     //% group="Analog" 
     //% value.min=0 value.max=1023
     //% weight=74
-    export function bos0016_a(pin: AnalogPin, value: number): void {
+    export function bos0016_a_rotation(pin: AnalogPin, value: number): void {
 
         pins.analogWritePin(pin, value);
     }
@@ -235,7 +235,7 @@ namespace BosonKit {
     //% group="Analog" 
     //% value.min=0 value.max=1023
     //% weight=72
-    export function bos0017_a(pin: AnalogPin, value: number): void {
+    export function bos0017_a_rotation(pin: AnalogPin, value: number): void {
 
         pins.analogWritePin(pin, value);
     }
@@ -268,7 +268,7 @@ namespace BosonKit {
     //% group="Analog" 
     //% value.min=0 value.max=1023
     //% weight=66
-    export function bos0019_a(pin: AnalogPin, value: number): void {
+    export function bos0019_a_rotation(pin: AnalogPin, value: number): void {
 
         pins.analogWritePin(pin, value);
     }
@@ -283,7 +283,7 @@ namespace BosonKit {
     //% group="Analog"
     //% value.min=0 value.max=1023
     //% weight=64
-    export function bos0020_a(pin: AnalogPin, value: number): void {
+    export function bos0020_a_rotation(pin: AnalogPin, value: number): void {
 
         pins.analogWritePin(pin, value);
     }
@@ -298,7 +298,7 @@ namespace BosonKit {
     //% group="Analog" 
     //% value.min=0 value.max=1023
     //% weight=62
-    export function bos0021_a(pin: AnalogPin, value: number): void {
+    export function bos0021_a_rotation(pin: AnalogPin, value: number): void {
 
         pins.analogWritePin(pin, value);
     }
@@ -313,7 +313,7 @@ namespace BosonKit {
     //% group="Analog"
     //% value.min=0 value.max=1000
     //% weight=60
-    export function bos0024(pin: AnalogPin, value: number): void {
+    export function bos0024_rotation(pin: AnalogPin, value: number): void {
 
         pins.analogWritePin(pin, value);
     }
@@ -328,7 +328,7 @@ namespace BosonKit {
     //% group="Analog"
     //% value.min=0 value.max=1023
     //% weight=58
-    export function bos0025_a(pin: AnalogPin, value: number): void {
+    export function bos0025_a_rotation(pin: AnalogPin, value: number): void {
 
         pins.analogWritePin(pin, value);
     }
@@ -341,7 +341,7 @@ namespace BosonKit {
     //% block="read pin %pin push button (i2b i2r i2y)" 
     //% group="Digital"
     //% weight=100
-    export function bos0002(pin: DigitalPin): number {
+    export function bos0002_rotation(pin: DigitalPin): number {
 
         let value: number = pins.digitalReadPin(pin);
         return value;
@@ -373,7 +373,7 @@ namespace BosonKit {
     //% block="read pin %pin self locking switch (i3)" 
     //% group="Digital"
     //% weight=94
-    export function bos0003(pin: DigitalPin): number {
+    export function bos0003_rotation(pin: DigitalPin): number {
 
         let value: number = pins.digitalReadPin(pin);
         return value;
@@ -387,7 +387,7 @@ namespace BosonKit {
     //% block="read pin %pin tilt sensor (i5)" 
     //% group="Digital"
     //% weight=92
-    export function bos0005(pin: DigitalPin): number {
+    export function bos0005_rotation(pin: DigitalPin): number {
 
         let value: number = pins.digitalReadPin(pin);
         return value;
@@ -401,7 +401,7 @@ namespace BosonKit {
     //% block="read pin %pin touch sensor (i8)"
     //% group="Digital" 
     //% weight=90
-    export function bos0008(pin: DigitalPin): number {
+    export function bos0008_rotation(pin: DigitalPin): number {
 
         let value: number = pins.digitalReadPin(pin);
         return value;
@@ -415,7 +415,7 @@ namespace BosonKit {
     //% block="read pin %pin conductivity sensor (i12)" 
     //% group="Digital"
     //% weight=88
-    export function bos0012(pin: DigitalPin): number {
+    export function bos0012_rotation(pin: DigitalPin): number {
 
         let value: number = pins.digitalReadPin(pin);
         return value;
@@ -429,7 +429,7 @@ namespace BosonKit {
     //% block="read pin %pin motion sensor (i13)" 
     //% group="Digital"
     //% weight=86
-    export function bos0013(pin: DigitalPin): number {
+    export function bos0013_rotation(pin: DigitalPin): number {
 
         let value: number = pins.digitalReadPin(pin);
         return value;
@@ -445,7 +445,7 @@ namespace BosonKit {
     //% group="Digital"
     //% value.min=0 value.max=1
     //% weight=84
-    export function bos0016_d(pin: DigitalPin, value: number): void {
+    export function bos0016_d_rotation(pin: DigitalPin, value: number): void {
 
         pins.digitalWritePin(pin, value);
     }
@@ -460,7 +460,7 @@ namespace BosonKit {
     //% group="Digital"
     //% value.min=0 value.max=1
     //% weight=82
-    export function bos0017_d(pin: DigitalPin, value: number): void {
+    export function bos0017_d_rotation(pin: DigitalPin, value: number): void {
 
         pins.digitalWritePin(pin, value);
     }
@@ -493,7 +493,7 @@ namespace BosonKit {
     //% group="Digital"
     //% value.min=0 value.max=1
     //% weight=76
-    export function bos0019_d(pin: DigitalPin, value: number): void {
+    export function bos0019_d_rotation(pin: DigitalPin, value: number): void {
 
         pins.digitalWritePin(pin, value);
     }
@@ -508,7 +508,7 @@ namespace BosonKit {
     //% group="Digital"
     //% value.min=0 value.max=1
     //% weight=74
-    export function bos0020_d(pin: DigitalPin, value: number): void {
+    export function bos0020_d_rotation(pin: DigitalPin, value: number): void {
 
         pins.digitalWritePin(pin, value);
     }
@@ -523,7 +523,7 @@ namespace BosonKit {
     //% group="Digital"
     //% value.min=0 value.max=1
     //% weight=72
-    export function bos0021_d(pin: DigitalPin, value: number): void {
+    export function bos0021_d_rotation(pin: DigitalPin, value: number): void {
 
         pins.digitalWritePin(pin, value);
     }
@@ -538,7 +538,7 @@ namespace BosonKit {
     //% group="Digital"
     //% value.min=0 value.max=1
     //% weight=70
-    export function bos0022(pin: DigitalPin, value: number): void {
+    export function bos0022_rotation(pin: DigitalPin, value: number): void {
 
         pins.digitalWritePin(pin, value);
     }
@@ -553,7 +553,7 @@ namespace BosonKit {
     //% group="Digital"
     //% value.min=0 value.max=1
     //% weight=68
-    export function bos0025_d(pin: DigitalPin, value: number): void {
+    export function bos0025_d_rotation(pin: DigitalPin, value: number): void {
 
         pins.digitalWritePin(pin, value);
     }
@@ -600,7 +600,7 @@ namespace BosonKit {
     //% block="read heart rate (bpm) (i20)" 
     //% group="Heartbeat"
     //% weight=50
-    export function bos0043(): number {
+    export function bos0043_rotation(): number {
         if (averagetime == 0) {
             return 0;
         }
@@ -957,7 +957,7 @@ namespace BosonKit {
     //% group="Servo"
     //% angle.min=0 angle.max=180
     //% weight=36
-    export function ser0045(pin: AnalogPin, angle: number): void {
+    export function ser0045_rotation(pin: AnalogPin, angle: number): void {
         pins.servoWritePin(pin, angle)
     }
 
