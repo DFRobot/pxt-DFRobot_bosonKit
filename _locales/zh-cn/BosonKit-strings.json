@@ -19,7 +19,7 @@
     "BosonKit.bos0043_rotation|block": "读取心率(次/分) (i20)",
     "BosonKit.bos0045_rotation|block": "读取引脚%pin超声波测量距离 (i22)",
     "BosonKit.bos0056_rotation|block": "读取引脚%pin空气湿度 SHT30 (i27)",
-    "BosonKit.bos0061_rotation|block": "读取引脚%pinPH值(V2) (i28)",
+    "BosonKit.bos0061_rotation|block": "读取引脚%pin PH值(V2) (i28)",
 
     "BosonKit.M011_00184_init|block": "初始化七彩灯带引脚%pin 灯总数%num",
     "BosonKit.M011_00184_brightness|block": "设置七彩灯带亮度为%brightness",
