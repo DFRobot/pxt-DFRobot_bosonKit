@@ -9,6 +9,7 @@ input.onButtonPressed(Button.A, function () {
     }
 })
 basic.forever(function () {
+    serial.writeLine("Press the A key to switch the test group number")
     serial.writeLine("Number of the current test group:" + testNumber)
     if (testNumber == 0) {
         serial.writeLine("test0_P0:" + BosonKit.rotationSensor(AnalogPin.P0))
@@ -72,4 +73,3 @@ basic.forever(function () {
     }
     basic.pause(1000)
 })
-
