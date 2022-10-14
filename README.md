@@ -1,6 +1,6 @@
 # Boson Kit
 
-[DFRobot Boson Kit is a set of modularized electronic building blocks designed for young inventors and STEM educators.Boson platform has more than 50 different modules, including sensors, actuators, logic gates and more.Boson modules are magnetic. They can stick on a whiteboard, fridge, or other magnetic objects In a snap.Each boson module comes with mounting plates that compatible with Lego blocks and screws.](https://wiki.dfrobot.com/Boson_Kit_Product_List)
+[DFRobot Boson Kit is a set of modularized electronic building blocks designed for young inventors and STEM educators.Boson platform has more than 50 different modules, including sensors, actuators, logic gates and more.Boson modules are magnetic. They can stick on a whiteboard, fridge, or other magnetic objects In a snap.Each boson module comes with mounting plates that compatible with Lego blocks and screws.](https://www.dfrobot.com/product-1742.html)
 
 
 ## Basic usage
@@ -77,5 +77,10 @@ Copyright (c) 2020, microbit/micropython Chinese community
 ## Supported targets
 
 * for PXT/microbit
+
+
+```package
+BosonKit=github:DFRobot/pxt-DFRobot_Boson_Kit
+```
 
 
