@@ -2,6 +2,9 @@ let testNumber = 0
 let count_val = 0
 input.onButtonPressed(Button.A, function () {
     testNumber = testNumber + 1
+    if (testNumber == 2) {
+        BosonKit.heartrate_init(DigitalPin.P7)
+    }
     if (testNumber > 7) {
         testNumber = 0
     }
@@ -35,7 +38,6 @@ basic.forever(function () {
         serial.writeLine("test2_P4:" + BosonKit.touchSensor(DigitalPin.P4))
         serial.writeLine("test2_P5:" + BosonKit.conductivitySensor(DigitalPin.P5))
         serial.writeLine("test3_P6:" + BosonKit.motionSensor(DigitalPin.P6))
-        BosonKit.heartrate_init(DigitalPin.P7)
         serial.writeLine("test3_P7:" + BosonKit.heartrate_read())
     } else if (testNumber == 3) {
         while (count_val < 1000) {
