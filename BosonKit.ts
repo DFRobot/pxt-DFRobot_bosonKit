@@ -6,77 +6,77 @@ enum BosonSensorAnalogRead {
     BosonRotation = 1,
     //% blockId="bosonAnalogReadLightIntensity" block="Light Sensor (i4)"
     BosonLightIntensity = 2,
-    //% blockId="bosonAnalogReadSteam" block=steam sensor (i6)
+    //% blockId="bosonAnalogReadSteam" block="steam sensor (i6)"
     BosonSteam = 3,
-    //% blockId="bosonAnalogReadFlame" block=flame sensor (i7)
+    //% blockId="bosonAnalogReadFlame" block="flame sensor (i7)"
     BosonFlame = 4,
-    //% blockId="bosonAnalogReadSound" block=sound sensor (i9)
+    //% blockId="bosonAnalogReadSound" block="sound sensor (i9)"
     BosonSound = 5,
-    //% blockId="bosonAnalogReadGrayscale" block=grayscale sensor (i10)
+    //% blockId="bosonAnalogReadGrayscale" block="grayscale sensor (i10)"
     BosonGrayscale = 6,
-    //% blockId="bosonAnalogReadTemperature" block=temperature sensor(i11)
+    //% blockId="bosonAnalogReadTemperature" block="temperature sensor(i11)"
     BosonTemperature = 7,
-    //% blockId="bosonAnalogReadSoilMoisture" block=soil moisture sensor (i16)
+    //% blockId="bosonAnalogReadSoilMoisture" block="soil moisture sensor (i16)"
     BosonSoilMoisture = 8,
-    //% blockId="bosonAnalogReadHumidity" block=humidity sensor (i18)
+    //% blockId="bosonAnalogReadHumidity" block="humidity sensor (i18)"
     BosonHumidity = 9,
-    //% blockId="bosonAnalogReadWaterproofTemperature" block=waterproof temperature sensor (i19)
+    //% blockId="bosonAnalogReadWaterproofTemperature" block="waterproof temperature sensor (i19)"
     BosonWaterproofTemperature = 10,
-    //% blockId="bosonAnalogReadUltrasonicDistance" block=ultrasonic distance sensor (i22)
+    //% blockId="bosonAnalogReadUltrasonicDistance" block="ultrasonic distance sensor (i22)"
     BosonUltrasonicDistance = 11,
-    //% blockId="bosonAnalogReadSHT30Humidity" block=SHT30 humidity (i27)
+    //% blockId="bosonAnalogReadSHT30Humidity" block="SHT30 humidity (i27)"
     BosonSHT30Humidity = 12,
-    //% blockId="bosonAnalogReadPhV2" block=pH sensor V2 (i28)
+    //% blockId="bosonAnalogReadPhV2" block="pH sensor V2 (i28)"
     BosonPhV2 = 13
 }
 
 enum BosonSensorAnalogWrite {
-    //% blockId="bosonAnalogWriteBrightLightLed" block=bright light LED (o1)
+    //% blockId="bosonAnalogWriteBrightLightLed" block="bright light LED (o1)"
     BosonBrightLightLed = 1,
-    //% blockId="bosonAnalogWriteLed" block=LED module (o2r o2g o2b)
+    //% blockId="bosonAnalogWriteLed" block="LED module (o2r o2g o2b)"
     BosonLed = 2,
-    //% blockId="bosonAnalogWriteRgbStripLights" block=RGB LED strip lights(o4)
+    //% blockId="bosonAnalogWriteRgbStripLights" block="RGB LED strip lights(o4)"
     BosonRgbStripLights = 3,
-    //% blockId="bosonAnalogWriteBuzzer" block=buzzer module(o5)
+    //% blockId="bosonAnalogWriteBuzzer" block="buzzer module(o5)"
     BosonBuzzer = 4,
-    //% blockId="bosonAnalogWriteFan" block=fan module (o6)
+    //% blockId="bosonAnalogWriteFan" block="fan module (o6)"
     BosonFan = 5,
-    //% blockId="bosonAnalogWriteMotor" block=motor control module (o9)
+    //% blockId="bosonAnalogWriteMotor" block="motor control module (o9)"
     BosonMotor = 6,
-    //% blockId="bosonAnalogWriteServo" block=servo control module (o10)
+    //% blockId="bosonAnalogWriteServo" block="servo control module (o10)"
     BosonServo = 7
 }
 
 
 enum BosonSensorDigitalRead {
-    //% blockId="bosonDigitalReadPushButton" block=push button (i2b i2r i2y)
+    //% blockId="bosonDigitalReadPushButton" block="push button (i2b i2r i2y)"
     BosonPushButton = 1,
-    //% blockId="bosonDigitalReadSelfLockingSwitch" block=self locking switch (i3)
+    //% blockId="bosonDigitalReadSelfLockingSwitch" block="self locking switch (i3)"
     BosonSelfLockingSwitch = 2,
-    //% blockId="bosonDigitalReadTilt" block=tilt sensor (i5)
+    //% blockId="bosonDigitalReadTilt" block="tilt sensor (i5)"
     BosonTilt = 3,
-    //% blockId="bosonDigitalReadTouch" block=touch sensor (i8)
+    //% blockId="bosonDigitalReadTouch" block="touch sensor (i8)"
     BosonTouch = 4,
-    //% blockId="bosonDigitalReadConductivity" block=conductivity sensor (i12)
+    //% blockId="bosonDigitalReadConductivity" block="conductivity sensor (i12)"
     BosonConductivity = 5,
-    //% blockId="bosonDigitalReadMotion" block=motion sensor (i13)
+    //% blockId="bosonDigitalReadMotion" block="motion sensor (i13)"
     BosonMotion = 6
 }
 
 enum BosonSensorDigitalWrite {
-    //% blockId="bosonDigitalWriteBrightLightLed" block=bright light LED (o1)
+    //% blockId="bosonDigitalWriteBrightLightLed" block="bright light LED (o1)"
     BosonBrightLightLed = 1,
-    //% blockId="bosonDigitalWriteLed" block=LED module (o2r o2g o2b)
+    //% blockId="bosonDigitalWriteLed" block="LED module (o2r o2g o2b)"
     BosonLed = 2,
-    //% blockId="bosonDigitalWriteRgbStripLights" block=RGB LED strip lights (o4)
+    //% blockId="bosonDigitalWriteRgbStripLights" block="RGB LED strip lights (o4)"
     BosonRgbStripLights = 3,
-    //% blockId="bosonDigitalWriteBuzzer" block=buzzer module (o5)
+    //% blockId="bosonDigitalWriteBuzzer" block="buzzer module (o5)"
     BosonBuzzer = 4,
-    //% blockId="bosonDigitalWriteFan" block=fan module (o6)
+    //% blockId="bosonDigitalWriteFan" block="fan module (o6)"
     BosonFan = 5,
-    //% blockId="bosonDigitalWriteVoiceRecorder" block=voice recorder (o7)
+    //% blockId="bosonDigitalWriteVoiceRecorder" block="voice recorder (o7)"
     BosonVoiceRecorder = 6,
-    //% blockId="bosonDigitalWriteServo" block=servo control module (o10)
+    //% blockId="bosonDigitalWriteServo" block="servo control module (o10)"
     BosonServo = 7,
 }
 
@@ -188,6 +188,7 @@ namespace BosonKit {
     //% block="init pin %pin heart rate sensor (i20)" 
     //% group="Sensor"
     //% weight=60
+    //% advanced=true
     export function heartrate_init(pin: DigitalPin): void {
 
         pins.setEvents(pin, PinEventType.Touch);
@@ -222,6 +223,7 @@ namespace BosonKit {
     //% block="read heart rate (bpm) (i20)" 
     //% group="Sensor"
     //% weight=50
+    //% advanced=true
     export function heartrate_read(): number {
         if (averagetime == 0) {
             return 0;
@@ -258,6 +260,7 @@ namespace BosonKit {
     //% group="Actuator"
     //% brightness.min=0 brightness.max=255 brightness.defl=255
     //% weight=90
+    //% advanced=true
     export function M011_00184_brightness(brightness: number): void {
 
         _brightness = brightness;
@@ -323,6 +326,7 @@ namespace BosonKit {
     //% group="Actuator"
     //% weight=60
     //% rgb.shadow="colorNumberPicker"
+    //% advanced=true
     export function M011_00184_showColor(rgb: number) {
         let r = (rgb >> 16) * (_brightness / 255);
         let g = ((rgb >> 8) & 0xFF) * (_brightness / 255);
@@ -476,6 +480,7 @@ namespace BosonKit {
     //% green.min=0 green.max=255 green.defl=0
     //% blue.min=0 blue.max=255 blue.defl=0
     //% weight=40
+    //% advanced=true
     export function M011_00184_rgb(red: number, green: number, blue: number): number {
 
         return (red << 16) + (green << 8) + (blue);
@@ -499,6 +504,7 @@ namespace BosonKit {
     //% end.min=1 end.max=7 end.defl=5
     //% block="RGB LED %start to %end show gradient color from %startHue to %endHue"
     //% inlineInputMode=inline
+    //% advanced=true
     export function  M011_00184_ledRainbow(start: number, end: number, startHue: number, endHue: number) {
    
         start = start - 1
