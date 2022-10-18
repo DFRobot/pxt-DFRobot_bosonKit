@@ -8,7 +8,7 @@
     "BosonKit.heartrate_read": "获取心率值(bpm)",
     "BosonKit.M011_00184_init": "初始化RGB灯带引脚与灯的个数",
     "BosonKit.M011_00184_brightness": "设置RGB灯的亮度",
-    "BosonKit.M011_00184_ledRange": "起始灯号与结束灯号",
+    "BosonKit.M011_00184_ledRange": "起始灯号到结束灯号",
     "BosonKit.M011_00184_setIndexColor": "设置指定灯号的显示颜色",
     "BosonKit.M011_00184_showColor": "设置所有灯号的显示颜色",
     "BosonKit.M011_00184_shift": "设置灯带不带循环的移动",
