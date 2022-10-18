@@ -2,9 +2,9 @@
 
 
 enum BosonSensorAnalogRead {
-    //% blockId="bosonAnalogReadRotation" block=rotation module (i1)
+    //% blockId="bosonAnalogReadRotation" block="rotation module (i1)"
     BosonRotation = 1,
-    //% blockId="bosonAnalogReadLightIntensity" block=Light Sensor (i4)
+    //% blockId="bosonAnalogReadLightIntensity" block="Light Sensor (i4)"
     BosonLightIntensity = 2,
     //% blockId="bosonAnalogReadSteam" block=steam sensor (i6)
     BosonSteam = 3,
