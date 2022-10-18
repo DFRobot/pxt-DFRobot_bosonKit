@@ -1,5 +1,91 @@
+
+
+
+enum BosonSensorAnalogRead {
+    //% blockId="bosonAnalogReadRotation" block=rotation module (i1)
+    BosonRotation = "rotationSensor",
+    //% blockId="bosonAnalogReadLightIntensity" block=Light Sensor (i4)
+    BosonLightIntensity = "lightIntensity",
+    //% blockId="bosonAnalogReadSteam" block=steam sensor (i6)
+    BosonSteam = "steamSensor",
+    //% blockId="bosonAnalogReadFlame" block=flame sensor (i7)
+    BosonFlame = "flameSensor",
+    //% blockId="bosonAnalogReadSound" block=sound sensor (i9)
+    BosonSound = "soundSensor",
+    //% blockId="bosonAnalogReadGrayscale" block=grayscale sensor (i10)
+    BosonGrayscale = "grayscaleSensor",
+    //% blockId="bosonAnalogReadTemperature" block=temperature sensor(i11)
+    BosonTemperature = "temperatureSenor",
+    //% blockId="bosonAnalogReadSoilMoisture" block=soil moisture sensor (i16)
+    BosonSoilMoisture = "soilMoistureSenor",
+    //% blockId="bosonAnalogReadHumidity" block=humidity sensor (i18)
+    BosonHumidity = "humiditySensor",
+    //% blockId="bosonAnalogReadWaterproofTemperature" block=waterproof temperature sensor (i19)
+    BosonWaterproofTemperature = "waterproofTemperatureSenor",
+    //% blockId="bosonAnalogReadUltrasonicDistance" block=ultrasonic distance sensor (i22)
+    BosonUltrasonicDistance = "ultrasonicDistanceSensor",
+    //% blockId="bosonAnalogReadSHT30Humidity" block=SHT30 humidity (i27)
+    BosonSHT30Humidity = "humiditySht30",
+    //% blockId="bosonAnalogReadPhV2" block=pH sensor V2 (i28)
+    BosonPhV2 = "PhV2Senor"
+}
+
+enum BosonSensorAnalogWrite {
+    //% blockId="bosonAnalogWriteBrightLightLed" block=bright light LED (o1)
+    BosonBrightLightLed = "brightLightLed_analogWrite",
+    //% blockId="bosonAnalogWriteLed" block=LED module (o2r o2g o2b)
+    BosonLed = "ledModule_analogWrite",
+    //% blockId="bosonAnalogWriteRgbStripLights" block=RGB LED strip lights(o4)
+    BosonRgbStripLights = "rgbLedStrip_analogWrite",
+    //% blockId="bosonAnalogWriteBuzzer" block=buzzer module(o5)
+    BosonBuzzer = "buzzerModule_analogWrite",
+    //% blockId="bosonAnalogWriteFan" block=fan module (o6)
+    BosonFan = "fanModule_analogWrite",
+    //% blockId="bosonAnalogWriteMotor" block=motor control module (o9)
+    BosonMotor = "motorControlModule_analogWrite",
+    //% blockId="bosonAnalogWriteServo" block=servo control module (o10)
+    BosonServo = "servo_analogWrite"
+}
+
+
+enum BosonSensorDigitalRead {
+    //% blockId="bosonDigitalReadPushButton" block=push button (i2b i2r i2y)
+    BosonPushButton = "pushButton",
+    //% blockId="bosonDigitalReadSelfLockingSwitch" block=self locking switch (i3)
+    BosonSelfLockingSwitch = "selfLockingSwitch",
+    //% blockId="bosonDigitalReadTilt" block=tilt sensor (i5)
+    BosonTilt = "tiltSensor",
+    //% blockId="bosonDigitalReadTouch" block=touch sensor (i8)
+    BosonTouch = "touchSensor",
+    //% blockId="bosonDigitalReadConductivity" block=conductivity sensor (i12)
+    BosonConductivity = "conductivitySensor",
+    //% blockId="bosonDigitalReadMotion" block=motion sensor (i13)
+    BosonMotion = "motionSensor"
+}
+
+enum BosonSensorDigitalWrite {
+    //% blockId="bosonDigitalWriteBrightLightLed" block=bright light LED (o1)
+    BosonBrightLightLed = "brightLightLed_digitalWrite",
+    //% blockId="bosonDigitalWriteLed" block=LED module (o2r o2g o2b)
+    BosonLed = "ledModule_digitalWrite",
+    //% blockId="bosonDigitalWriteRgbStripLights" block=RGB LED strip lights (o4)
+    BosonRgbStripLights = "RgbLedStrip_digitalWrite",
+    //% blockId="bosonDigitalWriteBuzzer" block=buzzer module (o5)
+    BosonBuzzer = "buzzerModule_digitalWrite",
+    //% blockId="bosonDigitalWriteFan" block=fan module (o6)
+    BosonFan = "fanModule_digitalWrite",
+    //% blockId="bosonDigitalWriteVoiceRecorder" block=voice recorder (o7)
+    BosonVoiceRecorder = "voiceRecorder_digitalWrite",
+    //% blockId="bosonDigitalWriteServo" block=servo control module (o10)
+    BosonServo = "servo_digitalWrite",
+}
+
+
+
+
+
 //% weight=100 color=#0fbc11 icon="\uf0b2"
-//% groups="['Analog', 'Digital', 'Heartbeat', 'RGB LED Strip lights', 'Servo']"
+//% groups="['Sensor', 'Actuator']"
 namespace BosonKit {
 
     let beattime1 = 0;
@@ -12,559 +98,95 @@ namespace BosonKit {
     let neopixel_buf: Buffer;
     let ledsum = -1;
 
+
     /**
-     * read rotation sensor analog value
-     * @param pin to pin ,eg: "analog pin"
+     * 读取模拟类boson传感器的数值
+     * @param pin to pin ,eg: "pin"
+     * @param Type to sersorType ,eg: "sersorType"
      */
 
-    //% block="read pin %pin rotation sensor (i1)" 
-    //% group="Analog"
+    //% block="read analog %Type pin %pin" 
+    //% group="Sensor"
     //% weight=100
-    export function rotationSensor(pin: AnalogPin): number {
+    export function bosonAnalogRead(pin: AnalogPin, Type: BosonSensorAnalogRead): number {
 
-        let value: number = pins.analogReadPin(pin);
-        return value;
-    }
-
-    /**
-     * read light intensity
-     * @param pin to pin ,eg: "analog pin"
-     */
-
-    //% block="read pin %pin light intensity (i4)"
-    //% group="Analog" 
-    //% weight=98
-    export function lightIntensity(pin: AnalogPin): number {
-
-        let value: number = pins.analogReadPin(pin);
-        return value;
-    }
-
-    /**
-     * read steam sensor analog value
-     * @param pin to pin ,eg: "analog pin"
-     */
-
-    //% block="read pin %pin steam sensor (i6)"
-    //% group="Analog" 
-    //% weight=96
-    export function steamSensor(pin: AnalogPin): number {
-
-        let value: number = pins.analogReadPin(pin);
-        return value;
-    }
-
-    /**
-     * read flame sensor analog value
-     * @param pin to pin ,eg: "analog pin"
-     */
-
-    //% block="read pin %pin flame sensor (i7)"
-    //% group="Analog" 
-    //% weight=94
-    export function flameSensor(pin: AnalogPin): number {
-
-        let value: number = pins.analogReadPin(pin);
-        return value;
-    }
-
-    /**
-     * read sound sensor analog value
-     * @param pin to pin ,eg: "analog pin"
-     */
-
-    //% block="read pin %pin sound sensor (i9)" 
-    //% group="Analog"
-    //% weight=92
-    export function soundSensor(pin: AnalogPin): number {
-
-        let value: number = pins.analogReadPin(pin);
-        return value;
-    }
-
-    /**
-     * read grayscale sensor analog value
-     * @param pin to pin ,eg: "analog pin"
-     */
-
-    //% block="read pin %pin grayscale sensor (i10)"
-    //% group="Analog" 
-    //% weight=90
-    export function grayscaleSensor(pin: AnalogPin): number {
-
-        let value: number = pins.analogReadPin(pin);
-        return value;
-    }
-
-    /**
-     * read temperature
-     * @param pin to pin ,eg: "analog pin"
-     */
-
-    //% block="read pin %pin temperature (i11)"
-    //% group="Analog" 
-    //% weight=88
-    export function temperatureSenor(pin: AnalogPin): number {
-
-        let value: number = pins.analogReadPin(pin);
-        return Math.round((100 * value * (3.3 / 10.24)) * 3.3 / 10.24) / 100;
-    }
-
-    /**
-     * read soil moisture
-     * @param pin to pin ,eg: "analog pin"
-     */
-
-    //% block="read pin %pin soil moisture (i16)" 
-    //% group="Analog"
-    //% weight=86
-    export function soilMoistureSenor(pin: AnalogPin): number {
-
-        let value: number = pins.analogReadPin(pin);
-        return value;
-    }
-
-    /**
-     * read humidity sensor analog value
-     * @param pin to pin ,eg: "analog pin"
-     */
-
-    //% block="read pin %pin humidity sensor (i18)"
-    //% group="Analog" 
-    //% weight=84
-    export function humiditySensor(pin: AnalogPin): number {
-
-        let value: number = pins.analogReadPin(pin);
-        return Math.round(value / 10);
-    }
-
-    /**
-     * read waterproof temperature
-     * @param pin to pin ,eg: "analog pin"
-     */
-
-    //% block="read pin %pin waterproof temperature (i19)"
-    //% group="Analog" 
-    //% weight=82
-    export function waterproofTemperatureSenor(pin: AnalogPin): number {
-
-        let value: number = pins.analogReadPin(pin);
-        let n_Vref: number = 3.3;
-        let n_Voltage_Value: number = ((value / 1024.0) * n_Vref);
-        let n_Rt: number = ((n_Voltage_Value * 10.0) / (n_Vref - n_Voltage_Value));
-        if (((0.593 > n_Rt) || (n_Rt > 331.498))) {
-            return -1;
+        let value: number = 0;
+        switch (Type) {
+            case BosonSensorAnalogRead.BosonTemperature: value = temperatureSenor(pin); break;
+            case BosonSensorAnalogRead.BosonHumidity: value = humiditySensor(pin); break;
+            case BosonSensorAnalogRead.BosonWaterproofTemperature: value = waterproofTemperatureSenor(pin); break;
+            case BosonSensorAnalogRead.BosonUltrasonicDistance: value = ultrasonicDistanceSensor(pin); break;
+            case BosonSensorAnalogRead.BosonSHT30Humidity: value = humiditySht30(pin); break;
+            case BosonSensorAnalogRead.BosonPhV2: value = PhV2Senor(pin); break;
+            default: value = pins.analogReadPin(pin); break;
         }
-        else {
-            return Math.round(((1177692.5 / (3950 + (298.15 * (Math.log((n_Rt / 10.0)))))) - 270.35) * 100) / 100;
-        }
-
-    }
-
-    /**
-     * read ultrasonic distance
-     * @param pin to pin ,eg: "analog pin"
-     */
-
-    //% block="read pin %pin ultrasonic distance sensor (i22)"
-    //% group="Analog" 
-    //% weight=80
-    export function ultrasonicDistanceSensor(pin: AnalogPin): number {
-
-        let value: number = Math.round(10 * pins.analogReadPin(pin) * (100 / 1023)) / 10;
         return value;
     }
 
     /**
-     * read SHT30 humidity
-     * @param pin to pin ,eg: "analog pin"
+     * 向模拟类boson传感器中写入模拟量(0~1023)
+     * @param pin to pin ,eg: "pin"
+     * @param value to value, eg: "0~1023"
+     * @param Type to sersorType ,eg: "sersorType"
      */
 
-    //% block="read pin %pin SHT30 humidity (i27)"
-    //% group="Analog" 
-    //% weight=78
-    export function humiditySht30(pin: AnalogPin): number {
-
-        let value: number = pins.analogReadPin(pin);
-        return Math.round(value / 10);
-    }
-
-    /**
-     * read pH sensor V2 
-     * @param pin to pin ,eg: "analog pin"
-     */
-
-    //% block="read pin %pin pH sensor V2 (i28)"
-    //% group="Analog" 
-    //% weight=76
-    export function PhV2Senor(pin: AnalogPin): number {
-
-        let map: number = 1024;
-        let aref: number = 3300;
-        let _neutralVoltage: number = 1500.0;
-        let _acidVoltage: number = 2032.44;
-        let voltage: number = pins.analogReadPin(pin) / map * aref;
-        let slope: number = (7.0 - 4.0) / ((_neutralVoltage - 1500.0) / 3.0 - (_acidVoltage - 1500.0) / 3.0);
-        let intercept: number = 7.0 - slope * (_neutralVoltage - 1500.0) / 3.0;
-        let _phValue: number = Math.round(slope * (voltage - 1500.0) / 3.0 + intercept);
-        return _phValue;
-    }
-
-    /**
-     * write bright light LED analog value
-     * @param pin to pin ,eg: "analog pin"
-     * @param value to value ,eg: "analog value"
-     */
-
-    //% block="analog write pin %pin to %value bright light LED (o1)"
-    //% group="Analog" 
+    //% block="analog write pin %pin to %value %Type" 
+    //% group="Sensor"
     //% value.min=0 value.max=1023
-    //% weight=74
-    export function brightLightLed_analogWrite(pin: AnalogPin, value: number): void {
-
-        pins.analogWritePin(pin, value);
-    }
-
-    /**
-     * write LED module analog value
-     * @param pin to pin ,eg: "analog pin"
-     * @param value to value ,eg: "analog value"
-     */
-
-    //% block="analog write pin %pin to %value LED module (o2r o2g o2b)"
-    //% group="Analog" 
-    //% value.min=0 value.max=1023
-    //% weight=72
-    export function ledModule_analogWrite(pin: AnalogPin, value: number): void {
-
-        pins.analogWritePin(pin, value);
-    }
-
-    // //% block="analog write pin %pin to %value Green LED Module (o2g)"
-    // //% group="Analog" 
-    // //% value.min=0 value.max=1023
-    // //% weight=70
-    // export function bos0017_G_a(pin: AnalogPin, value: number): void {
-
-    //     pins.analogWritePin(pin, value);
-    // }
-
-    // //% block="analog write pin %pin to %value Blue LED Module (o2b)"
-    // //% group="Analog" 
-    // //% value.min=0 value.max=1023
-    // //% weight=68
-    // export function bos0017_B_a(pin: AnalogPin, value: number): void {
-
-    //     pins.analogWritePin(pin, value);
-    // }
-
-    /**
-     * write RGB LED strip lights analog value
-     * @param pin to pin ,eg: "analog pin"
-     * @param value to value ,eg: "analog value"
-     */
-
-    //% block="analog write pin %pin to %value RGB LED strip lights(o4)"
-    //% group="Analog" 
-    //% value.min=0 value.max=1023
-    //% weight=66
-    export function rgbLedStrip_analogWrite(pin: AnalogPin, value: number): void {
-
-        pins.analogWritePin(pin, value);
-    }
-
-    /**
-     * write buzzer module analog value
-     * @param pin to pin ,eg: "analog pin"
-     * @param value to value ,eg: "analog value"
-     */
-
-    //% block="analog write pin %pin to %value buzzer module(o5)" 
-    //% group="Analog"
-    //% value.min=0 value.max=1023
-    //% weight=64
-    export function buzzerModule_analogWrite(pin: AnalogPin, value: number): void {
-
-        pins.analogWritePin(pin, value);
-    }
-
-    /**
-     * write fan module analog value
-     * @param pin to pin ,eg: "analog pin"
-     * @param value to value ,eg: "analog value"
-     */
-
-    //% block="analog write pin %pin to %value fan module (o6)"
-    //% group="Analog" 
-    //% value.min=0 value.max=1023
-    //% weight=62
-    export function fanModule_analogWrite(pin: AnalogPin, value: number): void {
-
-        pins.analogWritePin(pin, value);
-    }
-
-    /**
-     * write motor control module analog value
-     * @param pin to pin ,eg: "analog pin"
-     * @param value to value ,eg: "analog value"
-     */
-
-    //% block="analog write pin %pin to %value motor control module (o9)" 
-    //% group="Analog"
-    //% value.min=0 value.max=1000
-    //% weight=60
-    export function motorControlModule_analogWrite(pin: AnalogPin, value: number): void {
-
-        pins.analogWritePin(pin, value);
-    }
-
-    /**
-     * write servo control module analog value
-     * @param pin to pin ,eg: "analog pin"
-     * @param value to value ,eg: "analog value"
-     */
-
-    //% block="analog write pin %pin to %value servo control module (o10)" 
-    //% group="Analog"
-    //% value.min=0 value.max=1023
-    //% weight=58
-    export function servo_analogWrite(pin: AnalogPin, value: number): void {
-
-        pins.analogWritePin(pin, value);
-    }
-
-    /**
-     * read push button digital value
-     * @param pin to pin ,eg: "digital pin"
-     */
-
-    //% block="read pin %pin push button (i2b i2r i2y)" 
-    //% group="Digital"
     //% weight=100
-    export function pushButton(pin: DigitalPin): number {
+    export function bosonAnalogWrite(pin: AnalogPin, value: number, Type: BosonSensorAnalogWrite): void {
 
-        let value: number = pins.digitalReadPin(pin);
-        return value;
+        switch (Type) {
+            case BosonSensorAnalogWrite.BosonMotor: if (value > 1000) {value = 1000;} pins.analogWritePin(pin, value); break;
+            default: pins.analogWritePin(pin, value); break;
+        }
+    
     }
 
-    // //% block="read pin %pin red push button (i2r)" 
-    // //% group="Digital"
-    // //% weight=98
-    // export function bos0002_R(pin: DigitalPin): number {
-
-    //     let value: number = pins.digitalReadPin(pin);
-    //     return value;
-    // }
-
-    // //% block="read pin %pin yellow push button (i2y)" 
-    // //% group="Digital"
-    // //% weight=96
-    // export function bos0002_Y(pin: DigitalPin): number {
-
-    //     let value: number = pins.digitalReadPin(pin);
-    //     return value;
-    // }
-
     /**
-     * read locking switch digital value
-     * @param pin to pin ,eg: "digital pin"
+     * 读取数字类boson传感器的数值
+     * @param pin to pin ,eg: "pin"
+     * @param Type to sersorType ,eg: "sersorType"
      */
 
-    //% block="read pin %pin self locking switch (i3)" 
-    //% group="Digital"
-    //% weight=94
-    export function selfLockingSwitch(pin: DigitalPin): number {
+    //% block="read pin %pin %Type" 
+    //% group="Sensor"
+    //% weight=100
+    export function bosonDigitalRead(pin: DigitalPin, Type: BosonSensorDigitalRead): number {
 
-        let value: number = pins.digitalReadPin(pin);
+        let value: number = 0;
+        switch (Type) {
+            case BosonSensorDigitalRead.BosonConductivity: value = pins.digitalReadPin(pin); break;
+            default: value = pins.digitalReadPin(pin); break;
+        }
         return value;
     }
 
     /**
-     * read tilt sensor digital value
-     * @param pin to pin ,eg: "digital pin"
+     * 向数字类boson传感器中写入数字量(0~1)
+     * @param pin to pin ,eg: "pin"
+     * @param value to value, eg: "0~1"
+     * @param Type to sersorType ,eg: "sersorType"
      */
-
-    //% block="read pin %pin tilt sensor (i5)" 
-    //% group="Digital"
-    //% weight=92
-    export function tiltSensor(pin: DigitalPin): number {
-
-        let value: number = pins.digitalReadPin(pin);
-        return value;
-    }
-
-    /**
-     * read touch sensor digital value
-     * @param pin to pin ,eg: "digital pin"
-     */
-
-    //% block="read pin %pin touch sensor (i8)"
-    //% group="Digital" 
-    //% weight=90
-    export function touchSensor(pin: DigitalPin): number {
-
-        let value: number = pins.digitalReadPin(pin);
-        return value;
-    }
-
-    /**
-     * read conductivity sensor digital value
-     * @param pin to pin ,eg: "digital pin"
-     */
-
-    //% block="read pin %pin conductivity sensor (i12)" 
-    //% group="Digital"
-    //% weight=88
-    export function conductivitySensor(pin: DigitalPin): number {
-
-        let value: number = pins.digitalReadPin(pin);
-        return value;
-    }
-
-    /**
-     * read motion sensor digital value
-     * @param pin to pin ,eg: "digital pin"
-     */
-
-    //% block="read pin %pin motion sensor (i13)" 
-    //% group="Digital"
-    //% weight=86
-    export function motionSensor(pin: DigitalPin): number {
-
-        let value: number = pins.digitalReadPin(pin);
-        return value;
-    }
-
-    /**
-     * write bright light LED digital value
-     * @param pin to pin ,eg: "digital pin"
-     * @param value to value ,eg: "digital value"
-     */
-
-    //% block="digital write pin %pin to %value bright light LED (o1)" 
-    //% group="Digital"
+    //% block="read pin %pin %Type" 
+    //% group="Sensor"
     //% value.min=0 value.max=1
-    //% weight=84
-    export function brightLightLed_digitalWrite(pin: DigitalPin, value: number): void {
+    //% weight=100
+    export function bosonDigitalWrite(pin: DigitalPin, value: number, Type: BosonSensorDigitalWrite): void {
 
-        pins.digitalWritePin(pin, value);
+        switch (Type) {
+            case BosonSensorDigitalWrite.BosonBrightLightLed: pins.digitalWritePin(pin, value); break;
+            default: pins.digitalWritePin(pin, value); break;
+        }
     }
 
     /**
-     * write LED module digital value
-     * @param pin to pin ,eg: "digital pin"
-     * @param value to value ,eg: "digital value"
-     */
-
-    //% block="digital write pin %pin to %value LED module (o2r o2g o2b)" 
-    //% group="Digital"
-    //% value.min=0 value.max=1
-    //% weight=82
-    export function ledModule_digitalWrite(pin: DigitalPin, value: number): void {
-
-        pins.digitalWritePin(pin, value);
-    }
-
-    // //% block="digital write pin %pin to %value Green LED Module (o2g)" 
-    // //% group="Digital"
-    // //% value.min=0 value.max=1
-    // //% weight=80
-    // export function bos0017_G_d(pin: DigitalPin, value: number): void {
-
-    //     pins.digitalWritePin(pin, value);
-    // }
-
-    // //% block="digital write pin %pin to %value Blue LED Module (o2b)" 
-    // //% group="Digital"
-    // //% value.min=0 value.max=1
-    // //% weight=78
-    // export function bos0017_B_d(pin: DigitalPin, value: number): void {
-
-    //     pins.digitalWritePin(pin, value);
-    // }
-
-    /**
-     * write RGB LED strip lights digital value
-     * @param pin to pin ,eg: "digital pin"
-     * @param value to value ,eg: "digital value"
-     */
-
-    //% block="digital write pin %pin to %value RGB LED strip lights (o4)" 
-    //% group="Digital"
-    //% value.min=0 value.max=1
-    //% weight=76
-    export function RgbLedStrip_digitalWrite(pin: DigitalPin, value: number): void {
-
-        pins.digitalWritePin(pin, value);
-    }
-
-    /**
-     * write buzzer module sensor digital value
-     * @param pin to pin ,eg: "digital pin"
-     * @param value to value ,eg: "digital value"
-     */
-
-    //% block="digital write pin %pin to %value buzzer module (o5)" 
-    //% group="Digital"
-    //% value.min=0 value.max=1
-    //% weight=74
-    export function buzzerModule_digitalWrite(pin: DigitalPin, value: number): void {
-
-        pins.digitalWritePin(pin, value);
-    }
-
-    /**
-     * write fan module digital value
-     * @param pin to pin ,eg: "digital pin"
-     * @param value to value ,eg: "digital value"
-     */
-
-    //% block="digital write pin %pin to %value fan module (o6)" 
-    //% group="Digital"
-    //% value.min=0 value.max=1
-    //% weight=72
-    export function fanModule_digitalWrite(pin: DigitalPin, value: number): void {
-
-        pins.digitalWritePin(pin, value);
-    }
-
-    /**
-     * write voice recorder sensor digital value
-     * @param pin to pin ,eg: "digital pin"
-     * @param value to value ,eg: "digital value"
-     */
-
-    //% block="digital write pin %pin to %value voice recorder (o7)" 
-    //% group="Digital"
-    //% value.min=0 value.max=1
-    //% weight=70
-    export function voiceRecorder_digitalWrite(pin: DigitalPin, value: number): void {
-
-        pins.digitalWritePin(pin, value);
-    }
-
-    /**
-     * write servo control module digital value
-     * @param pin to pin ,eg: "digital pin"
-     * @param value to value ,eg: "digital value"
-     */
-
-    //% block="digital write pin %pin to %value servo control module (o10)" 
-    //% group="Digital"
-    //% value.min=0 value.max=1
-    //% weight=68
-    export function servo_digitalWrite(pin: DigitalPin, value: number): void {
-
-        pins.digitalWritePin(pin, value);
-    }
-
-    /**
-     * heart rate sensor init
-     * @param pin to pin ,eg: "digital pin"
+     * 初始化心率传感器
+     * @param pin to pin ,eg: "pin"
      */
 
     //% block="init pin %pin heart rate sensor (i20)" 
-    //% group="Heartbeat"
+    //% group="Sensor"
     //% weight=100
     export function heartrate_init(pin: DigitalPin): void {
 
@@ -594,11 +216,11 @@ namespace BosonKit {
     }
 
     /**
-     * read heart rate (bpm)
+     * 获取心率值(bpm)
      */
 
     //% block="read heart rate (bpm) (i20)" 
-    //% group="Heartbeat"
+    //% group="Sensor"
     //% weight=50
     export function heartrate_read(): number {
         if (averagetime == 0) {
@@ -609,13 +231,13 @@ namespace BosonKit {
     }
 
     /**
-     * initialize RGB strip
-     * @param pin to pin ,eg: "digital pin"
-     * @param num to num ,eg: "0~7"
+     * 初始化RGB灯带引脚与灯的个数
+     * @param pin to pin ,eg: "pin"
+     * @param num to num ,eg: "1~7"
      */
 
     //% block="initialize RGB strip at pin %pin with %num leds"
-    //% group="RGB LED Strip lights"
+    //% group="Actuator"
     //% num.min=1 num.max=7 num.defl=3
     //% weight=100
     export function M011_00184_init(pin: DigitalPin, num: number): void {
@@ -628,12 +250,12 @@ namespace BosonKit {
     }
 
     /**
-     * set RGB LED brightness
+     * 设置RGB灯的亮度
      * @param brightness to brightness ,eg: "0~255"
      */
 
     //% block="set brightness %brightness"
-    //% group="RGB LED Strip lights"
+    //% group="Actuator"
     //% brightness.min=0 brightness.max=255 brightness.defl=255
     //% weight=90
     export function M011_00184_brightness(brightness: number): void {
@@ -642,13 +264,13 @@ namespace BosonKit {
     }
 
     /**
-     * Set up lights
+     * 起始灯号与结束灯号
      * @param from to start ,eg: "1~7"
      * @param to to end ,eg: "1~7"
      */
 
     //% block="leds from %from to %to"
-    //% group="RGB LED Strip lights"
+    //% group="Actuator"
     //% from.min=1 from.max=7 from.defl=1
     //% to.min=1 to.max=7 to.defl=2
     //% weight=80
@@ -657,13 +279,13 @@ namespace BosonKit {
     }
 
     /**
-     * Set the display color of lights and lights
+     * 设置指定灯号的显示颜色
      * @param index to index ,eg: "1~7"
      * @param color to color ,eg: "color"
      */
 
     //% block="led %index show color %color"
-    //% group="RGB LED Strip lights"
+    //% group="Actuator"
     //% index.min=1 index.max=7 index.defl=1
     //% color.shadow="colorNumberPicker"
     //% weight=70
@@ -693,12 +315,12 @@ namespace BosonKit {
     }
 
     /**
-     * Set the display color
+     * 设置所有灯号的显示颜色
      * @param rgb to rgb ,eg: "rgb"
      */
 
     //% block="show color %rgb"
-    //% group="RGB LED Strip lights"
+    //% group="Actuator"
     //% weight=60
     //% rgb.shadow="colorNumberPicker"
     export function M011_00184_showColor(rgb: number) {
@@ -717,12 +339,12 @@ namespace BosonKit {
     }
 
     /**
-     * shift pixels
+     * 设置灯带不带循环的移动
      * @param offset to offset ,eg: "offset"
      */
 
     //% block="shift pixels by %offset"
-    //% group="RGB LED Strip lights"
+    //% group="Actuator"
     //% weight=52
     export function M011_00184_shift(offset: number): void {
         let steps = ledsum
@@ -767,12 +389,12 @@ namespace BosonKit {
     }
 
     /**
-     * rotate pixels
+     * 设置灯带循环移动
      * @param offset to offset ,eg: "offset"
      */
 
     //% block="rotate pixels by %offset"
-    //% group="RGB LED Strip lights"
+    //% group="Actuator"
     //% weight=51
     export function M011_00184_rotate(offset: number): void {
         let steps = ledsum
@@ -830,11 +452,11 @@ namespace BosonKit {
     }
 
     /**
-     * clear all
+     * 设置灯全灭
      */
 
     //% block="clear all"
-    //% group="RGB LED Strip lights"
+    //% group="Actuator"
     //% weight=50
     export function M011_00184_off(): void {
 
@@ -842,14 +464,14 @@ namespace BosonKit {
     }
 
     /**
-     * red green blue
+     * 自定义RGB颜色
      * @param red to red ,eg: "0~255"
      * @param green to green ,eg: "0~255"
      * @param blue to blue ,eg: "0~255"
      */
 
     //% block="red %red green %green blue %blue"
-    //% group="RGB LED Strip lights"
+    //% group="Actuator"
     //% red.min=0 red.max=255 red.defl=0
     //% green.min=0 green.max=255 green.defl=0
     //% blue.min=0 blue.max=255 blue.defl=0
@@ -860,7 +482,7 @@ namespace BosonKit {
     }
 
     /**
-     * RGB LED show gradient color
+     * 设置灯带显示渐变色
      * @param start to start ,eg: "1~7"
      * @param end to end ,eg: "1~7"
      * @param startHue to startHue ,eg: "0~360"
@@ -868,7 +490,7 @@ namespace BosonKit {
      */
 
     //% weight=50
-    //% group="RGB LED Strip lights"
+    //% group="Actuator"
     //% startHue.defl=1
     //% endHue.defl=360
     //% startHue.min=0 startHue.max=360
@@ -948,17 +570,69 @@ namespace BosonKit {
     }
 
     /**
-     * set 9g servo module angle
-     * @param pin to pin ,eg: "analog pin"
+     * 设置舵机模块旋转特定的角度
+     * @param pin to pin ,eg: "pin"
      * @param angle to angle ,eg: "0~180"
      */
 
     //% block="9g servo module pin %pin angle %angle" 
-    //% group="Servo"
+    //% group="Actuator"
     //% angle.min=0 angle.max=180
     //% weight=36
     export function setServoAngle(pin: AnalogPin, angle: number): void {
         pins.servoWritePin(pin, angle)
+    }
+
+    function temperatureSenor(pin: AnalogPin): number {
+
+        let value: number = pins.analogReadPin(pin);
+        return Math.round((100 * value * (3.3 / 10.24)) * 3.3 / 10.24) / 100;
+    }
+
+    export function humiditySensor(pin: AnalogPin): number {
+
+        let value: number = pins.analogReadPin(pin);
+        return Math.round(value / 10);
+    }
+
+    export function waterproofTemperatureSenor(pin: AnalogPin): number {
+
+        let value: number = pins.analogReadPin(pin);
+        let n_Vref: number = 3.3;
+        let n_Voltage_Value: number = ((value / 1024.0) * n_Vref);
+        let n_Rt: number = ((n_Voltage_Value * 10.0) / (n_Vref - n_Voltage_Value));
+        if (((0.593 > n_Rt) || (n_Rt > 331.498))) {
+            return -1;
+        }
+        else {
+            return Math.round(((1177692.5 / (3950 + (298.15 * (Math.log((n_Rt / 10.0)))))) - 270.35) * 100) / 100;
+        }
+
+    }
+
+    export function ultrasonicDistanceSensor(pin: AnalogPin): number {
+
+        let value: number = Math.round(10 * pins.analogReadPin(pin) * (100 / 1023)) / 10;
+        return value;
+    }
+
+    export function humiditySht30(pin: AnalogPin): number {
+
+        let value: number = pins.analogReadPin(pin);
+        return Math.round(value / 10);
+    }
+
+    export function PhV2Senor(pin: AnalogPin): number {
+
+        let map: number = 1024;
+        let aref: number = 3300;
+        let _neutralVoltage: number = 1500.0;
+        let _acidVoltage: number = 2032.44;
+        let voltage: number = pins.analogReadPin(pin) / map * aref;
+        let slope: number = (7.0 - 4.0) / ((_neutralVoltage - 1500.0) / 3.0 - (_acidVoltage - 1500.0) / 3.0);
+        let intercept: number = 7.0 - slope * (_neutralVoltage - 1500.0) / 3.0;
+        let _phValue: number = Math.round(slope * (voltage - 1500.0) / 3.0 + intercept);
+        return _phValue;
     }
 
     function pinCallback(): void {
