@@ -83,9 +83,8 @@ enum BosonSensorDigitalWrite {
 
 
 
-
+//% block="BosonKit"
 //% weight=100 color=#0fbc11 icon="\uf0b2"
-//% category="BosonKit"
 //% groups="['Sensor', 'Actuator']"
 namespace BosonKit {
 

@@ -55,6 +55,7 @@
     "BosonSensorDigitalWrite.BosonVoiceRecorder|block": "диктофона (o7)",
     "BosonSensorDigitalWrite.BosonServo|block": "контроллера сервопривода (o10)",
     
+    "BosonKit|block": "Схематик+",
     "{id:category}BosonKit": "Схематик+",
     "{id:group}Sensor": "Датчик",
     "{id:group}Actuator": "Исполнитель"

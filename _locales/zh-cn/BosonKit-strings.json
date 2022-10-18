@@ -55,6 +55,7 @@
     "BosonSensorDigitalWrite.BosonVoiceRecorder|block": "录音模块 (o7)",
     "BosonSensorDigitalWrite.BosonServo|block": "舵机控制模块 (o10)",
 
+    "BosonKit|block": "BosonKit",
     "{id:category}BosonKit": "BosonKit",
     "{id:group}Sensor": "传感器",
     "{id:group}Actuator": "执行器"
