@@ -12,6 +12,7 @@
         "_locales/zh-cn/BosonKit-strings.json",
         "_locales/zh-cn/BosonKit-jsdoc-strings.json",
         "_locales/ru/BosonKit-strings.json",
+        "_locales/ru/BosonKit-jsdoc-strings.json",
         "sendBuffer.asm",
         "ws2812b.ts"
     ],

@@ -1,0 +1,20 @@
+{
+    "BosonKit": "",
+    "BosonKit.bosonAnalogRead": "",
+    "BosonKit.bosonAnalogWrite": "",
+    "BosonKit.bosonDigitalRead": "",
+    "BosonKit.bosonDigitalWrite": "",
+    "BosonKit.heartrate_init": "",
+    "BosonKit.heartrate_read": "",
+    "BosonKit.M011_00184_init": "",
+    "BosonKit.M011_00184_brightness": "",
+    "BosonKit.M011_00184_ledRange": "",
+    "BosonKit.M011_00184_setIndexColor": "",
+    "BosonKit.M011_00184_showColor": "",
+    "BosonKit.M011_00184_shift": "",
+    "BosonKit.M011_00184_rotate": "",
+    "BosonKit.M011_00184_off": "",
+    "BosonKit.M011_00184_rgb": "",
+    "BosonKit.M011_00184_ledRainbow": "",
+    "BosonKit.setServoAngle": ""
+  }
