@@ -133,7 +133,7 @@ namespace BosonKit {
     //% block="analog write pin %pin to %value %Type" 
     //% group="Sensor"
     //% value.min=0 value.max=1023
-    //% weight=100
+    //% weight=90
     export function bosonAnalogWrite(pin: AnalogPin, value: number, Type: BosonSensorAnalogWrite): void {
 
         switch (Type) {
@@ -151,7 +151,7 @@ namespace BosonKit {
 
     //% block="read pin %pin %Type" 
     //% group="Sensor"
-    //% weight=100
+    //% weight=80
     export function bosonDigitalRead(pin: DigitalPin, Type: BosonSensorDigitalRead): number {
 
         let value: number = 0;
@@ -171,7 +171,7 @@ namespace BosonKit {
     //% block="read pin %pin %Type" 
     //% group="Sensor"
     //% value.min=0 value.max=1
-    //% weight=100
+    //% weight=70
     export function bosonDigitalWrite(pin: DigitalPin, value: number, Type: BosonSensorDigitalWrite): void {
 
         switch (Type) {
@@ -187,7 +187,7 @@ namespace BosonKit {
 
     //% block="init pin %pin heart rate sensor (i20)" 
     //% group="Sensor"
-    //% weight=100
+    //% weight=60
     export function heartrate_init(pin: DigitalPin): void {
 
         pins.setEvents(pin, PinEventType.Touch);
