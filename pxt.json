@@ -10,7 +10,7 @@
         "README.md",
         "BosonKit.ts",
         "_locales/zh-cn/BosonKit-strings.json",
-        "_locales/zh-cn/Boson-jsdoc-strings.json",
+        "_locales/zh-cn/BosonKit-jsdoc-strings.json",
         "_locales/ru/BosonKit-strings.json",
         "sendBuffer.asm",
         "ws2812b.ts"
