@@ -267,7 +267,7 @@ namespace BosonKit {
     }
 
     /**
-     * 起始灯号与结束灯号
+     * 起始灯号到结束灯号
      * @param from to start ,eg: "1~7"
      * @param to to end ,eg: "1~7"
      */
