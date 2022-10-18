@@ -4,7 +4,7 @@
 enum BosonSensorAnalogRead {
     //% blockId="bosonAnalogReadRotation" block="rotation module (i1)"
     BosonRotation = 1,
-    //% blockId="bosonAnalogReadLightIntensity" block="Light Sensor (i4)"
+    //% blockId="bosonAnalogReadLightIntensity" block="light intensity (i4)"
     BosonLightIntensity = 2,
     //% blockId="bosonAnalogReadSteam" block="steam sensor (i6)"
     BosonSteam = 3,
@@ -14,13 +14,13 @@ enum BosonSensorAnalogRead {
     BosonSound = 5,
     //% blockId="bosonAnalogReadGrayscale" block="grayscale sensor (i10)"
     BosonGrayscale = 6,
-    //% blockId="bosonAnalogReadTemperature" block="temperature sensor(i11)"
+    //% blockId="bosonAnalogReadTemperature" block="temperature (i11)"
     BosonTemperature = 7,
-    //% blockId="bosonAnalogReadSoilMoisture" block="soil moisture sensor (i16)"
+    //% blockId="bosonAnalogReadSoilMoisture" block="soil moisture(i16)"
     BosonSoilMoisture = 8,
     //% blockId="bosonAnalogReadHumidity" block="humidity sensor (i18)"
     BosonHumidity = 9,
-    //% blockId="bosonAnalogReadWaterproofTemperature" block="waterproof temperature sensor (i19)"
+    //% blockId="bosonAnalogReadWaterproofTemperature" block="waterproof temperature (i19)"
     BosonWaterproofTemperature = 10,
     //% blockId="bosonAnalogReadUltrasonicDistance" block="ultrasonic distance sensor (i22)"
     BosonUltrasonicDistance = 11,
@@ -105,7 +105,7 @@ namespace BosonKit {
      * @param Type to sersorType ,eg: "sersorType"
      */
 
-    //% block="read analog %Type pin %pin" 
+    //% block="analog read pin %pin %Type" 
     //% group="Sensor"
     //% weight=100
     export function bosonAnalogRead(pin: AnalogPin, Type: BosonSensorAnalogRead): number {
@@ -149,7 +149,7 @@ namespace BosonKit {
      * @param Type to sersorType ,eg: "sersorType"
      */
 
-    //% block="read pin %pin %Type" 
+    //% block="digital read pin %pin %Type" 
     //% group="Sensor"
     //% weight=80
     export function bosonDigitalRead(pin: DigitalPin, Type: BosonSensorDigitalRead): number {
@@ -168,6 +168,7 @@ namespace BosonKit {
      * @param value to value, eg: "0~1"
      * @param Type to sersorType ,eg: "sersorType"
      */
+    
     //% block="digital write pin %pin to %value %Type"
     //% group="Sensor"
     //% value.min=0 value.max=1
