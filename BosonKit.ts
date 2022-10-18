@@ -3,81 +3,81 @@
 
 enum BosonSensorAnalogRead {
     //% blockId="bosonAnalogReadRotation" block=rotation module (i1)
-    BosonRotation = "rotationSensor",
+    BosonRotation = 1,
     //% blockId="bosonAnalogReadLightIntensity" block=Light Sensor (i4)
-    BosonLightIntensity = "lightIntensity",
+    BosonLightIntensity = 2,
     //% blockId="bosonAnalogReadSteam" block=steam sensor (i6)
-    BosonSteam = "steamSensor",
+    BosonSteam = 3,
     //% blockId="bosonAnalogReadFlame" block=flame sensor (i7)
-    BosonFlame = "flameSensor",
+    BosonFlame = 4,
     //% blockId="bosonAnalogReadSound" block=sound sensor (i9)
-    BosonSound = "soundSensor",
+    BosonSound = 5,
     //% blockId="bosonAnalogReadGrayscale" block=grayscale sensor (i10)
-    BosonGrayscale = "grayscaleSensor",
+    BosonGrayscale = 6,
     //% blockId="bosonAnalogReadTemperature" block=temperature sensor(i11)
-    BosonTemperature = "temperatureSenor",
+    BosonTemperature = 7,
     //% blockId="bosonAnalogReadSoilMoisture" block=soil moisture sensor (i16)
-    BosonSoilMoisture = "soilMoistureSenor",
+    BosonSoilMoisture = 8,
     //% blockId="bosonAnalogReadHumidity" block=humidity sensor (i18)
-    BosonHumidity = "humiditySensor",
+    BosonHumidity = 9,
     //% blockId="bosonAnalogReadWaterproofTemperature" block=waterproof temperature sensor (i19)
-    BosonWaterproofTemperature = "waterproofTemperatureSenor",
+    BosonWaterproofTemperature = 10,
     //% blockId="bosonAnalogReadUltrasonicDistance" block=ultrasonic distance sensor (i22)
-    BosonUltrasonicDistance = "ultrasonicDistanceSensor",
+    BosonUltrasonicDistance = 11,
     //% blockId="bosonAnalogReadSHT30Humidity" block=SHT30 humidity (i27)
-    BosonSHT30Humidity = "humiditySht30",
+    BosonSHT30Humidity = 12,
     //% blockId="bosonAnalogReadPhV2" block=pH sensor V2 (i28)
-    BosonPhV2 = "PhV2Senor"
+    BosonPhV2 = 13
 }
 
 enum BosonSensorAnalogWrite {
     //% blockId="bosonAnalogWriteBrightLightLed" block=bright light LED (o1)
-    BosonBrightLightLed = "brightLightLed_analogWrite",
+    BosonBrightLightLed = 1,
     //% blockId="bosonAnalogWriteLed" block=LED module (o2r o2g o2b)
-    BosonLed = "ledModule_analogWrite",
+    BosonLed = 2,
     //% blockId="bosonAnalogWriteRgbStripLights" block=RGB LED strip lights(o4)
-    BosonRgbStripLights = "rgbLedStrip_analogWrite",
+    BosonRgbStripLights = 3,
     //% blockId="bosonAnalogWriteBuzzer" block=buzzer module(o5)
-    BosonBuzzer = "buzzerModule_analogWrite",
+    BosonBuzzer = 4,
     //% blockId="bosonAnalogWriteFan" block=fan module (o6)
-    BosonFan = "fanModule_analogWrite",
+    BosonFan = 5,
     //% blockId="bosonAnalogWriteMotor" block=motor control module (o9)
-    BosonMotor = "motorControlModule_analogWrite",
+    BosonMotor = 6,
     //% blockId="bosonAnalogWriteServo" block=servo control module (o10)
-    BosonServo = "servo_analogWrite"
+    BosonServo = 7
 }
 
 
 enum BosonSensorDigitalRead {
     //% blockId="bosonDigitalReadPushButton" block=push button (i2b i2r i2y)
-    BosonPushButton = "pushButton",
+    BosonPushButton = 1,
     //% blockId="bosonDigitalReadSelfLockingSwitch" block=self locking switch (i3)
-    BosonSelfLockingSwitch = "selfLockingSwitch",
+    BosonSelfLockingSwitch = 2,
     //% blockId="bosonDigitalReadTilt" block=tilt sensor (i5)
-    BosonTilt = "tiltSensor",
+    BosonTilt = 3,
     //% blockId="bosonDigitalReadTouch" block=touch sensor (i8)
-    BosonTouch = "touchSensor",
+    BosonTouch = 4,
     //% blockId="bosonDigitalReadConductivity" block=conductivity sensor (i12)
-    BosonConductivity = "conductivitySensor",
+    BosonConductivity = 5,
     //% blockId="bosonDigitalReadMotion" block=motion sensor (i13)
-    BosonMotion = "motionSensor"
+    BosonMotion = 6
 }
 
 enum BosonSensorDigitalWrite {
     //% blockId="bosonDigitalWriteBrightLightLed" block=bright light LED (o1)
-    BosonBrightLightLed = "brightLightLed_digitalWrite",
+    BosonBrightLightLed = 1,
     //% blockId="bosonDigitalWriteLed" block=LED module (o2r o2g o2b)
-    BosonLed = "ledModule_digitalWrite",
+    BosonLed = 2,
     //% blockId="bosonDigitalWriteRgbStripLights" block=RGB LED strip lights (o4)
-    BosonRgbStripLights = "RgbLedStrip_digitalWrite",
+    BosonRgbStripLights = 3,
     //% blockId="bosonDigitalWriteBuzzer" block=buzzer module (o5)
-    BosonBuzzer = "buzzerModule_digitalWrite",
+    BosonBuzzer = 4,
     //% blockId="bosonDigitalWriteFan" block=fan module (o6)
-    BosonFan = "fanModule_digitalWrite",
+    BosonFan = 5,
     //% blockId="bosonDigitalWriteVoiceRecorder" block=voice recorder (o7)
-    BosonVoiceRecorder = "voiceRecorder_digitalWrite",
+    BosonVoiceRecorder = 6,
     //% blockId="bosonDigitalWriteServo" block=servo control module (o10)
-    BosonServo = "servo_digitalWrite",
+    BosonServo = 7,
 }
 
 
