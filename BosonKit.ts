@@ -326,7 +326,6 @@ namespace BosonKit {
     //% group="Actuator"
     //% weight=60
     //% rgb.shadow="colorNumberPicker"
-    //% advanced=true
     export function M011_00184_showColor(rgb: number) {
         let r = (rgb >> 16) * (_brightness / 255);
         let g = ((rgb >> 8) & 0xFF) * (_brightness / 255);
@@ -400,6 +399,7 @@ namespace BosonKit {
     //% block="rotate pixels by %offset"
     //% group="Actuator"
     //% weight=51
+    //% advanced=true
     export function M011_00184_rotate(offset: number): void {
         let steps = ledsum
         if(offset > 0){
