@@ -1,0 +1,20 @@
+{
+    "BosonKit": "",
+    "BosonKit.bosonAnalogRead": "读取模拟类boson传感器的数值",
+    "BosonKit.bosonAnalogWrite": "向模拟类boson传感器中写入模拟量(0~1023)",
+    "BosonKit.bosonDigitalRead": "读取数字类boson传感器的数值",
+    "BosonKit.bosonDigitalWrite": "向数字类boson传感器中写入数字量(0~1)",
+    "BosonKit.heartrate_init": "初始化心率传感器",
+    "BosonKit.heartrate_read": "获取心率值(bpm)",
+    "BosonKit.M011_00184_init": "初始化RGB灯带引脚与灯的个数",
+    "BosonKit.M011_00184_brightness": "设置RGB灯的亮度",
+    "BosonKit.M011_00184_ledRange": "起始灯号与结束灯号",
+    "BosonKit.M011_00184_setIndexColor": "设置指定灯号的显示颜色",
+    "BosonKit.M011_00184_showColor": "设置所有灯号的显示颜色",
+    "BosonKit.M011_00184_shift": "设置灯带不带循环的移动",
+    "BosonKit.M011_00184_rotate": "设置灯带循环移动",
+    "BosonKit.M011_00184_off": "设置灯全灭",
+    "BosonKit.M011_00184_rgb": "自定义RGB颜色",
+    "BosonKit.M011_00184_ledRainbow": "设置灯带显示渐变色",
+    "BosonKit.setServoAngle": "设置舵机模块旋转特定的角度"
+  }
