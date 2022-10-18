@@ -1,8 +1,8 @@
 {
-    "BosonKit.bosonAnalogRead|block": "读取模拟类%Type 引脚%pin",
-    "BosonKit.bosonAnalogWrite|block": "模拟类%Type 引脚%pin写%value",
-    "BosonKit.bosonDigitalRead|block": "读取数字类%Type的值 引脚%pin",
-    "BosonKit.bosonDigitalWrite|block": "数字类%Type 引脚%pin写%value",
+    "BosonKit.bosonAnalogRead|block": "读取模拟类 引脚%pin %Type",
+    "BosonKit.bosonAnalogWrite|block": "向模拟类 引脚%pin写%value %Type",
+    "BosonKit.bosonDigitalRead|block": "读取数字类 引脚%pin %Type",
+    "BosonKit.bosonDigitalWrite|block": "向数字类 引脚%pin写%value %Type",
     
     "BosonKit.heartrate_init|block": "初始化引脚%pin心率传感器 (i20)",
     "BosonKit.heartrate_read|block": "读取心率(次/分) (i20)",
