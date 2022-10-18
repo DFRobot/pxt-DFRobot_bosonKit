@@ -56,6 +56,6 @@
     "BosonSensorDigitalWrite.BosonServo|block": "контроллера сервопривода (o10)",
     
     "{id:category}BosonKit": "Схематик+",
-    "{id:Sensor}": "Датчик",
-    "{id:Actuator}": "Исполнитель"
+    "{id:group}Sensor": "Датчик",
+    "{id:group}Actuator": "Исполнитель"
 }
