@@ -168,12 +168,11 @@ namespace BosonKit {
      * @param value to value, eg: "0~1"
      * @param Type to sersorType ,eg: "sersorType"
      */
-    //% block="read pin %pin %Type" 
+    //% block="digital write pin %pin to %value %Type"
     //% group="Sensor"
     //% value.min=0 value.max=1
     //% weight=70
     export function bosonDigitalWrite(pin: DigitalPin, value: number, Type: BosonSensorDigitalWrite): void {
-
         switch (Type) {
             case BosonSensorDigitalWrite.BosonBrightLightLed: pins.digitalWritePin(pin, value); break;
             default: pins.digitalWritePin(pin, value); break;
