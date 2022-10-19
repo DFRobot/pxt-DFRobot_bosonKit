@@ -100,7 +100,7 @@ namespace BosonKit {
 
 
     /**
-     * 读取模拟类boson传感器的数值
+     * Read value from BOSON analog sensor 
      * @param pin to pin ,eg: "pin"
      * @param Type to sersorType ,eg: "sersorType"
      */
@@ -124,7 +124,7 @@ namespace BosonKit {
     }
 
     /**
-     * 向模拟类boson传感器中写入模拟量(0~1023)
+     * Write analog value(0-1023) to BOSON analog sensor
      * @param pin to pin ,eg: "pin"
      * @param value to value, eg: "0~1023"
      * @param Type to sersorType ,eg: "sersorType"
@@ -144,7 +144,7 @@ namespace BosonKit {
     }
 
     /**
-     * 读取数字类boson传感器的数值
+     * Read value from BOSON digital sensor 
      * @param pin to pin ,eg: "pin"
      * @param Type to sersorType ,eg: "sersorType"
      */
@@ -163,7 +163,7 @@ namespace BosonKit {
     }
 
     /**
-     * 向数字类boson传感器中写入数字量(0~1)
+     * Write digital value(0/1) to BOSON digital sensor
      * @param pin to pin ,eg: "pin"
      * @param value to value, eg: "0~1"
      * @param Type to sersorType ,eg: "sersorType"
@@ -181,7 +181,7 @@ namespace BosonKit {
     }
 
     /**
-     * 初始化心率传感器
+     * Initialize heart rate sensor
      * @param pin to pin ,eg: "pin"
      */
 
@@ -217,7 +217,7 @@ namespace BosonKit {
     }
 
     /**
-     * 获取心率值(bpm)
+     * Get heart rate(bpm)
      */
 
     //% block="read heart rate (bpm) (i20)" 
@@ -233,7 +233,7 @@ namespace BosonKit {
     }
 
     /**
-     * 初始化RGB灯带引脚与灯的个数
+     * Initialize a given number of LEDs on the RGB LED strip at a specific pin
      * @param pin to pin ,eg: "pin"
      * @param num to num ,eg: "1~7"
      */
@@ -252,7 +252,7 @@ namespace BosonKit {
     }
 
     /**
-     * 设置RGB灯的亮度
+     * Set the brightness of RGB lights
      * @param brightness to brightness ,eg: "0~255"
      */
 
@@ -267,7 +267,7 @@ namespace BosonKit {
     }
 
     /**
-     * 起始灯号到结束灯号
+     * The LED positions where you wish to begin and end
      * @param from to start ,eg: "1~7"
      * @param to to end ,eg: "1~7"
      */
@@ -282,7 +282,7 @@ namespace BosonKit {
     }
 
     /**
-     * 设置指定灯号的显示颜色
+     * The designated LED shows a given color
      * @param index to index ,eg: "1~7"
      * @param color to color ,eg: "color"
      */
@@ -318,7 +318,7 @@ namespace BosonKit {
     }
 
     /**
-     * 设置所有灯号的显示颜色
+     * All LEDs show a given color
      * @param rgb to rgb ,eg: "rgb"
      */
 
@@ -342,7 +342,7 @@ namespace BosonKit {
     }
 
     /**
-     * 设置灯带不带循环的移动
+     * Shift LEDs forward and clear with zeros
      * @param offset to offset ,eg: "offset"
      */
 
@@ -392,7 +392,7 @@ namespace BosonKit {
     }
 
     /**
-     * 设置灯带循环移动
+     * Rotate LEDs forward
      * @param offset to offset ,eg: "offset"
      */
 
@@ -456,7 +456,7 @@ namespace BosonKit {
     }
 
     /**
-     * 设置灯全灭
+     * Turn off all LEDs
      */
 
     //% block="clear all"
@@ -468,7 +468,7 @@ namespace BosonKit {
     }
 
     /**
-     * 自定义RGB颜色
+     * Convert red, green and blue channels into a RGB color
      * @param red to red ,eg: "0~255"
      * @param green to green ,eg: "0~255"
      * @param blue to blue ,eg: "0~255"
@@ -487,7 +487,7 @@ namespace BosonKit {
     }
 
     /**
-     * 设置灯带显示渐变色
+     * LED strip shows gradient color
      * @param start to start ,eg: "1~7"
      * @param end to end ,eg: "1~7"
      * @param startHue to startHue ,eg: "0~360"
@@ -576,7 +576,7 @@ namespace BosonKit {
     }
 
     /**
-     * 设置舵机模块旋转特定的角度
+     * Servo rotates to a specific angle
      * @param pin to pin ,eg: "pin"
      * @param angle to angle ,eg: "0~180"
      */
