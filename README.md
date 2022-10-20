@@ -2,7 +2,7 @@
 
 [DFRobot Boson Kit is a set of modularized electronic building blocks designed for young inventors and STEM educators.Boson platform has more than 50 different modules, including sensors, actuators, logic gates and more.Boson modules are magnetic. They can stick on a whiteboard, fridge, or other magnetic objects In a snap.Each boson module comes with mounting plates that compatible with Lego blocks and screws.](https://www.dfrobot.com/boson.html)
 
-模块资料地址：https://wiki.dfrobot.com/Boson_Kit_Product_List 
+[模块资料地址](https://wiki.dfrobot.com/Boson_Kit_Product_List)
 
 ## Basic usage
 
@@ -67,9 +67,9 @@ basic.forever(function () {
 })
 
 ```
-```
-以上的方法同时也适用其他的模拟传感器。
-```
+
+**以上的方法同时也适用其他的模拟传感器。**
+
 * 7.读取按钮模块的值，并通过串口将值打印出来。
 
 ```blocks
