@@ -80,7 +80,7 @@ basic.forever(function () {
 
 ```
 * 8.向P1写入高电平，驱动P1脚上的风扇。
-* 
+
 ```blocks
 
 basic.forever(function () {
