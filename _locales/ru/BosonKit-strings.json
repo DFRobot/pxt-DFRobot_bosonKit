@@ -1,7 +1,7 @@
 {
-    "BosonKit.bosonAnalogRead|block": "читать контакт %pin %Type",
+    "BosonKit.bosonAnalogRead|block": "читать аналоговый сигнал с контакта %pin %Type",
     "BosonKit.bosonAnalogWrite|block": "записать аналоговый сигнал в контакт %pin значение %value %Type",
-    "BosonKit.bosonDigitalRead|block": "читать контакт %pin %Type",
+    "BosonKit.bosonDigitalRead|block": "читать цифровой сигнал с контакта %pin %Type",
     "BosonKit.bosonDigitalWrite|block": "записать цифровой сигнал в контакт %pin значение %value %Type",
     
     "BosonKit.heartrate_init|block": "инициализировать на контакт%pin датчик сердечного ритма (i20)",
