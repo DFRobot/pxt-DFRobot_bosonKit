@@ -6,7 +6,7 @@
 
 ## Basic usage
 
-* 1. Reads values from rotation encoder and serial prints them.
+* 1.Reads values from rotation encoder and serial prints them.
 
 ```blocks
 
@@ -15,7 +15,7 @@ basic.forever(function () {
 })
 
 ```
-* 2. Reads values from light sensor and serial prints them every second.
+* 2.Reads values from light sensor and serial prints them every second.
 
 ```blocks
 
@@ -25,7 +25,7 @@ basic.forever(function () {
 })
 
 ```
-* 3. Reads values from steam sensor and serial prints them every second.
+* 3.Reads values from steam sensor and serial prints them every second.
 
 ```blocks
 
@@ -35,7 +35,7 @@ basic.forever(function () {
 })
 
 ```
-* 4. Reads values from flame sensor and serial prints them every second.
+* 4.Reads values from flame sensor and serial prints them every second.
 
 ```blocks
 basic.forever(function () {
@@ -44,7 +44,7 @@ basic.forever(function () {
 })
 
 ```
-* 5. Reads values from sound sensor and serial prints them every second.
+* 5.Reads values from sound sensor and serial prints them every second.
 
 ```blocks
 
@@ -54,7 +54,7 @@ basic.forever(function () {
 })
 
 ```
-* 6. Reads values from multiple analog sensors simultaneously and serial prints them every second.
+* 6.Reads values from multiple analog sensors simultaneously and serial prints them every second.
 
 ```blocks
 
@@ -70,7 +70,7 @@ basic.forever(function () {
 
 **The method above is also applicable to other analog sensors.**
 
-* 7. Reads values of button module and serial prints them.
+* 7.Reads values of button module and serial prints them.
 
 ```blocks
 
@@ -79,7 +79,7 @@ basic.forever(function () {
 })
 
 ```
-* 8. Write high level to P1 to drive the fan on P1.
+* 8.Write high level to P1 to drive the fan on P1.
 
 ```blocks
 
@@ -89,7 +89,7 @@ basic.forever(function () {
 
 ```
 
-* 9. When the button on pin P0 is pressed, the color LED strip on P1 will be lit up, otherwise, it is off.
+* 9.When the button on pin P0 is pressed, the color LED strip on P1 will be lit up, otherwise, it is off.
 
 ```blocks
 
@@ -102,7 +102,7 @@ basic.forever(function () {
 })
 
 ```
-* 10. Write a value to the fan module on P0 port to drive it to spin.
+* 10.Write a value to the fan module on P0 port to drive it to spin.
 
 ```blocks
 
@@ -112,7 +112,7 @@ basic.forever(function () {
 
 ```
 
-* 11. Rotate the knob module on pin P0; when it's rotated to the maximum value, the bright LED module on pin P8 shows the brightest light.
+* 11.Rotate the knob module on pin P0; when it's rotated to the maximum value, the bright LED module on pin P8 shows the brightest light.
 
 ```blocks
 
@@ -122,7 +122,7 @@ basic.forever(function () {
 
 ```
 
-* 12. Read resting heart rate values and serial prints them.
+* 12.Read resting heart rate values and serial prints them.
 
 ```blocks
 
@@ -133,7 +133,7 @@ basic.forever(function () {
 
 ```
 
-* 13. Initialize RGB LED strip, and set it as lighting up 7 LEDs and turning off them all after 5s.
+* 13.Initialize RGB LED strip, and set it as lighting up 7 LEDs and turning off them all after 5s.
 
 ```blocks
 
@@ -144,7 +144,7 @@ BosonKit.M011_00184_off()
 
 ```
 
-* 14. After initializing RGB LED strip, let the 1st and 2nd LEDs show red light, the 3rd and 4th LEDs show green light, and the 5th, 6th and 7th LEDs show blue light.
+* 14.After initializing RGB LED strip, let the 1st and 2nd LEDs show red light, the 3rd and 4th LEDs show green light, and the 5th, 6th and 7th LEDs show blue light.
 
 ```blocks
 
@@ -157,7 +157,7 @@ basic.forever(function () {
 
 ```
 
-* 15. Set brightness of RGB LED to 50.
+* 15.Set brightness of RGB LED to 50.
 
 ```blocks
 
@@ -169,7 +169,7 @@ basic.forever(function () {
 
 ```
 
-* 17. Initialize servo angle to 0 degrees, then let servo rotate to the position of 90 degrees.
+* 16.Initialize servo angle to 0 degrees, then let servo rotate to the position of 90 degrees.
 
 ```blocks
 
