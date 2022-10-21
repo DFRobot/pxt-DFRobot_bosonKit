@@ -2,11 +2,11 @@
 
 [DFRobot Boson Kit is a set of modularized electronic building blocks designed for young inventors and STEM educators.Boson platform has more than 50 different modules, including sensors, actuators, logic gates and more.Boson modules are magnetic. They can stick on a whiteboard, fridge, or other magnetic objects In a snap.Each boson module comes with mounting plates that compatible with Lego blocks and screws.](https://www.dfrobot.com/boson.html)
 
-[模块资料地址](https://wiki.dfrobot.com/Boson_Kit_Product_List)
+[Module Document Address](https://wiki.dfrobot.com/Boson_Kit_Product_List)
 
 ## Basic usage
 
-* 1.读取旋转编码器的值，并通过串口将值打印出来。
+* 1. Reads values of rotation encoder and serial prints them.
 
 ```blocks
 
@@ -15,7 +15,7 @@ basic.forever(function () {
 })
 
 ```
-* 2.读取光线传感器的值，并每隔一秒通过串口将值打印出来。
+* 2. Reads values of light sensor and serial prints them every second.
 
 ```blocks
 
@@ -25,7 +25,7 @@ basic.forever(function () {
 })
 
 ```
-* 3.读取水分传感器的值，并每隔一秒通过串口将值打印出来。
+* 3. Reads values of steam sensor and serial prints them every second.
 
 ```blocks
 
@@ -35,7 +35,7 @@ basic.forever(function () {
 })
 
 ```
-* 4.读取火焰传感器的值，并每隔一秒通过串口将值打印出来。
+* 4. Reads values of flame sensor and serial prints them every second.
 
 ```blocks
 basic.forever(function () {
@@ -44,7 +44,7 @@ basic.forever(function () {
 })
 
 ```
-* 5.读取火焰传感器的值，并每隔一秒通过串口将值打印出来。
+* 5. Reads values of sound sensor and serial prints them every second.
 
 ```blocks
 
@@ -54,7 +54,7 @@ basic.forever(function () {
 })
 
 ```
-* 6.同时读取多个模拟传感器的值，并每隔一秒通过串口将值打印出来。
+* 6. Reads values of multiple analog sensors simultaneously and serial prints them every second.
 
 ```blocks
 
@@ -68,9 +68,9 @@ basic.forever(function () {
 
 ```
 
-**以上的方法同时也适用其他的模拟传感器。**
+**The method above is also applicable to other analog sensors.**
 
-* 7.读取按钮模块的值，并通过串口将值打印出来。
+* 7. Reads values of button module and serial prints them.
 
 ```blocks
 
@@ -79,17 +79,17 @@ basic.forever(function () {
 })
 
 ```
-* 8.向P1写入高电平，驱动P1脚上的风扇。
+* 8. Write high level to P1 to drive the fan on P1.
 
 ```blocks
 
 basic.forever(function () {
-    BosonKit.bosonDigitalWrite(DigitalPin.P1, 1, BosonSensorDigitalWrite.BosonFan)
+    BosonKit.bosonDigitalWrite(DigitalPin.P1, 1, BosonSensorDigitalWrite.BosoFan)
 })
 
 ```
 
-* 9.当P0引脚上的按键被按下，就点亮P1引脚上的彩色灯带，否则彩色灯带熄灭。
+* 9. When the button on pin P0 is pressed, the color LED strip on P1 will be lit up, otherwise, it is off.
 
 ```blocks
 
@@ -102,7 +102,7 @@ basic.forever(function () {
 })
 
 ```
-* 10.向P0口的风扇模块写入一个值，驱动它转起来。
+* 10. Write a value to the fan module on P0 port to drive it to spin.
 
 ```blocks
 
@@ -112,7 +112,7 @@ basic.forever(function () {
 
 ```
 
-* 11.旋转P0引脚上的旋钮模块，当它旋转到最大值时，P8引脚上的高亮模块最亮。
+* 11. Rotate the knob module on pin P0; when it's rotated to the maximum value, the bright LED module on pin P8 shows the brightest light.
 
 ```blocks
 
@@ -122,7 +122,7 @@ basic.forever(function () {
 
 ```
 
-* 12.读取静态心率值，并通过串口将值打印出来。
+* 12. Read resting heart rate values and serial prints them.
 
 ```blocks
 
@@ -133,7 +133,7 @@ basic.forever(function () {
 
 ```
 
-* 13.初始化RGB灯带，并设置点亮7颗灯，点亮5秒后，熄灭所有的灯。
+* 13. Initialize RGB LED strip, and set it as lighting up 7 LEDs and turning off them all after 5s.
 
 ```blocks
 
@@ -144,7 +144,7 @@ BosonKit.M011_00184_off()
 
 ```
 
-* 14.初始化RGB灯带后，让第1，第2颗灯显示红色，第3,4颗灯显示绿色，第5,6,7颗灯显示蓝色。
+* 14. After initializing RGB LED strip, let the 1st and 2nd LEDs show red light, the 3rd and 4th LEDs show green light, and the 5th, 6th and 7th LEDs show blue light.
 
 ```blocks
 
@@ -157,7 +157,7 @@ basic.forever(function () {
 
 ```
 
-* 15.设置RGB灯的亮度为50.
+* 15. Set brightness of RGB LED to 50.
 
 ```blocks
 
@@ -169,7 +169,7 @@ basic.forever(function () {
 
 ```
 
-* 17.首先初始化舵机的角度为0度，然后在让舵机的角度转动到90度的位置。
+* 17. Initialize servo angle to 0 degrees, then let servo rotate to the position of 90 degrees.
 
 ```blocks
 
