@@ -6,7 +6,7 @@
 
 ## Basic usage
 
-* 1. Reads values of rotation encoder and serial prints them.
+* 1. Reads values from rotation encoder and serial prints them.
 
 ```blocks
 
@@ -15,7 +15,7 @@ basic.forever(function () {
 })
 
 ```
-* 2. Reads values of light sensor and serial prints them every second.
+* 2. Reads values from light sensor and serial prints them every second.
 
 ```blocks
 
@@ -25,7 +25,7 @@ basic.forever(function () {
 })
 
 ```
-* 3. Reads values of steam sensor and serial prints them every second.
+* 3. Reads values from steam sensor and serial prints them every second.
 
 ```blocks
 
@@ -35,7 +35,7 @@ basic.forever(function () {
 })
 
 ```
-* 4. Reads values of flame sensor and serial prints them every second.
+* 4. Reads values from flame sensor and serial prints them every second.
 
 ```blocks
 basic.forever(function () {
@@ -44,7 +44,7 @@ basic.forever(function () {
 })
 
 ```
-* 5. Reads values of sound sensor and serial prints them every second.
+* 5. Reads values from sound sensor and serial prints them every second.
 
 ```blocks
 
@@ -54,7 +54,7 @@ basic.forever(function () {
 })
 
 ```
-* 6. Reads values of multiple analog sensors simultaneously and serial prints them every second.
+* 6. Reads values from multiple analog sensors simultaneously and serial prints them every second.
 
 ```blocks
 
