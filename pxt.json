@@ -1,6 +1,6 @@
 {
     "name": "bosonKit",
-    "version": "4.0.4",
+    "version": "4.0.5",
     "description": "DFRobot Boson Kit is a set of coding-free electronic building blocks for young inventors, STEM educators and tinkerers.",
     "license": "MIT",
     "dependencies": {
