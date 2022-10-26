@@ -12,7 +12,7 @@
 namespace bosonKit {
 
 
-    enum BosonSensorAnalogRead {
+    export enum BosonSensorAnalogRead {
         //% blockId="bosonAnalogReadRotation" block="rotation module (i1)"
         BosonRotation = 1,
         //% blockId="bosonAnalogReadLightIntensity" block="light intensity (i4)"
@@ -41,7 +41,7 @@ namespace bosonKit {
         BosonV2Ph = 13
     }
     
-    enum BosonSensorAnalogWrite {
+    export enum BosonSensorAnalogWrite {
         //% blockId="bosonAnalogWriteBrightLightLed" block="bright light LED (o1)"
         BosonBrightLightLed = 1,
         //% blockId="bosonAnalogWriteLed" block="LED module (o2r o2g o2b)"
@@ -59,7 +59,7 @@ namespace bosonKit {
     }
     
     
-    enum BosonSensorDigitalRead {
+    export enum BosonSensorDigitalRead {
         //% blockId="bosonDigitalReadPushButton" block="push button (i2b i2r i2y)"
         BosonPushButton = 1,
         //% blockId="bosonDigitalReadSelfLockingSwitch" block="self locking switch (i3)"
@@ -74,7 +74,7 @@ namespace bosonKit {
         BosonMotion = 6
     }
     
-    enum BosonSensorDigitalWrite {
+    export enum BosonSensorDigitalWrite {
         //% blockId="bosonDigitalWriteBrightLightLed" block="bright light LED (o1)"
         BosonBrightLightLed = 1,
         //% blockId="bosonDigitalWriteLed" block="LED module (o2r o2g o2b)"
