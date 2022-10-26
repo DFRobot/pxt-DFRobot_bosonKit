@@ -8,11 +8,6 @@
     },
     "files": [
         "README.md",
-        "bosonKit.ts",
-        "_locales/zh-cn/bosonKit-strings.json",
-        "_locales/zh-cn/bosonKit-jsdoc-strings.json",
-        "_locales/ru/bosonKit-strings.json",
-        "_locales/ru/bosonKit-jsdoc-strings.json",
         "sendBuffer.asm",
         "ws2812b.ts"
     ],
