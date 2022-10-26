@@ -27,7 +27,7 @@ enum BosonSensorAnalogRead {
     //% blockId="bosonAnalogReadSHT30Humidity" block="SHT30 humidity (i27)"
     BosonSHT30Humidity = 12,
     //% blockId="bosonAnalogReadPhV2" block="pH sensor V2 (i28)"
-    BosonPhV2 = 13
+    BosonV2Ph = 13
 }
 
 enum BosonSensorAnalogWrite {
@@ -83,10 +83,10 @@ enum BosonSensorDigitalWrite {
 
 
 
-//% block="BosonKit"
+//% block="bosonKit"
 //% weight=100 color=#0fbc11 icon="\uf0b2"
 //% groups="['Sensor', 'Actuator']"
-namespace BosonKit {
+namespace bosonKit {
 
     let beattime1 = 0;
     let beattime2 = 0;
@@ -102,22 +102,22 @@ namespace BosonKit {
     /**
      * Read value from BOSON analog sensor 
      * @param pin to pin ,eg: "pin"
-     * @param Type to sersorType ,eg: "sersorType"
+     * @param type to type ,eg: "BosonSensorAnalogRead.BosonTemperature"
      */
 
-    //% block="analog read pin %pin %Type" 
+    //% block="analog read pin %pin %type" 
     //% group="Sensor"
     //% weight=100
-    export function bosonAnalogRead(pin: AnalogPin, Type: BosonSensorAnalogRead): number {
+    export function bosonAnalogRead(pin: AnalogPin, type: BosonSensorAnalogRead): number {
 
         let value: number = 0;
-        switch (Type) {
-            case BosonSensorAnalogRead.BosonTemperature: value = temperatureSenor(pin); break;
+        switch (type) {
+            case BosonSensorAnalogRead.BosonTemperature: value = temperatureSensor(pin); break;
             case BosonSensorAnalogRead.BosonHumidity: value = humiditySensor(pin); break;
-            case BosonSensorAnalogRead.BosonWaterproofTemperature: value = waterproofTemperatureSenor(pin); break;
+            case BosonSensorAnalogRead.BosonWaterproofTemperature: value = waterproofTemperatureSensor(pin); break;
             case BosonSensorAnalogRead.BosonUltrasonicDistance: value = ultrasonicDistanceSensor(pin); break;
             case BosonSensorAnalogRead.BosonSHT30Humidity: value = humiditySht30(pin); break;
-            case BosonSensorAnalogRead.BosonPhV2: value = PhV2Senor(pin); break;
+            case BosonSensorAnalogRead.BosonV2Ph: value = V2pHSensor(pin); break;
             default: value = pins.analogReadPin(pin); break;
         }
         return value;
@@ -127,16 +127,16 @@ namespace BosonKit {
      * Write analog value(0-1023) to BOSON analog sensor
      * @param pin to pin ,eg: "pin"
      * @param value to value, eg: "0~1023"
-     * @param Type to sersorType ,eg: "sersorType"
+     * @param type to type ,eg: "BosonSensorAnalogWrite.BosonMotor"
      */
 
-    //% block="analog write pin %pin to %value %Type" 
+    //% block="analog write pin %pin to %value %type" 
     //% group="Sensor"
     //% value.min=0 value.max=1023
     //% weight=90
-    export function bosonAnalogWrite(pin: AnalogPin, value: number, Type: BosonSensorAnalogWrite): void {
+    export function bosonAnalogWrite(pin: AnalogPin, value: number, type: BosonSensorAnalogWrite): void {
 
-        switch (Type) {
+        switch (type) {
             case BosonSensorAnalogWrite.BosonMotor: if (value > 1000) {value = 1000;} pins.analogWritePin(pin, value); break;
             default: pins.analogWritePin(pin, value); break;
         }
@@ -146,16 +146,16 @@ namespace BosonKit {
     /**
      * Read value from BOSON digital sensor 
      * @param pin to pin ,eg: "pin"
-     * @param Type to sersorType ,eg: "sersorType"
+     * @param type to type ,eg: "BosonSensorDigitalRead.BosonConductivity"
      */
 
-    //% block="digital read pin %pin %Type" 
+    //% block="digital read pin %pin %type" 
     //% group="Sensor"
     //% weight=80
-    export function bosonDigitalRead(pin: DigitalPin, Type: BosonSensorDigitalRead): number {
+    export function bosonDigitalRead(pin: DigitalPin, type: BosonSensorDigitalRead): number {
 
         let value: number = 0;
-        switch (Type) {
+        switch (type) {
             case BosonSensorDigitalRead.BosonConductivity: value = pins.digitalReadPin(pin); break;
             default: value = pins.digitalReadPin(pin); break;
         }
@@ -166,15 +166,15 @@ namespace BosonKit {
      * Write digital value(0/1) to BOSON digital sensor
      * @param pin to pin ,eg: "pin"
      * @param value to value, eg: "0~1"
-     * @param Type to sersorType ,eg: "sersorType"
+     * @param type to type ,eg: "BosonSensorDigitalWrite.BosonBrightLightLed"
      */
     
-    //% block="digital write pin %pin to %value %Type"
+    //% block="digital write pin %pin to %value %type"
     //% group="Sensor"
     //% value.min=0 value.max=1
     //% weight=70
-    export function bosonDigitalWrite(pin: DigitalPin, value: number, Type: BosonSensorDigitalWrite): void {
-        switch (Type) {
+    export function bosonDigitalWrite(pin: DigitalPin, value: number, type: BosonSensorDigitalWrite): void {
+        switch (type) {
             case BosonSensorDigitalWrite.BosonBrightLightLed: pins.digitalWritePin(pin, value); break;
             default: pins.digitalWritePin(pin, value); break;
         }
@@ -589,19 +589,19 @@ namespace BosonKit {
         pins.servoWritePin(pin, angle)
     }
 
-    function temperatureSenor(pin: AnalogPin): number {
+    function temperatureSensor(pin: AnalogPin): number {
 
         let value: number = pins.analogReadPin(pin);
         return Math.round((100 * value * (3.3 / 10.24)) * 3.3 / 10.24) / 100;
     }
 
-    export function humiditySensor(pin: AnalogPin): number {
+    function humiditySensor(pin: AnalogPin): number {
 
         let value: number = pins.analogReadPin(pin);
         return Math.round(value / 10);
     }
 
-    export function waterproofTemperatureSenor(pin: AnalogPin): number {
+    function waterproofTemperatureSensor(pin: AnalogPin): number {
 
         let value: number = pins.analogReadPin(pin);
         let n_Vref: number = 3.3;
@@ -616,19 +616,19 @@ namespace BosonKit {
 
     }
 
-    export function ultrasonicDistanceSensor(pin: AnalogPin): number {
+    function ultrasonicDistanceSensor(pin: AnalogPin): number {
 
         let value: number = Math.round(10 * pins.analogReadPin(pin) * (100 / 1023)) / 10;
         return value;
     }
 
-    export function humiditySht30(pin: AnalogPin): number {
+    function humiditySht30(pin: AnalogPin): number {
 
         let value: number = pins.analogReadPin(pin);
         return Math.round(value / 10);
     }
 
-    export function PhV2Senor(pin: AnalogPin): number {
+    function V2pHSensor(pin: AnalogPin): number {
 
         let map: number = 1024;
         let aref: number = 3300;

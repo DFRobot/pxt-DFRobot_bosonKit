@@ -1,18 +1,18 @@
 {
-    "name": "BosonKit",
+    "name": "bosonKit",
     "version": "4.0.2",
-    "description": "",
+    "description": "DFRobot Boson Kit is a set of coding-free electronic building blocks for young inventors, STEM educators and tinkerers.",
     "license": "MIT",
     "dependencies": {
         "core": "*"
     },
     "files": [
         "README.md",
-        "BosonKit.ts",
-        "_locales/zh-cn/BosonKit-strings.json",
-        "_locales/zh-cn/BosonKit-jsdoc-strings.json",
-        "_locales/ru/BosonKit-strings.json",
-        "_locales/ru/BosonKit-jsdoc-strings.json",
+        "bosonKit.ts",
+        "_locales/zh-cn/bosonKit-strings.json",
+        "_locales/zh-cn/bosonKit-jsdoc-strings.json",
+        "_locales/ru/bosonKit-strings.json",
+        "_locales/ru/bosonKit-jsdoc-strings.json",
         "sendBuffer.asm",
         "ws2812b.ts"
     ],
