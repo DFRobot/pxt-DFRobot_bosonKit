@@ -11,7 +11,7 @@
 ```blocks
 
 basic.forever(function () {
-    serial.writeValue("rotation:", bosonKit.bosonAnalogRead(AnalogPin.P0, BosonSensorAnalogRead.BosonRotation))
+    serial.writeValue("rotation:", bosonKit.bosonAnalogRead(AnalogPin.P0, bosonKit.BosonSensorAnalogRead.BosonRotation))
 })
 
 ```
@@ -20,7 +20,7 @@ basic.forever(function () {
 ```blocks
 
 basic.forever(function () {
-    serial.writeValue("light_intensity:", bosonKit.bosonAnalogRead(AnalogPin.P0, BosonSensorAnalogRead.BosonLightIntensity))
+    serial.writeValue("light_intensity:", bosonKit.bosonAnalogRead(AnalogPin.P0, bosonKit.BosonSensorAnalogRead.BosonLightIntensity))
     basic.pause(1000)
 })
 
@@ -30,7 +30,7 @@ basic.forever(function () {
 ```blocks
 
    basic.forever(function () {
-    serial.writeValue("steam:", bosonKit.bosonAnalogRead(AnalogPin.P0, BosonSensorAnalogRead.BosonSteam))
+    serial.writeValue("steam:", bosonKit.bosonAnalogRead(AnalogPin.P0, bosonKit.BosonSensorAnalogRead.BosonSteam))
     basic.pause(1000)
 })
 
@@ -39,7 +39,7 @@ basic.forever(function () {
 
 ```blocks
 basic.forever(function () {
-    serial.writeValue("flame:", bosonKit.bosonAnalogRead(AnalogPin.P0, BosonSensorAnalogRead.BosonFlame))
+    serial.writeValue("flame:", bosonKit.bosonAnalogRead(AnalogPin.P0, bosonKit.BosonSensorAnalogRead.BosonFlame))
     basic.pause(1000)
 })
 
@@ -49,7 +49,7 @@ basic.forever(function () {
 ```blocks
 
   basic.forever(function () {
-    serial.writeValue("sound:", bosonKit.bosonAnalogRead(AnalogPin.P0, BosonSensorAnalogRead.BosonSound))
+    serial.writeValue("sound:", bosonKit.bosonAnalogRead(AnalogPin.P0, bosonKit.BosonSensorAnalogRead.BosonSound))
     basic.pause(1000)
 })
 
@@ -59,10 +59,10 @@ basic.forever(function () {
 ```blocks
 
 basic.forever(function () {
-    serial.writeValue("grayscale:", bosonKit.bosonAnalogRead(AnalogPin.P0, BosonSensorAnalogRead.BosonGrayscale))
-    serial.writeValue("temp:", bosonKit.bosonAnalogRead(AnalogPin.P1, BosonSensorAnalogRead.BosonTemperature))
-    serial.writeValue("soil:", bosonKit.bosonAnalogRead(AnalogPin.P2, BosonSensorAnalogRead.BosonSoilMoisture))
-    serial.writeValue("humidity:", bosonKit.bosonAnalogRead(AnalogPin.P3, BosonSensorAnalogRead.BosonHumidity))
+    serial.writeValue("grayscale:", bosonKit.bosonAnalogRead(AnalogPin.P0, bosonKit.BosonSensorAnalogRead.BosonGrayscale))
+    serial.writeValue("temp:", bosonKit.bosonAnalogRead(AnalogPin.P1, bosonKit.BosonSensorAnalogRead.BosonTemperature))
+    serial.writeValue("soil:", bosonKit.bosonAnalogRead(AnalogPin.P2, bosonKit.BosonSensorAnalogRead.BosonSoilMoisture))
+    serial.writeValue("humidity:", bosonKit.bosonAnalogRead(AnalogPin.P3, bosonKit.BosonSensorAnalogRead.BosonHumidity))
     basic.pause(1000)
 })
 
@@ -75,7 +75,7 @@ basic.forever(function () {
 ```blocks
 
  basic.forever(function () {
-    serial.writeValue("button", bosonKit.bosonDigitalRead(DigitalPin.P0, BosonSensorDigitalRead.BosonPushButton))
+    serial.writeValue("button", bosonKit.bosonDigitalRead(DigitalPin.P0, bosonKit.BosonSensorDigitalRead.BosonPushButton))
 })
 
 ```
@@ -84,7 +84,7 @@ basic.forever(function () {
 ```blocks
 
 basic.forever(function () {
-    bosonKit.bosonDigitalWrite(DigitalPin.P1, 1, BosonSensorDigitalWrite.BosoFan)
+    bosonKit.bosonDigitalWrite(DigitalPin.P1, 1, bosonKit.BosonSensorDigitalWrite.BosoFan)
 })
 
 ```
@@ -94,10 +94,10 @@ basic.forever(function () {
 ```blocks
 
 basic.forever(function () {
-    if (bosonKit.bosonDigitalRead(DigitalPin.P0, BosonSensorDigitalRead.BosonPushButton) == 1) {
-        bosonKit.bosonDigitalWrite(DigitalPin.P1, 1, BosonSensorDigitalWrite.BosonBrightLightLed)
+    if (bosonKit.bosonDigitalRead(DigitalPin.P0, bosonKit.BosonSensorDigitalRead.BosonPushButton) == 1) {
+        bosonKit.bosonDigitalWrite(DigitalPin.P1, 1, bosonKit.BosonSensorDigitalWrite.BosonBrightLightLed)
     } else {
-        bosonKit.bosonDigitalWrite(DigitalPin.P1, 0, BosonSensorDigitalWrite.BosonBrightLightLed)
+        bosonKit.bosonDigitalWrite(DigitalPin.P1, 0, bosonKit.BosonSensorDigitalWrite.BosonBrightLightLed)
     }
 })
 
@@ -107,7 +107,7 @@ basic.forever(function () {
 ```blocks
 
 basic.forever(function () {
-    bosonKit.bosonAnalogWrite(AnalogPin.P0, 429, BosonSensorAnalogWrite.BosonFan)
+    bosonKit.bosonAnalogWrite(AnalogPin.P0, 429, bosonKit.BosonSensorAnalogWrite.BosonFan)
 })
 
 ```
@@ -117,7 +117,7 @@ basic.forever(function () {
 ```blocks
 
 basic.forever(function () {
-    bosonKit.bosonAnalogWrite(AnalogPin.P8, Math.map(bosonKit.bosonAnalogRead(AnalogPin.P0, BosonSensorAnalogRead.BosonRotation), 0, 1023, 0, 1023), BosonSensorAnalogWrite.BosonBrightLightLed)
+    bosonKit.bosonAnalogWrite(AnalogPin.P8, Math.map(bosonKit.bosonAnalogRead(AnalogPin.P0, bosonKit.BosonSensorAnalogRead.BosonRotation), 0, 1023, 0, 1023), bosonKit.BosonSensorAnalogWrite.BosonBrightLightLed)
 })
 
 ```
@@ -126,9 +126,9 @@ basic.forever(function () {
 
 ```blocks
 
-bosonKit.heartrate_init(DigitalPin.P0)
+bosonKit.heartrateInit(DigitalPin.P0)
 basic.forever(function () {
-    serial.writeValue("heartrate:", bosonKit.heartrate_read())
+    serial.writeValue("heartrate:", bosonKit.heartrateRead())
 })
 
 ```
