@@ -137,10 +137,10 @@ basic.forever(function () {
 
 ```blocks
 
-bosonKit.M011_00184_init(DigitalPin.P0, 7)
-bosonKit.M011_00184_showColor(0xff0000)
+bosonKit.m01100184Init(DigitalPin.P0, 7)
+bosonKit.m01100184ShowColor(0xff0000)
 basic.pause(5000)
-bosonKit.M011_00184_off()
+bosonKit.m01100184Off()
 
 ```
 
@@ -148,11 +148,11 @@ bosonKit.M011_00184_off()
 
 ```blocks
 
-bosonKit.M011_00184_init(DigitalPin.P0, 7)
+bosonKit.m01100184Init(DigitalPin.P0, 7)
 basic.forever(function () {
-    bosonKit.M011_00184_setIndexColor(bosonKit.M011_00184_ledRange(1, 2), 0xff0000)
-    bosonKit.M011_00184_setIndexColor(bosonKit.M011_00184_ledRange(3, 4), 0x00ff00)
-    bosonKit.M011_00184_setIndexColor(bosonKit.M011_00184_ledRange(5, 7), 0x0000ff)
+    bosonKit.m01100184SetIndexColor(bosonKit.m01100184LedRange(1, 2), 0xff0000)
+    bosonKit.m01100184SetIndexColor(bosonKit.m01100184LedRange(3, 4), 0x00ff00)
+    bosonKit.m01100184SetIndexColor(bosonKit.m01100184LedRange(5, 7), 0x0000ff)
 })
 
 ```
@@ -161,10 +161,10 @@ basic.forever(function () {
 
 ```blocks
 
-bosonKit.M011_00184_init(DigitalPin.P0, 7)
-bosonKit.M011_00184_brightness(50)
+bosonKit.m01100184Init(DigitalPin.P0, 7)
+bosonKit.m01100184Brightness(50)
 basic.forever(function () {
-    bosonKit.M011_00184_showColor(0xff0000)
+    bosonKit.m01100184ShowColor(0xff0000)
 })
 
 ```
