@@ -4,7 +4,8 @@
     "description": "DFRobot Boson Kit is a set of coding-free electronic building blocks for young inventors, STEM educators and tinkerers.",
     "license": "MIT",
     "dependencies": {
-        "core": "*"
+        "core": "*",
+        "ws2812b": "github:microsoft/pxt-ws2812b#v0.1.2"
     },
     "files": [
         "README.md",
@@ -12,9 +13,7 @@
         "_locales/zh-cn/bosonKit-strings.json",
         "_locales/zh-cn/bosonKit-jsdoc-strings.json",
         "_locales/ru/bosonKit-strings.json",
-        "_locales/ru/bosonKit-jsdoc-strings.json",
-        "sendBuffer.asm",
-        "ws2812b.ts"
+        "_locales/ru/bosonKit-jsdoc-strings.json"
     ],
     "testFiles": [
         "test.ts"
