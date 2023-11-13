@@ -10,6 +10,7 @@
     "files": [
         "README.md",
         "bosonKit.ts",
+        "obloq.cpp",
         "_locales/zh-cn/bosonKit-strings.json",
         "_locales/zh-cn/bosonKit-jsdoc-strings.json",
         "_locales/ru/bosonKit-strings.json",
