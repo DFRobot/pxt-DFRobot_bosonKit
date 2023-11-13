@@ -14,13 +14,14 @@
         "_locales/zh-cn/bosonKit-strings.json",
         "_locales/zh-cn/bosonKit-jsdoc-strings.json",
         "_locales/ru/bosonKit-strings.json",
-        "_locales/ru/bosonKit-jsdoc-strings.json"
+        "_locales/ru/bosonKit-jsdoc-strings.json",
+        "main.py"
     ],
     "testFiles": [
         "test.ts"
     ],
     "targetVersions": {
-        "target": "5.0.12",
+        "target": "6.0.22",
         "targetId": "microbit"
     },
     "supportedTargets": [

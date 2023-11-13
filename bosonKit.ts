@@ -693,7 +693,7 @@ namespace bosonKit {
     */
 
     //% blockId=WiFi_IoT_UART_WIFI_setup
-    //% block="Wi-Fi configure|Pin set:|receiving data (green wire): %receive|sending data (blue wire): %send|Wi-Fi:|name: %ssid|password: %ssid|start connection"
+    //% block="Wi-Fi configure|Pin set:|receiving data (green wire): %receive|sending data (blue wire): %send|Wi-Fi:|name: %ssid|password: %password|start connection"
     //% receive.fieldEditor="gridpicker" receive.fieldOptions.columns=3
     //% send.fieldEditor="gridpicker" send.fieldOptions.columns=3
     //% weight=35
