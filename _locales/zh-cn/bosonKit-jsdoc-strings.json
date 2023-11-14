@@ -16,5 +16,15 @@
     "bosonKit.m01100184Off": "设置灯全灭",
     "bosonKit.m01100184Rgb": "自定义RGB颜色",
     "bosonKit.m01100184LedRainbow": "设置灯带显示渐变色",
-    "bosonKit.setServoAngle": "设置舵机模块旋转特定的角度"
+    "bosonKit.setServoAngle": "设置舵机模块旋转特定的角度",
+    "bosonKit.wifiInit": "WIFI 初始化",
+    "bosonKit.mqttInit": "MQTT 初始化",
+    "bosonKit.mqttSendMessageMore": "MQTT发送一次消息",
+    "bosonKit.mqttAddTopic": "新增topic",
+    "bosonKit.mqttCallbackUserMore": "MQTT回调函数",
+    "bosonKit.httpGet": "HTTP get 请求",
+    "bosonKit.httpPost": "HTTP post 请求",
+    "bosonKit.httpPut": "HTTP put 请求",
+    "bosonKit.httpInit": "HTTP 配置",
+    "bosonKit.getVersion": "获取obloq 版本号"
 }

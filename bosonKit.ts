@@ -694,7 +694,7 @@ namespace bosonKit {
      * @param password to password ,eg: "yourPASSWORD"
     */
 
-    //% block="Wi-Fi configure|Rx:%receive|Tx:%send|Wi-Fi name:%ssid|Wi-Fi password:%password|start connection"
+    //% block="Wi-Fi configure|Pin Rx:%receive|Pin Tx:%send|Wi-Fi name:%ssid|Wi-Fi password:%password|start connection"
     //% group="Obloq"
     //% receive.fieldEditor="gridpicker" receive.fieldOptions.columns=3
     //% send.fieldEditor="gridpicker" send.fieldOptions.columns=3
@@ -830,9 +830,10 @@ namespace bosonKit {
      * @param time set timeout, eg: 10000
     */
 
-    //% weight=25
     //% block="http(get) url %url timeout(ms) %time"
+    //% group="Obloq"
     //% advanced=true
+    //% weight=25
     export function httpGet(url: string, time: number): string {
         while (obloqWorkingModeIsStop) { basic.pause(20) }
         if (!obloqHttpInit)
@@ -896,7 +897,7 @@ namespace bosonKit {
      * @param ip to ip ,eg: "0.0.0.0"
     */
 
-    //% block=" configure http IP: %ip start connection"
+    //% block="configure http IP: %ip start connection"
     //% group="Obloq"
     //% weight=19
     //% advanced=true
