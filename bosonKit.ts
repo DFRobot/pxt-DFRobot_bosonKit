@@ -3,7 +3,7 @@
 
 //% block="bosonKit"
 //% weight=100 color=#0fbc11 icon="\uf0b2"
-//% groups="['Sensor', 'Actuator']"
+//% groups="['Sensor', 'Actuator', 'Obloq']"
 namespace bosonKit {
 
 
@@ -432,7 +432,6 @@ namespace bosonKit {
     //% group="Actuator"
     //% weight=60
     //% rgb.shadow="colorNumberPicker"
-    //% advanced=true
     export function m01100184ShowColor(rgb: number) {
         let r = (rgb >> 16) * (_brightness / 255);
         let g = ((rgb >> 8) & 0xFF) * (_brightness / 255);
@@ -695,7 +694,8 @@ namespace bosonKit {
      * @param password to password ,eg: "yourPASSWORD"
     */
 
-    //% block="Wi-Fi configure| Pin Rx: %receive Tx: %send|Wi-Fi name: %ssid password: %password|start connection"
+    //% block="Wi-Fi configure|Rx:%receive|Tx:%send|Wi-Fi name:%ssid|Wi-Fi password:%password|start connection"
+    //% group="Obloq"
     //% receive.fieldEditor="gridpicker" receive.fieldOptions.columns=3
     //% send.fieldEditor="gridpicker" send.fieldOptions.columns=3
     //% weight=35
@@ -722,7 +722,8 @@ namespace bosonKit {
      * @param server to receive ,eg: Servers.China
     */
 
-    //% block="MQTT configure|IoT_ID(user):%user|IoT_PWD(password):%pwd|Topic(default Topic0):%topic|server:%server||IP:%ip"
+    //% block="MQTT configure|IoT_ID(user):%user|IoT_PWD(password):%pwd|Topic(default Topic0):%topic|server:%server||IP(SIOT):%ip"
+    //% group="Obloq"
     //% server.fieldEditor="gridpicker" server.fieldOptions.columns=2
     //% weight=33
     export function mqttInit(user: string, pwd: string, topic: string, server: Servers, ip?: string):
@@ -745,6 +746,7 @@ namespace bosonKit {
     */
     
     //% block="send message %mess |to %top"
+    //% group="Obloq"
     //% top.fieldEditor="gridpicker" top.fieldOptions.columns=2
     //% weight=31
     export function mqttSendMessageMore(mess: string, top: TOPIC): void {
@@ -771,6 +773,7 @@ namespace bosonKit {
     */
     
     //% block="subscribe additional %topic |: %topString"
+    //% group="Obloq"
     //% topic.fieldEditor="gridpicker" topic.fieldOptions.columns=2
     //% weight=29
     //% advanced=true
@@ -809,9 +812,11 @@ namespace bosonKit {
     */
     
     //% block="on received %top"
+    //% group="Obloq"
     //% top.fieldEditor="gridpicker" top.fieldOptions.columns=2
     //% useLoc="Obloq.Obloq_mqtt_callback_user_more"
     //% weight=27
+    //% advanced=true
     export function mqttCallbackUserMore(top: TOPIC, cb: (message: string) => void) {
         obloqMqttCallbackMore(top, () => {
             const packet = new PacketaMqtt()
@@ -845,9 +850,11 @@ namespace bosonKit {
      * The HTTP post request.
      * @param time set timeout, eg: 10000
     */
-    //% weight=23
+    
     //% block="http(post) url %url content %content timeout(ms) %time"
+    //% group="Obloq"
     //% advanced=true
+    //% weight=23
     export function httpPost(url: string, content: string, time: number): string {
         while (obloqWorkingModeIsStop) { basic.pause(20) }
         if (!obloqHttpInit)
@@ -866,9 +873,11 @@ namespace bosonKit {
      * @param time set timeout, eg: 10000
     */
 
-    //% weight=21
+    
     //% block="http(put) url %url content %content timeout(ms) %time"
+    //% group="Obloq"
     //% advanced=true
+    //% weight=21
     export function httpPut(url: string, content: string, time: number): string {
         while (obloqWorkingModeIsStop) { basic.pause(20) }
         if (!obloqHttpInit)
@@ -888,6 +897,7 @@ namespace bosonKit {
     */
 
     //% block=" configure http IP: %ip start connection"
+    //% group="Obloq"
     //% weight=19
     //% advanced=true
     export function httpInit(ip: string):
@@ -901,6 +911,7 @@ namespace bosonKit {
     */
 
     //% block="get version"
+    //% group="Obloq"
     //% weight=17
     //% advanced=true
     export function getVersion(): string {
