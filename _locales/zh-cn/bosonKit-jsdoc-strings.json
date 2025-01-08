@@ -26,5 +26,9 @@
     "bosonKit.httpPost": "HTTP post 请求",
     "bosonKit.httpPut": "HTTP put 请求",
     "bosonKit.httpInit": "HTTP 配置",
-    "bosonKit.getVersion": "获取obloq 版本号"
+    "bosonKit.getVersion": "获取obloq 版本号",
+    "bosonKit.oledInit": "用于设置 OLED 显示屏的 I2C 地址和初始化配置",
+    "bosonKit.oledInLine": "在指行显示显示字母、数字、符号等文本信息",
+    "bosonKit.oledInXY": "在指定坐标位置显示字母、数字、符号等文本信息",
+    "bosonKit.oledClear": "清空整个显示屏的内容"
 }

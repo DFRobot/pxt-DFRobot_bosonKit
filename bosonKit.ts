@@ -3,7 +3,7 @@
 
 //% block="bosonKit"
 //% weight=100 color=#0fbc11 icon="\uf0b2"
-//% groups="['Sensor', 'Actuator', 'Obloq']"
+//% groups="['Sensor', 'Actuator', 'Display', 'Obloq']"
 namespace bosonKit {
 
 
@@ -33,9 +33,11 @@ namespace bosonKit {
         //% blockId="bosonAnalogReadSHT30Humidity" block="SHT30 humidity (i27)"
         BosonSHT30Humidity = 12,
         //% blockId="bosonAnalogReadPhV2" block="pH sensor V2 (i28)"
-        BosonV2Ph = 13
+        BosonV2Ph = 13,
+        //% blockId="bosonAnalogReadWaterLevel" block="water level sensor (i31)"
+        BosonWaterLevel = 14
     }
-    
+
     export enum BosonSensorAnalogWrite {
         //% blockId="bosonAnalogWriteBrightLightLed" block="bright light LED (o1)"
         BosonBrightLightLed = 1,
@@ -52,8 +54,8 @@ namespace bosonKit {
         //% blockId="bosonAnalogWriteServo" block="servo control module (o10)"
         BosonServo = 7
     }
-    
-    
+
+
     export enum BosonSensorDigitalRead {
         //% blockId="bosonDigitalReadPushButton" block="push button (i2b i2r i2y)"
         BosonPushButton = 1,
@@ -68,7 +70,7 @@ namespace bosonKit {
         //% blockId="bosonDigitalReadMotion" block="motion sensor (i13)"
         BosonMotion = 6
     }
-    
+
     export enum BosonSensorDigitalWrite {
         //% blockId="bosonDigitalWriteBrightLightLed" block="bright light LED (o1)"
         BosonBrightLightLed = 1,
@@ -102,6 +104,18 @@ namespace bosonKit {
         Topic2 = 2,
         Topic3 = 3,
         Topic4 = 4
+    }
+
+    // topics name
+    export enum YRAW {
+        //% block="0"
+        Y0 = 0,
+        //% block="1"
+        Y1 = 1,
+        //% block="2"
+        Y2 = 2,
+        //% block="3"
+        Y3 = 3
     }
 
     export class PacketaMqtt {
@@ -141,7 +155,7 @@ namespace bosonKit {
     const OBLOQ_BOOL_TYPE_IS_FALSE = false
     const OBLOQ_WEBHOOKS_URL = "maker.ifttt.com"
 
-    
+
 
     //serial
     let obloqSerialInitFlag = OBLOQ_BOOL_TYPE_IS_FALSE
@@ -192,7 +206,7 @@ namespace bosonKit {
     let microIoTBeebotteToken = ""
     let gcity = 0;
 
-    
+
 
     let beattime1 = 0;
     let beattime2 = 0;
@@ -203,6 +217,140 @@ namespace bosonKit {
     let rgb_pin = -1;
     let neopixel_buf: Buffer;
     let ledsum = -1;
+
+    // OLED
+    const IIC_MAX_TRANSFER_SIZE = 32;
+    const SSD1306_CHARGEPUMP = 0x8D
+    const SSD1306_COLUMNADDR = 0x21
+    const SSD1306_COMSCANDEC = 0xC8
+    const SSD1306_COMSCANINC = 0xC0
+    const SSD1306_DISPLAYALLON = 0xA5
+    const SSD1306_DISPLAYALLON_RESUME = 0xA4
+    const SSD1306_DISPLAYOFF = 0xAE
+    const SSD1306_DISPLAYON = 0xAF
+    const SSD1306_EXTERNALVCC = 0x01
+    const SSD1306_INVERTDISPLAY = 0xA7
+    const SSD1306_MEMORYMODE = 0x20
+    const SSD1306_NORMALDISPLAY = 0xA6
+    const SSD1306_PAGEADDR = 0x22
+    const SSD1306_SEGREMAP = 0xA0
+    const SSD1306_SETCOMPINS = 0xDA
+    const SSD1306_SETCONTRAST = 0x81
+    const SSD1306_SETDISPLAYCLOCKDIV = 0xD5
+    const SSD1306_SETDISPLAYOFFSET = 0xD3
+    const SSD1306_SETHIGHCOLUMN = 0x10
+    const SSD1306_SETLOWCOLUMN = 0x00
+    const SSD1306_SETMULTIPLEX = 0xA8
+    const SSD1306_SETPRECHARGE = 0xD9
+    const SSD1306_SETSEGMENTREMAP = 0xA1
+    const SSD1306_SETSTARTLINE = 0x40
+    const SSD1306_SETVCOMDETECT = 0xDB
+    const SSD1306_SWITCHCAPVCC = 0x02
+    const SSD1306_WRITEDATA = 0x40
+    const SSD1306_WRITECMD = 0x80
+    let frameBuffer: number[] = [];
+    let cursorX = 0;
+    let cursorY = 0;
+    let oledArdress = 0x3C;
+    let brushColor = 1;
+    let cursorLine = 1;
+    const basicFont: string[] = [
+        "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"/*" "*/,
+        "\x00\x00\x18\x3c\x3c\x3c\x18\x18\x18\x00\x18\x18\x00\x00\x00\x00"/*"!"*/,
+        "\x00\x63\x63\x63\x22\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"/*"\"*/,
+        "\x00\x00\x00\x36\x36\x7f\x36\x36\x36\x7f\x36\x36\x00\x00\x00\x00"/*"#"*/,
+        "\x0c\x0c\x3e\x63\x61\x60\x3e\x03\x03\x43\x63\x3e\x0c\x0c\x00\x00"/*"$"*/,
+        "\x00\x00\x00\x00\x00\x61\x63\x06\x0c\x18\x33\x63\x00\x00\x00\x00"/*"%"*/,
+        "\x00\x00\x00\x1c\x36\x36\x1c\x3b\x6e\x66\x66\x3b\x00\x00\x00\x00"/*"&"*/,
+        "\x00\x30\x30\x30\x60\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"/*"'"*/,
+        "\x00\x00\x0c\x18\x18\x30\x30\x30\x30\x18\x18\x0c\x00\x00\x00\x00"/*"("*/,
+        "\x00\x00\x18\x0c\x0c\x06\x06\x06\x06\x0c\x0c\x18\x00\x00\x00\x00"/*")"*/, //10
+        "\x00\x00\x00\x00\x42\x66\x3c\xff\x3c\x66\x42\x00\x00\x00\x00\x00"/*"*"*/,
+        "\x00\x00\x00\x00\x18\x18\x18\xff\x18\x18\x18\x00\x00\x00\x00\x00"/*"+"*/,
+        "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x18\x18\x18\x30\x00\x00"/*","*/,
+        "\x00\x00\x00\x00\x00\x00\x00\xff\x00\x00\x00\x00\x00\x00\x00\x00"/*"-"*/,
+        "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x18\x18\x00\x00\x00\x00"/*"."*/,
+        "\x00\x00\x01\x03\x07\x0e\x1c\x38\x70\xe0\xc0\x80\x00\x00\x00\x00"/*"/"*/,
+        "\x00\x00\x3e\x63\x63\x63\x6b\x6b\x63\x63\x63\x3e\x00\x00\x00\x00"/*"0"*/,
+        "\x00\x00\x0c\x1c\x3c\x0c\x0c\x0c\x0c\x0c\x0c\x3f\x00\x00\x00\x00"/*"1"*/,
+        "\x00\x00\x3e\x63\x03\x06\x0c\x18\x30\x61\x63\x7f\x00\x00\x00\x00"/*"2"*/,
+        "\x00\x00\x3e\x63\x03\x03\x1e\x03\x03\x03\x63\x3e\x00\x00\x00\x00"/*"3"*/, //20
+        "\x00\x00\x06\x0e\x1e\x36\x66\x66\x7f\x06\x06\x0f\x00\x00\x00\x00"/*"4"*/,
+        "\x00\x00\x7f\x60\x60\x60\x7e\x03\x03\x63\x73\x3e\x00\x00\x00\x00"/*"5"*/,
+        "\x00\x00\x1c\x30\x60\x60\x7e\x63\x63\x63\x63\x3e\x00\x00\x00\x00"/*"6"*/,
+        "\x00\x00\x7f\x63\x03\x06\x06\x0c\x0c\x18\x18\x18\x00\x00\x00\x00"/*"7"*/,
+        "\x00\x00\x3e\x63\x63\x63\x3e\x63\x63\x63\x63\x3e\x00\x00\x00\x00"/*"8"*/,
+        "\x00\x00\x3e\x63\x63\x63\x63\x3f\x03\x03\x06\x3c\x00\x00\x00\x00"/*"9"*/,
+        "\x00\x00\x00\x00\x00\x18\x18\x00\x00\x00\x18\x18\x00\x00\x00\x00"/*":"*/,
+        "\x00\x00\x00\x00\x00\x18\x18\x00\x00\x00\x18\x18\x18\x30\x00\x00"/*";"*/,
+        "\x00\x00\x00\x06\x0c\x18\x30\x60\x30\x18\x0c\x06\x00\x00\x00\x00"/*"<"*/,
+        "\x00\x00\x00\x00\x00\x00\x7e\x00\x00\x7e\x00\x00\x00\x00\x00\x00"/*"="*/, //30
+        "\x00\x00\x00\x60\x30\x18\x0c\x06\x0c\x18\x30\x60\x00\x00\x00\x00"/*">"*/,
+        "\x00\x00\x3e\x63\x63\x06\x0c\x0c\x0c\x00\x0c\x0c\x00\x00\x00\x00"/*"?"*/,
+        "\x00\x00\x3e\x63\x63\x6f\x6b\x6b\x6e\x60\x60\x3e\x00\x00\x00\x00"/*"@"*/,
+        "\x00\x00\x08\x1c\x36\x63\x63\x63\x7f\x63\x63\x63\x00\x00\x00\x00"/*"A"*/,
+        "\x00\x00\x7e\x33\x33\x33\x3e\x33\x33\x33\x33\x7e\x00\x00\x00\x00"/*"B"*/,
+        "\x00\x00\x1e\x33\x61\x60\x60\x60\x60\x61\x33\x1e\x00\x00\x00\x00"/*"C"*/,
+        "\x00\x00\x7c\x36\x33\x33\x33\x33\x33\x33\x36\x7c\x00\x00\x00\x00"/*"D"*/,
+        "\x00\x00\x7f\x33\x31\x34\x3c\x34\x30\x31\x33\x7f\x00\x00\x00\x00"/*"E"*/,
+        "\x00\x00\x7f\x33\x31\x34\x3c\x34\x30\x30\x30\x78\x00\x00\x00\x00"/*"F"*/,
+        "\x00\x00\x1e\x33\x61\x60\x60\x6f\x63\x63\x37\x1d\x00\x00\x00\x00"/*"G"*/, //40
+        "\x00\x00\x63\x63\x63\x63\x7f\x63\x63\x63\x63\x63\x00\x00\x00\x00"/*"H"*/,
+        "\x00\x00\x3c\x18\x18\x18\x18\x18\x18\x18\x18\x3c\x00\x00\x00\x00"/*"I"*/,
+        "\x00\x00\x0f\x06\x06\x06\x06\x06\x06\x66\x66\x3c\x00\x00\x00\x00"/*"J"*/,
+        "\x00\x00\x73\x33\x36\x36\x3c\x36\x36\x33\x33\x73\x00\x00\x00\x00"/*"K"*/,
+        "\x00\x00\x78\x30\x30\x30\x30\x30\x30\x31\x33\x7f\x00\x00\x00\x00"/*"L"*/,
+        "\x00\x00\x63\x77\x7f\x6b\x63\x63\x63\x63\x63\x63\x00\x00\x00\x00"/*"M"*/,
+        "\x00\x00\x63\x63\x73\x7b\x7f\x6f\x67\x63\x63\x63\x00\x00\x00\x00"/*"N"*/,
+        "\x00\x00\x1c\x36\x63\x63\x63\x63\x63\x63\x36\x1c\x00\x00\x00\x00"/*"O"*/,
+        "\x00\x00\x7e\x33\x33\x33\x3e\x30\x30\x30\x30\x78\x00\x00\x00\x00"/*"P"*/,
+        "\x00\x00\x3e\x63\x63\x63\x63\x63\x63\x6b\x6f\x3e\x06\x07\x00\x00"/*"Q"*/, //50
+        "\x00\x00\x7e\x33\x33\x33\x3e\x36\x36\x33\x33\x73\x00\x00\x00\x00"/*"R"*/,
+        "\x00\x00\x3e\x63\x63\x30\x1c\x06\x03\x63\x63\x3e\x00\x00\x00\x00"/*"S"*/,
+        "\x00\x00\xff\xdb\x99\x18\x18\x18\x18\x18\x18\x3c\x00\x00\x00\x00"/*"T"*/,
+        "\x00\x00\x63\x63\x63\x63\x63\x63\x63\x63\x63\x3e\x00\x00\x00\x00"/*"U"*/,
+        "\x00\x00\x63\x63\x63\x63\x63\x63\x63\x36\x1c\x08\x00\x00\x00\x00"/*"V"*/,
+        "\x00\x00\x63\x63\x63\x63\x63\x6b\x6b\x7f\x36\x36\x00\x00\x00\x00"/*"W"*/,
+        "\x00\x00\xc3\xc3\x66\x3c\x18\x18\x3c\x66\xc3\xc3\x00\x00\x00\x00"/*"X"*/,
+        "\x00\x00\xc3\xc3\xc3\x66\x3c\x18\x18\x18\x18\x3c\x00\x00\x00\x00"/*"Y"*/,
+        "\x00\x00\x7f\x63\x43\x06\x0c\x18\x30\x61\x63\x7f\x00\x00\x00\x00"/*"Z"*/,
+        "\x00\x00\x3c\x30\x30\x30\x30\x30\x30\x30\x30\x3c\x00\x00\x00\x00"/*"["*/, //60
+        "\x00\x00\x80\xc0\xe0\x70\x38\x1c\x0e\x07\x03\x01\x00\x00\x00\x00"/*"\\"*/,
+        "\x00\x00\x3c\x0c\x0c\x0c\x0c\x0c\x0c\x0c\x0c\x3c\x00\x00\x00\x00"/*"}"*/,
+        "\x08\x1c\x36\x63\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"/*"^"*/,
+        "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\x00\x00\x00"/*"_"*/,
+        "\x18\x18\x0c\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"/*"'"*/,
+        "\x00\x00\x00\x00\x00\x3c\x46\x06\x3e\x66\x66\x3b\x00\x00\x00\x00"/*"a"*/,
+        "\x00\x00\x70\x30\x30\x3c\x36\x33\x33\x33\x33\x6e\x00\x00\x00\x00"/*"b"*/,
+        "\x00\x00\x00\x00\x00\x3e\x63\x60\x60\x60\x63\x3e\x00\x00\x00\x00"/*"c"*/,
+        "\x00\x00\x0e\x06\x06\x1e\x36\x66\x66\x66\x66\x3b\x00\x00\x00\x00"/*"d"*/,
+        "\x00\x00\x00\x00\x00\x3e\x63\x63\x7e\x60\x63\x3e\x00\x00\x00\x00"/*"e"*/, //70
+        "\x00\x00\x1c\x36\x32\x30\x7c\x30\x30\x30\x30\x78\x00\x00\x00\x00"/*"f"*/,
+        "\x00\x00\x00\x00\x00\x3b\x66\x66\x66\x66\x3e\x06\x66\x3c\x00\x00"/*"g"*/,
+        "\x00\x00\x70\x30\x30\x36\x3b\x33\x33\x33\x33\x73\x00\x00\x00\x00"/*"h"*/,
+        "\x00\x00\x0c\x0c\x00\x1c\x0c\x0c\x0c\x0c\x0c\x1e\x00\x00\x00\x00"/*"i"*/,
+        "\x00\x00\x06\x06\x00\x0e\x06\x06\x06\x06\x06\x66\x66\x3c\x00\x00"/*"j"*/,
+        "\x00\x00\x70\x30\x30\x33\x33\x36\x3c\x36\x33\x73\x00\x00\x00\x00"/*"k"*/,
+        "\x00\x00\x1c\x0c\x0c\x0c\x0c\x0c\x0c\x0c\x0c\x1e\x00\x00\x00\x00"/*"l"*/,
+        "\x00\x00\x00\x00\x00\x6e\x7f\x6b\x6b\x6b\x6b\x6b\x00\x00\x00\x00"/*"m"*/,
+        "\x00\x00\x00\x00\x00\x6e\x33\x33\x33\x33\x33\x33\x00\x00\x00\x00"/*"n"*/,
+        "\x00\x00\x00\x00\x00\x3e\x63\x63\x63\x63\x63\x3e\x00\x00\x00\x00"/*"o"*/,
+        "\x00\x00\x00\x00\x00\x6e\x33\x33\x33\x33\x3e\x30\x30\x78\x00\x00"/*"p"*/,
+        "\x00\x00\x00\x00\x00\x3b\x66\x66\x66\x66\x3e\x06\x06\x0f\x00\x00"/*"q"*/,
+        "\x00\x00\x00\x00\x00\x6e\x3b\x33\x30\x30\x30\x78\x00\x00\x00\x00"/*"r"*/,
+        "\x00\x00\x00\x00\x00\x3e\x63\x38\x0e\x03\x63\x3e\x00\x00\x00\x00"/*"s"*/,
+        "\x00\x00\x08\x18\x18\x7e\x18\x18\x18\x18\x1b\x0e\x00\x00\x00\x00"/*"t"*/,
+        "\x00\x00\x00\x00\x00\x66\x66\x66\x66\x66\x66\x3b\x00\x00\x00\x00"/*"u"*/,
+        "\x00\x00\x00\x00\x00\x63\x63\x36\x36\x1c\x1c\x08\x00\x00\x00\x00"/*"v"*/,
+        "\x00\x00\x00\x00\x00\x63\x63\x63\x6b\x6b\x7f\x36\x00\x00\x00\x00"/*"w"*/,
+        "\x00\x00\x00\x00\x00\x63\x36\x1c\x1c\x1c\x36\x63\x00\x00\x00\x00"/*"x"*/,
+        "\x00\x00\x00\x00\x00\x63\x63\x63\x63\x63\x3f\x03\x06\x3c\x00\x00"/*"y"*/,
+        "\x00\x00\x00\x00\x00\x7f\x66\x0c\x18\x30\x63\x7f\x00\x00\x00\x00"/*"z"*/,
+        "\x00\x00\x0e\x18\x18\x18\x70\x18\x18\x18\x18\x0e\x00\x00\x00\x00"/*"{"*/,
+        "\x00\x00\x18\x18\x18\x18\x18\x00\x18\x18\x18\x18\x18\x00\x00\x00"/*"|"*/,
+        "\x00\x00\x70\x18\x18\x18\x0e\x18\x18\x18\x18\x70\x00\x00\x00\x00"/*"}"*/,
+        "\x00\x00\x3b\x6e\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"/*"~"*/,
+    ]
 
 
     /**
@@ -687,6 +835,65 @@ namespace bosonKit {
     }
 
     /**
+     * Used to set the I2C address and initialization configuration of the OLED display
+     * @param address to address ,eg: 0x3C
+    */
+
+    //% block="OLED 128*64 init address 0x3C"
+    //% group="Display"
+    //% weight=34
+    //% advanced=true
+    export function oledInit() {
+        oledBegin();
+    }
+
+    /**
+     * Display letters, numbers, symbols, and other text information on the specified line
+     * @param row to row ,eg: 1
+     * @param str to str ,eg: "hello"
+    */
+
+    //% block="OLED 128*64 Row $row display $str"
+    //% group="Display"
+    //% row.min=1 row.max=4
+    //% weight=32
+    //% advanced=true
+    export function oledInLine(row: number, str: string) {
+        setCursorLine(row);
+        writeCharLine(str);
+    }
+
+    /**
+     * Display letters, numbers, symbols, and other text information at specified coordinates
+     * @param str to str ,eg: "hello"
+     * @param x to x ,eg: "42"
+     * @param y to y ,eg: bosonKit.YRAW.Y1
+    */
+
+    //% block="OLED 128*64 display $str at position X: $x Y: 16*$y"
+    //% group="Display"
+    //% weight=30
+    //% advanced=true
+    export function oledInXY(str: string, x: number, y: YRAW) {
+        setCursor(x, y * 16);
+        for (let c of str) {
+            writeChar(c);
+        }
+    }
+
+    /**
+     * Clear all content from the display screen
+    */
+
+    //% block="OLED 128*64 clear"
+    //% group="Display"
+    //% weight=28
+    //% advanced=true
+    export function oledClear() {
+        fillScreen(0);
+    }
+
+    /**
      * WIFI initialization
      * @param receive to receive ,eg: SerialPin.P1
      * @param send to send ,eg: SerialPin.P2
@@ -698,7 +905,7 @@ namespace bosonKit {
     //% group="Obloq"
     //% receive.fieldEditor="gridpicker" receive.fieldOptions.columns=3
     //% send.fieldEditor="gridpicker" send.fieldOptions.columns=3
-    //% weight=35
+    //% weight=26
     export function wifiInit(receive: SerialPin, send: SerialPin, ssid: string, password: string): void {
         obloqWifiSsid = ssid;
         obloqWifiPassword = password;
@@ -725,7 +932,7 @@ namespace bosonKit {
     //% block="MQTT configure|IoT_ID(user):%user|IoT_PWD(password):%pwd|Topic(default Topic0):%topic|server:%server||IP(SIOT):%ip"
     //% group="Obloq"
     //% server.fieldEditor="gridpicker" server.fieldOptions.columns=2
-    //% weight=33
+    //% weight=24
     export function mqttInit(user: string, pwd: string, topic: string, server: Servers, ip?: string):
         void {
         //obloqWifiSsid = SSID
@@ -744,11 +951,11 @@ namespace bosonKit {
      * @param mess set mess, eg: "message"
      * @param top set top, eg: TOPIC.Topic0
     */
-    
+
     //% block="send message %mess |to %top"
     //% group="Obloq"
     //% top.fieldEditor="gridpicker" top.fieldOptions.columns=2
-    //% weight=31
+    //% weight=22
     export function mqttSendMessageMore(mess: string, top: TOPIC): void {
         while (obloqWorkingModeIsStop) { basic.pause(20) }
         if (!obloqMqttInit) {
@@ -771,11 +978,11 @@ namespace bosonKit {
      * @param topic set topic, eg: TOPIC.Topic0
      * @param topString set topString, eg: "yourIotTopic"
     */
-    
+
     //% block="subscribe additional %topic |: %topString"
     //% group="Obloq"
     //% topic.fieldEditor="gridpicker" topic.fieldOptions.columns=2
-    //% weight=29
+    //% weight=20
     //% advanced=true
     export function mqttAddTopic(topic: TOPIC, topString: string): void {
         obloqMqttTopic[topic][0] = topString
@@ -810,12 +1017,12 @@ namespace bosonKit {
     /**
      * This is an MQTT listener callback function, which is very important.
     */
-    
+
     //% block="on received %top"
     //% group="Obloq"
     //% top.fieldEditor="gridpicker" top.fieldOptions.columns=2
     //% useLoc="Obloq.Obloq_mqtt_callback_user_more"
-    //% weight=27
+    //% weight=19
     //% advanced=true
     export function mqttCallbackUserMore(top: TOPIC, cb: (message: string) => void) {
         obloqMqttCallbackMore(top, () => {
@@ -833,7 +1040,7 @@ namespace bosonKit {
     //% block="http(get) url %url timeout(ms) %time"
     //% group="Obloq"
     //% advanced=true
-    //% weight=25
+    //% weight=18
     export function httpGet(url: string, time: number): string {
         while (obloqWorkingModeIsStop) { basic.pause(20) }
         if (!obloqHttpInit)
@@ -851,11 +1058,11 @@ namespace bosonKit {
      * The HTTP post request.
      * @param time set timeout, eg: 10000
     */
-    
+
     //% block="http(post) url %url content %content timeout(ms) %time"
     //% group="Obloq"
     //% advanced=true
-    //% weight=23
+    //% weight=17
     export function httpPost(url: string, content: string, time: number): string {
         while (obloqWorkingModeIsStop) { basic.pause(20) }
         if (!obloqHttpInit)
@@ -874,11 +1081,11 @@ namespace bosonKit {
      * @param time set timeout, eg: 10000
     */
 
-    
+
     //% block="http(put) url %url content %content timeout(ms) %time"
     //% group="Obloq"
     //% advanced=true
-    //% weight=21
+    //% weight=16
     export function httpPut(url: string, content: string, time: number): string {
         while (obloqWorkingModeIsStop) { basic.pause(20) }
         if (!obloqHttpInit)
@@ -899,7 +1106,7 @@ namespace bosonKit {
 
     //% block="configure http IP: %ip start connection"
     //% group="Obloq"
-    //% weight=19
+    //% weight=15
     //% advanced=true
     export function httpInit(ip: string):
         void {
@@ -913,7 +1120,7 @@ namespace bosonKit {
 
     //% block="get version"
     //% group="Obloq"
-    //% weight=17
+    //% weight=14
     //% advanced=true
     export function getVersion(): string {
         while (obloqWorkingModeIsStop) { basic.pause(20) }
@@ -1570,4 +1777,269 @@ namespace bosonKit {
         }
     }
 
+    // OLED 128*64
+    function writeBuffer(data: number[], len: number) {
+        let remain = len;
+        let i = 0;
+        while (remain > 0) {
+            let currentTransferSize = (remain > IIC_MAX_TRANSFER_SIZE) ? 32 : remain;
+            if (remain > IIC_MAX_TRANSFER_SIZE) {
+                pins.i2cWriteBuffer(oledArdress, pins.createBufferFromArray(data.slice(i * IIC_MAX_TRANSFER_SIZE, i * IIC_MAX_TRANSFER_SIZE + currentTransferSize)), true);
+            } else {
+                pins.i2cWriteBuffer(oledArdress, pins.createBufferFromArray(data.slice(i * IIC_MAX_TRANSFER_SIZE, i * IIC_MAX_TRANSFER_SIZE + currentTransferSize)), false);
+            }
+            remain = remain - currentTransferSize;
+            i = i + 1;
+        }
+    }
+
+    function writeByte(reg: number, data: number) {
+        writeBuffer([reg, data], 2);
+    }
+
+    function writeBufferPixel(x: number, y: number, color: number) {
+        if (x < 0 || x > 127 || y < 0 || y > 63) return;
+        let addr = x + Math.floor(y / 8) * 128;
+        if (color == 1) {
+            frameBuffer[addr] |= (0x01 << (y % 8)) & 0xFF;
+        } else {
+            frameBuffer[addr] &= ~((0x01 << (y % 8)) & 0xFF);
+        }
+    }
+
+    function setRefreshRange(reg: number, columnStart: number, columnEnd: number, rowStart: number, rowEnd: number) {
+        writeByte(reg, SSD1306_COLUMNADDR);
+        writeByte(reg, columnStart);
+        writeByte(reg, columnEnd);
+        writeByte(reg, SSD1306_PAGEADDR);
+        writeByte(reg, rowStart);
+        writeByte(reg, rowEnd);
+    }
+
+    function regionalRefresh(x: number, y: number, width: number, height: number) {
+        let xe = x + width - 1;
+        let ye = y + height - 1;
+
+        if (x < 0) x = 0;
+        if (x > 127) x = 127;
+        if (y < 0) y = 0;
+        if (y > 63) y = 63;
+
+        if (xe < 0) xe = 0;
+        if (xe > 127) xe = 127;
+        if (ye < 0) ye = 0;
+        if (ye > 63) ye = 63;
+
+        let data;
+        if (xe < x) {
+            data = xe;
+            xe = x;
+            x = data;
+        }
+        if (ye < y) {
+            data = ye;
+            ye = y;
+            y = data;
+        }
+        width = xe - x + 1;
+        height = ye - y + 1;
+
+        let widthSize = Math.floor((xe - x + 1) / 16);
+        let widthSizeRemainder = (xe - x + 1) % 16;
+        let pageaddrLow = Math.floor(y / 8);
+        let pageaddrHight = Math.floor(ye / 8);
+        let index = 0;
+
+        for (let i = pageaddrLow; i <= pageaddrHight; i++) {
+            setRefreshRange(SSD1306_WRITECMD, x, x + width - 1, i, i);
+            let j = 0;
+            for (j = 0; j < widthSize; j++) {
+                index = i * 128 + x + j * 16;
+                for (let k = 0; k < 16; k++) {
+                    writeByte(SSD1306_WRITEDATA, frameBuffer[index + k]);
+                }
+                // writeBuffer([SSD1306_WRITEDATA].concat(frameBuffer.slice(index, index + 16)), 16+1);
+
+            }
+            if (widthSizeRemainder) {
+                index = i * 128 + x + j * 16;
+                for (let k = 0; k < widthSizeRemainder; k++) {
+                    writeByte(SSD1306_WRITEDATA, frameBuffer[index + k]);
+                }
+                // writeBuffer([SSD1306_WRITEDATA].concat(frameBuffer.slice(index, index + widthSizeRemainder)), widthSizeRemainder + 1);
+            }
+        }
+    }
+
+    function setRotaion(rotation: number) {
+        let buf = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        for (let i = 0; i < 8; i++) {
+            setRefreshRange(SSD1306_WRITECMD, 0, 127, i, i);
+            let j;
+            for (j = 0; j < 8; j++) {
+                for (let k = 0; k < 16; k++) {
+                    writeByte(SSD1306_WRITEDATA, buf[k]);
+                }
+            }
+        }
+        if (rotation == 0) {
+            writeByte(SSD1306_WRITECMD, 0xa0);
+            writeByte(SSD1306_WRITECMD, 0xc0);
+        } else if (rotation == 180) {
+            writeByte(SSD1306_WRITECMD, 0xa1);
+            writeByte(SSD1306_WRITECMD, 0xc8);
+        } else {
+            writeByte(SSD1306_WRITECMD, 0xa1);
+            writeByte(SSD1306_WRITECMD, 0xc8);
+        }
+        regionalRefresh(0, 0, 128, 64);
+    }
+
+    function fillScreen(color: number) {
+        if (color) {
+            for (let i = 0; i < 1024; i++) {
+                frameBuffer[i] = 0xff;
+            }
+        } else {
+            for (let i = 0; i < 1024; i++) {
+                frameBuffer[i] = 0x00;
+            }
+            regionalRefresh(0, 0, 128, 64);
+        }
+    }
+
+    function fillInLine(line: number, color: number) {
+        line = (line < 1) ? 1 : (line > 4) ? 4 : line;
+        if (color) {
+            for (let i = 0; i < 256; i++) {
+                frameBuffer[(line - 1) * 256 + i] = 0xff;
+            }
+        } else {
+            for (let i = 0; i < 256; i++) {
+                frameBuffer[(line - 1) * 256 + i] = 0x00;
+            }
+        }
+        regionalRefresh(0, (line - 1) * 16, 128, 16);
+    }
+
+    function setBrushColor(color: number) {
+        brushColor = color;
+    }
+
+    function setCursor(x: number, y: number) {
+        if (x < 0) x = 0;
+        if (x > 127) x = 127;
+        if (y < 0) y = 0;
+        if (y > 63) y = 63;
+        cursorX = x;
+        cursorY = y;
+    }
+
+    function setCursorLine(line: number) {
+        line = (line < 1) ? 1 : (line > 4) ? 4 : line;
+        cursorLine = line % 4;
+        if (cursorLine == 0)
+            cursorLine = 4;
+    }
+
+    function writeChar(char: string) {
+        let c = basicFont[char.charCodeAt(0) - 32];
+        let data: number[] = [];
+        if (cursorX + 8 > 127) {
+            cursorY += 16;
+            cursorX = 0;
+        }
+        if (cursorY > 64)
+            return;
+        for (let i = 0; i < 16; i++) {
+            data.push(c.charCodeAt(i));
+        }
+        showMatrix(cursorX, cursorY, 8, 16, data, true);
+        cursorX += 8;
+    }
+
+    function writeCharLine(str: string) {
+        let X = 0;
+        let Y = 16 * (cursorLine - 1);
+        fillInLine(cursorLine, brushColor == 1 ? 0 : 1);
+        for (let c of str) {
+            c = basicFont[c.charCodeAt(0) - 32];
+            let data: number[] = [];
+            if (X + 8 > 128)
+                return;
+            for (let i = 0; i < 16; i++) {
+                data.push(c.charCodeAt(i));
+            }
+            showMatrix(X, Y, 8, 16, data, true);
+            X += 8;
+        }
+    }
+
+    function showMatrix(x: number, y: number, width: number, height: number, data: number[], coverage: boolean) {
+        if (x > 127 || y > 63) return;
+        if (height % 8 != 0) return;
+        let i, j, k;
+        let _x, _y;
+        let widthSize = Math.floor(width / 8);
+        let heightSize = Math.floor(height / 8);
+        _x = x;
+        _y = y;
+        for (i = 0; i < height; i++) {
+            if (_y > 63) break;
+            for (j = 0; j < widthSize; j++) {
+                let _data = data[i + j];
+                for (k = 0; k < 8; k++) {
+                    if (_x > 127) break;
+                    if (_data & 0x80) {
+                        writeBufferPixel(_x, _y, brushColor == 1 ? 1 : 0);
+                    } else {
+                        if (coverage) {
+                            writeBufferPixel(_x, _y, brushColor == 1 ? 0 : 1);
+                        }
+                    }
+                    _data <<= 1;
+                    _data &= 0xff;
+                    _x++;
+                }
+            }
+            _x = x;
+            _y++;
+        }
+        regionalRefresh(x, y, width, height);
+    }
+
+    function oledBegin() {
+        // init frameBuffer
+        for (let i = 0; i < 1024; i++) {
+            frameBuffer.push(0);
+        }
+
+        writeByte(SSD1306_WRITECMD, SSD1306_DISPLAYOFF);
+        writeByte(SSD1306_WRITECMD, SSD1306_SETDISPLAYCLOCKDIV);
+        writeByte(SSD1306_WRITECMD, 0xF0); // Increase speed of the display max ~96Hz
+        writeByte(SSD1306_WRITECMD, SSD1306_SETMULTIPLEX);
+        writeByte(SSD1306_WRITECMD, 0x3F);
+        writeByte(SSD1306_WRITECMD, SSD1306_SETDISPLAYOFFSET);
+        writeByte(SSD1306_WRITECMD, 0x00);
+        writeByte(SSD1306_WRITECMD, SSD1306_SETSTARTLINE);
+        writeByte(SSD1306_WRITECMD, SSD1306_CHARGEPUMP);
+        writeByte(SSD1306_WRITECMD, 0x14);
+        writeByte(SSD1306_WRITECMD, SSD1306_MEMORYMODE);
+        writeByte(SSD1306_WRITECMD, 0x00);
+        writeByte(SSD1306_WRITECMD, SSD1306_SEGREMAP);
+        writeByte(SSD1306_WRITECMD, SSD1306_COMSCANINC);
+        writeByte(SSD1306_WRITECMD, SSD1306_SETCOMPINS);
+        writeByte(SSD1306_WRITECMD, 0x12);
+        writeByte(SSD1306_WRITECMD, SSD1306_SETCONTRAST);
+        writeByte(SSD1306_WRITECMD, 0xCF);
+        writeByte(SSD1306_WRITECMD, SSD1306_SETPRECHARGE);
+        writeByte(SSD1306_WRITECMD, 0xF1);
+        writeByte(SSD1306_WRITECMD, SSD1306_DISPLAYALLON_RESUME);
+        writeByte(SSD1306_WRITECMD, SSD1306_NORMALDISPLAY);
+        writeByte(SSD1306_WRITECMD, 0x2e); // stop scroll
+        writeByte(SSD1306_WRITECMD, SSD1306_DISPLAYON);
+        setRotaion(180);
+        fillScreen(0);
+        setBrushColor(1);
+    }
 }
