@@ -839,12 +839,29 @@ namespace bosonKit {
      * @param address to address ,eg: 0x3C
     */
 
-    //% block="OLED 128*64 init address 0x3C"
+    //% block="OLED 128*64 init address $address"
     //% group="Display"
     //% weight=34
     //% advanced=true
-    export function oledInit() {
+    export function oledInit(address: number) {
+        oledArdress = address;
         oledBegin();
+    }
+
+    /**
+     * Display numbers in the specified line
+     * @param row to row ,eg: 1
+     * @param num to num ,eg: 20
+    */
+
+    //% block="OLED 128*64 Row $row display $num"
+    //% group="Display"
+    //% row.min=1 row.max=4
+    //% weight=33
+    //% advanced=true
+    export function oledInLineNumber(row: number, num: number) {
+        setCursorLine(row);
+        writeCharLine(convertToText(num));
     }
 
     /**
@@ -861,6 +878,21 @@ namespace bosonKit {
     export function oledInLine(row: number, str: string) {
         setCursorLine(row);
         writeCharLine(str);
+    }
+    
+    /**
+     * Display numbers at specified coordinates
+     * @param num to num ,eg: 20
+     * @param x to x ,eg: "42"
+     * @param y to y ,eg: bosonKit.YRAW.Y1
+    */
+
+    //% block="OLED 128*64 display $num at position X: $x Y: 16*$y"
+    //% group="Display"
+    //% weight=31
+    //% advanced=true
+    export function oledInXYNumber(num: number, x: number, y: YRAW) {
+        oledInXY(convertToText(num), x, y);
     }
 
     /**
