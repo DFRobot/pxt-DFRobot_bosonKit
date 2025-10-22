@@ -30,6 +30,8 @@ namespace bosonKit {
         BosonWaterproofTemperature = 10,
         //% blockId="bosonAnalogReadUltrasonicDistance" block="ultrasonic distance sensor (i22)"
         BosonUltrasonicDistance = 11,
+        //% blockId="bosonAnalogReadSHT30Temperature" block="SHT30 Temperature (i27)"
+        BosonSHT30Temperature = 15,
         //% blockId="bosonAnalogReadSHT30Humidity" block="SHT30 humidity (i27)"
         BosonSHT30Humidity = 12,
         //% blockId="bosonAnalogReadPhV2" block="pH sensor V2 (i28)"
@@ -370,6 +372,7 @@ namespace bosonKit {
             case BosonSensorAnalogRead.BosonHumidity: value = humiditySensor(pin); break;
             case BosonSensorAnalogRead.BosonWaterproofTemperature: value = waterproofTemperatureSensor(pin); break;
             case BosonSensorAnalogRead.BosonUltrasonicDistance: value = ultrasonicDistanceSensor(pin); break;
+            case BosonSensorAnalogRead.BosonSHT30Temperature: value = temperatureSht30(pin); break;
             case BosonSensorAnalogRead.BosonSHT30Humidity: value = humiditySht30(pin); break;
             case BosonSensorAnalogRead.BosonV2Ph: value = V2pHSensor(pin); break;
             default: value = pins.analogReadPin(pin); break;
@@ -1219,11 +1222,18 @@ namespace bosonKit {
         let value: number = Math.round(10 * pins.analogReadPin(pin) * (100 / 1023)) / 10;
         return value;
     }
+    
+    function temperatureSht30(pin: AnalogPin): number {
+
+        let value: number = pins.analogReadPin(pin);
+        return Math.round((((value * 3.3) / 1024) *  72.917 - 66.875) * 10) / 10;
+    }
 
     function humiditySht30(pin: AnalogPin): number {
 
         let value: number = pins.analogReadPin(pin);
-        return Math.round(value / 10);
+        return Math.round((((value * 3.3) / 1024) * 41.667 - 12.5) * 10) / 10;
+        // return Math.round(value / 10);
     }
 
     function V2pHSensor(pin: AnalogPin): number {

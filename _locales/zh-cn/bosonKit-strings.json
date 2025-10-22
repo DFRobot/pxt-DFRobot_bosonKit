@@ -43,6 +43,7 @@
     "bosonKit.BosonSensorAnalogRead.BosonHumidity|block": "空气湿度 (i18)",
     "bosonKit.BosonSensorAnalogRead.BosonWaterproofTemperature|block": "防水温度 (i19)",
     "bosonKit.BosonSensorAnalogRead.BosonUltrasonicDistance|block": "超声波测量距离 (i22)",
+    "bosonKit.BosonSensorAnalogRead.BosonSHT30Temperature|block": "空气温度 SHT30 (i27)",
     "bosonKit.BosonSensorAnalogRead.BosonSHT30Humidity|block": "空气湿度 SHT30 (i27)",
     "bosonKit.BosonSensorAnalogRead.BosonV2Ph|block": "PH值(V2) (i28)",
     "bosonKit.BosonSensorAnalogRead.BosonWaterLevel|block": "水位传感器 (i31)",

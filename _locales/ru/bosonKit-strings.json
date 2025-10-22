@@ -43,6 +43,7 @@
     "bosonKit.BosonSensorAnalogRead.BosonHumidity|block": "датчика влажности (i18)",
     "bosonKit.BosonSensorAnalogRead.BosonWaterproofTemperature|block": "датчика температуры водонепроницаемого (i19)",
     "bosonKit.BosonSensorAnalogRead.BosonUltrasonicDistance|block": "датчика растояния УЗ (i22)",
+    "bosonKit.BosonSensorAnalogRead.BosonSHT30Temperature|block": "датчика температуры (i27)",
     "bosonKit.BosonSensorAnalogRead.BosonSHT30Humidity|block": "датчика влажности (i27)",
     "bosonKit.BosonSensorAnalogRead.BosonV2Ph|block": "датчика pH (i28)",
     "bosonKit.BosonSensorAnalogRead.BosonWaterLevel|block": "Датчик уровня воды (i31)",
